@@ -11,15 +11,15 @@ devtools::build_rmd('NEWS.Rmd')
 fs::dir_delete("docs")
 pkgdown::build_site()
 
-fs::dir_delete("../harmonizR-documentation/docs")
+fs::dir_delete("../Rmonize-documentation/docs")
 fs::dir_copy(
   "docs",
-  "../harmonizR-documentation/docs",
+  "../Rmonize-documentation/docs",
   overwrite = TRUE)
 
 # switch to documentation
 source('template_script.R')
 
 # push to git
-"https://github.com/maelstrom-research/harmonizR-documentation/actions/"
+"https://github.com/maelstrom-research/Rmonize-documentation/actions/"
 harmonizR_help()

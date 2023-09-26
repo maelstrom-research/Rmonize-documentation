@@ -13,8 +13,8 @@ data_proc_elem_template <-
   slice(4,8) %>%
   mutate(
     index = c(1,2) ,
-    ss_table = c('STUDY_1','STUDY_1'),
-    `Mlstr::algorithm` = c("part_id","'study_1'"))
+    input_dataset = c('STUDY_1','STUDY_1'),
+    `Mlstr_harmo::algorithm` = c("part_id","'study_1'"))
 
 #### dataschema_template ####
 dataschema_template <- 
