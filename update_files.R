@@ -1,19 +1,15 @@
-
-library(harmonizR)
-library(madshapR)
-library(fabR)
-library(fs)
+library(Rmonize)
 # usethis::use_pkgdown()
 
-devtools::document(roclets = c('rd', 'collate', 'namespace', 'vignette'))
-devtools::build_readme()
-devtools::build_rmd('NEWS.Rmd')
+# devtools::document(roclets = c('rd', 'collate', 'namespace', 'vignette'))
+# devtools::build_readme()
+# devtools::build_rmd('NEWS.Rmd')
 fs::dir_delete("docs")
 pkgdown::build_site()
 
 fs::dir_delete("../Rmonize-documentation/docs")
 fs::dir_copy(
-  "docs",
+  "../Rmonize/docs",
   "../Rmonize-documentation/docs",
   overwrite = TRUE)
 
@@ -22,4 +18,4 @@ source('template_script.R')
 
 # push to git
 "https://github.com/maelstrom-research/Rmonize-documentation/actions/"
-harmonizR_help()
+Rmonize_help()

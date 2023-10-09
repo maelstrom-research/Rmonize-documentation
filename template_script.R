@@ -3,7 +3,7 @@
 library(tidyverse)
 library(fabR)
 library(madshapR)
-library(harmonizR)
+library(Rmonize)
 library(fs)
 
 #### data_proc_elem_template ####
@@ -82,7 +82,7 @@ pooled_harmonized_dataset_template <-
 #### harmonized_dataset_template ####
 harmonized_dataset_template <- harmonized_dossier_template$STUDY_1
 
-path = "C:/Users/guill/OneDrive/Bureau/R/harmonizR-documentation/"
+path = "C:/Users/guill/OneDrive/Bureau/R/Rmonize-documentation/"
 try(dir_delete(paste0(path,'docs/templates/')))
 
 write_excel_allsheets( dataschema_template,                paste0(path,"docs/templates/dataschema - template.xlsx"))
