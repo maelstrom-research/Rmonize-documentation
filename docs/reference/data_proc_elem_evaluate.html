@@ -23,7 +23,7 @@ exported as an Excel spreadsheet."><!-- mathjax --><script src="https://cdnjs.cl
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Rmonize</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.0.9005</span>
       </span>
     </div>
 
@@ -39,9 +39,6 @@ exported as an Excel spreadsheet."><!-- mathjax --><script src="https://cdnjs.cl
   </a>
   <ul class="dropdown-menu" role="menu"><li>
       <a href="../articles/a-Glossary-and-templates.html">Glossary and templates</a>
-    </li>
-    <li>
-      <a href="../articles/b-Understand-the-workflow.html">Understand the workflow</a>
     </li>
     <li>
       <a href="../articles/c-The-Data-processing-elements.html">The Data Processing Elements</a>
@@ -150,7 +147,7 @@ case, the tibble must also contain 'vocabulary_short', 'taxonomy_scale',
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  - WARNING MESSAGES (if any): --------------------------------------------</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`Data Processing Elements summary`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 52 × 11</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 52 × 12</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    `Row number` index dataschema_variable valueType input_dataset      </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>            1     1 adm_unique_id       text      dataset_MELBOURNE_1</span>
@@ -164,10 +161,10 @@ case, the tibble must also contain 'vocabulary_short', 'taxonomy_scale',
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>            9     3 adm_year_dce        text      dataset_MELBOURNE_1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>           10     3 adm_year_dce        text      dataset_MELBOURNE_2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 42 more rows</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 6 more variables: input_variables &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 7 more variables: input_variables &lt;chr&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `Mlstr_harmo::rule_category` &lt;chr&gt;, `Mlstr_harmo::algorithm` &lt;chr&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `Mlstr_harmo::status` &lt;chr&gt;, `Mlstr_harmo::status_detail` &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `Mlstr_harmo::comment` &lt;chr&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `Mlstr_harmo::comment` &lt;chr&gt;, `label:en` &lt;chr&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
@@ -180,7 +177,7 @@ case, the tibble must also contain 'vocabulary_short', 'taxonomy_scale',
 
 
       <footer><div class="copyright">
-  <p></p><p>Developed by Guillaume Fabre, Maelstrom-research group.</p>
+  <p></p><p>Developed by Guillaume Fabre, Maelstrom-research.</p>
 </div>
 
 <div class="pkgdown">

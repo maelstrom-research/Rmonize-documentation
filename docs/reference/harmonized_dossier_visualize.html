@@ -30,7 +30,7 @@ must have the same parameters to operate."><!-- mathjax --><script src="https://
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Rmonize</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.0.9005</span>
       </span>
     </div>
 
@@ -46,9 +46,6 @@ must have the same parameters to operate."><!-- mathjax --><script src="https://
   </a>
   <ul class="dropdown-menu" role="menu"><li>
       <a href="../articles/a-Glossary-and-templates.html">Glossary and templates</a>
-    </li>
-    <li>
-      <a href="../articles/b-Understand-the-workflow.html">Understand the workflow</a>
     </li>
     <li>
       <a href="../articles/c-The-Data-processing-elements.html">The Data Processing Elements</a>
@@ -96,7 +93,7 @@ be grouped using <code>group_by</code> parameter, which is a (categorical) colum
 dataset. The user may need to use <code><a href="https://rdrr.io/r/base/factor.html" class="external-link">as.factor()</a></code> in this context. To fasten
 the process (and allow recycling object in a workflow) the user can feed the
 function with a <code>.summary_var</code>, which is the output of the function
-<code><a href="https://rdrr.io/pkg/madshapR/man/dataset_summarize.html" class="external-link">dataset_summarize()</a></code> of the column(s) <code>col</code> and  <code>group_by</code>. The summary
+<code><a href="dataset_summarize.html">dataset_summarize()</a></code> of the column(s) <code>col</code> and  <code>group_by</code>. The summary
 must have the same parameters to operate.</p>
     </div>
 
@@ -109,7 +106,6 @@ must have the same parameters to operate.</p>
 <span>  <span class="va">bookdown_path</span>,</span>
 <span>  taxonomy <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  valueType_guess <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>  overwrite <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  render <span class="op">=</span> <span class="st">"html"</span>,</span>
 <span>  .summary_pool <span class="op">=</span> <span class="cn">NULL</span></span>
 <span><span class="op">)</span></span></code></pre></div>
@@ -153,10 +149,6 @@ classification.</p></dd>
 valueType that could be applied to the dataset. FALSE by default.</p></dd>
 
 
-<dt>overwrite</dt>
-<dd><p>whether to overwrite existing files. FALSE by default.</p></dd>
-
-
 <dt>render</dt>
 <dd><p>Output format of the visual report. To date, the format can
 only be 'html', but will be expand to other formats in the future.</p></dd>
@@ -172,7 +164,7 @@ only be 'html', but will be expand to other formats in the future.</p></dd>
 
 <p>A bookdown folder containing files in the specified output folder. To
 open the file in browser, open 'docs/index.html'.
-Or use <code><a href="https://rdrr.io/pkg/fabR/man/bookdown_open.html" class="external-link">bookdown_open()</a></code></p>
+Or use <code><a href="bookdown_open.html">bookdown_open()</a></code></p>
 
 
     </div>
@@ -212,8 +204,8 @@ possibilities and their correspondence with R data types are available using
     <div id="see-also">
     <h2>See also</h2>
     <div class="dont-index"><p><code><a href="pooled_harmonized_dataset_create.html">pooled_harmonized_dataset_create()</a></code>
-<code><a href="https://rdrr.io/pkg/madshapR/man/dataset_summarize.html" class="external-link">dataset_summarize()</a></code>
-<code><a href="https://rdrr.io/pkg/fabR/man/bookdown_open.html" class="external-link">bookdown_open()</a></code></p></div>
+<code><a href="dataset_summarize.html">dataset_summarize()</a></code>
+<code><a href="bookdown_open.html">bookdown_open()</a></code></p></div>
     </div>
 
     <div id="ref-examples">
@@ -224,18 +216,21 @@ possibilities and their correspondence with R data types are available using
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/maelstrom-research/madshapR" class="external-link">madshapR</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://fs.r-lib.org" class="external-link">fs</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">pooled_harmonized_dataset</span> <span class="op">&lt;-</span> <span class="va">DEMO_files_harmo</span><span class="op">$</span><span class="va">pooled_harmonized_dataset</span></span></span>
 <span class="r-in"><span><span class="va">dataschema</span> <span class="op">&lt;-</span> <span class="va">DEMO_files_harmo</span><span class="op">$</span><span class="va">`dataschema - final`</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/pkg/madshapR/man/data_dict_filter.html" class="external-link">data_dict_filter</a></span><span class="op">(</span><span class="st">'name == "adm_unique_id"'</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">summary_var_harmo</span> <span class="op">&lt;-</span> <span class="va">DEMO_files_harmo</span><span class="op">$</span><span class="va">summary_var_harmo</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">bookdown_path</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="kw">if</span><span class="op">(</span><span class="fu"><a href="https://fs.r-lib.org/reference/file_access.html" class="external-link">dir_exists</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://fs.r-lib.org/reference/delete.html" class="external-link">dir_delete</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">bookdown_path</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">harmonized_dossier_visualize</span><span class="op">(</span></span></span>
 <span class="r-in"><span>  pooled_harmonized_dataset <span class="op">=</span> <span class="va">pooled_harmonized_dataset</span>,</span></span>
 <span class="r-in"><span>  dataschema <span class="op">=</span> <span class="va">dataschema</span>,</span></span>
 <span class="r-in"><span>  bookdown_path <span class="op">=</span> <span class="va">bookdown_path</span>,</span></span>
-<span class="r-in"><span>  overwrite <span class="op">=</span> <span class="cn">TRUE</span>,</span></span>
 <span class="r-in"><span>  .summary_pool <span class="op">=</span> <span class="va">summary_var_harmo</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># To open the file in browser, open 'bookdown_path/docs/index.html'.</span></span></span>
@@ -249,10 +244,10 @@ possibilities and their correspondence with R data types are available using
 <span class="r-out co"><span class="r-pr">#&gt;</span> 5/7                  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 6/7 [unnamed-chunk-3]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 7/7                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> "C:/Program Files/RStudio/resources/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS bookdownproj.knit.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output bookdownproj.html --lua-filter "C:\Users\guill\AppData\Local\R\win-library\4.3\bookdown\rmarkdown\lua\custom-environment.lua" --lua-filter "C:\Users\guill\AppData\Local\R\win-library\4.3\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\guill\AppData\Local\R\win-library\4.3\rmarkdown\rmarkdown\lua\latex-div.lua" --lua-filter "C:\Users\guill\AppData\Local\R\win-library\4.3\rmarkdown\rmarkdown\lua\anchor-sections.lua" --metadata-file "C:\Users\guill\AppData\Local\Temp\RtmpWM5bjk\file191043ff4e07" --wrap preserve --standalone --section-divs --table-of-contents --toc-depth 3 --template "C:\Users\guill\AppData\Local\R\win-library\4.3\bookdown\templates\gitbook.html" --highlight-style pygments --number-sections --css style.css --mathjax --include-in-header "C:\Users\guill\AppData\Local\Temp\RtmpWM5bjk\rmarkdown-str1910408d11e4.html" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> "C:/Program Files/RStudio/resources/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS bookdownproj.knit.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output bookdownproj.html --lua-filter "C:\Users\guill\AppData\Local\R\win-library\4.3\bookdown\rmarkdown\lua\custom-environment.lua" --lua-filter "C:\Users\guill\AppData\Local\R\win-library\4.3\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\guill\AppData\Local\R\win-library\4.3\rmarkdown\rmarkdown\lua\latex-div.lua" --lua-filter "C:\Users\guill\AppData\Local\R\win-library\4.3\rmarkdown\rmarkdown\lua\anchor-sections.lua" --metadata-file "C:\Users\guill\AppData\Local\Temp\RtmpGg1OGr\filee08414e28db" --wrap preserve --standalone --section-divs --table-of-contents --toc-depth 3 --template "C:\Users\guill\AppData\Local\R\win-library\4.3\bookdown\templates\gitbook.html" --highlight-style pygments --number-sections --css style.css --mathjax --include-in-header "C:\Users\guill\AppData\Local\Temp\RtmpGg1OGr\rmarkdown-stre08615022d6.html" </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> To edit your file, You can use the function `bookdown_open('C:\Users\guill\AppData\Local\Temp\RtmpWM5bjk')`</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> To edit your file, You can use the function `bookdown_open('C:\Users\guill\AppData\Local\Temp\RtmpGg1OGr')`</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> (Compatibility tested on Chrome, Edge and Mozilla)</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
@@ -266,7 +261,7 @@ possibilities and their correspondence with R data types are available using
 
 
       <footer><div class="copyright">
-  <p></p><p>Developed by Guillaume Fabre, Maelstrom-research group.</p>
+  <p></p><p>Developed by Guillaume Fabre, Maelstrom-research.</p>
 </div>
 
 <div class="pkgdown">

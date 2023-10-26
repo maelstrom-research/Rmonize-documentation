@@ -21,7 +21,7 @@ object is valid for use in a function."><!-- mathjax --><script src="https://cdn
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Rmonize</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.0.9005</span>
       </span>
     </div>
 
@@ -37,9 +37,6 @@ object is valid for use in a function."><!-- mathjax --><script src="https://cdn
   </a>
   <ul class="dropdown-menu" role="menu"><li>
       <a href="../articles/a-Glossary-and-templates.html">Glossary and templates</a>
-    </li>
-    <li>
-      <a href="../articles/b-Understand-the-workflow.html">Understand the workflow</a>
     </li>
     <li>
       <a href="../articles/c-The-Data-processing-elements.html">The Data Processing Elements</a>
@@ -129,7 +126,7 @@ unique.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> adm_st… Indicator… text      2     <span style="color: #BB0000;">NA</span>    ADM             Questionnaire_inter…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> adm_ye… Indicator… text      3     <span style="color: #BB0000;">NA</span>    ADM             Questionnaire_inter…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> sdc_age Participa… integer   4     years SDC             Age                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> sdc_ge… Gender of… integer   5     <span style="color: #BB0000;">NA</span>    SDC             Sex                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> sdc_sex Sex at bi… integer   5     <span style="color: #BB0000;">NA</span>    SDC             Sex                 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> phy_he… participa… decimal   6     cm    PME             Anthropo_measures   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> phy_we… participa… decimal   7     kg    PME             Anthropo_measures   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> phy_bmi participa… decimal   8     kg/m  PME             Anthropo_measures   </span>
@@ -141,22 +138,25 @@ unique.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 1 more variable: `Mlstr_area::1.scale` &lt;chr&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $Categories</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 13 × 4</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    variable       name  `label:en`                           missing</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> sdc_gender     1     Male                                 FALSE  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> sdc_gender     2     Female                               FALSE  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> rep_preg_ever  0     never pregnant                       FALSE  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> rep_preg_ever  1     pregnant once or more                FALSE  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> rep_preg_curr  0     currently pregnant                   FALSE  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> rep_preg_curr  1     not currently pregnant               FALSE  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> lsb_smo_ever   0     never smoked                         FALSE  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> lsb_smo_ever   1     smoked one pack of cigarette or more FALSE  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> lsb_smo_curr   0     currently smoker                     FALSE  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> lsb_smo_curr   1     not currently smoker                 FALSE  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> lsb_smo_status 0     never smoker                         FALSE  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> lsb_smo_status 1     former smoker                        FALSE  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> lsb_smo_status 2     current smoker                       FALSE  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 16 × 4</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    variable       name      `label:en`                           missing</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> adm_study      MELBOURNE MELBOURNE                            FALSE  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> adm_study      PARIS     PARIS                                FALSE  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> adm_study      TOKYO     TOKYO                                FALSE  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> sdc_sex        1         Male                                 FALSE  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> sdc_sex        2         Female                               FALSE  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> rep_preg_ever  0         never pregnant                       FALSE  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> rep_preg_ever  1         pregnant once or more                FALSE  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> rep_preg_curr  0         currently pregnant                   FALSE  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> rep_preg_curr  1         not currently pregnant               FALSE  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> lsb_smo_ever   0         never smoked                         FALSE  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> lsb_smo_ever   1         smoked one pack of cigarette or more FALSE  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> lsb_smo_curr   0         currently smoker                     FALSE  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> lsb_smo_curr   1         not currently smoker                 FALSE  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> lsb_smo_status 0         never smoker                         FALSE  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">15</span> lsb_smo_status 1         former smoker                        FALSE  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">16</span> lsb_smo_status 2         current smoker                       FALSE  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"madshapR::class")</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "data_dict_mlstr"</span>
@@ -173,7 +173,7 @@ unique.</p>
 
 
       <footer><div class="copyright">
-  <p></p><p>Developed by Guillaume Fabre, Maelstrom-research group.</p>
+  <p></p><p>Developed by Guillaume Fabre, Maelstrom-research.</p>
 </div>
 
 <div class="pkgdown">
