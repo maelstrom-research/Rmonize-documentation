@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Rmonize</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.0.9012</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.1</span>
       </span>
     </div>
 
@@ -112,17 +112,17 @@
 <div class="section level3">
 <h3 id="demo-files">Demo files<a class="anchor" aria-label="anchor" href="#demo-files"></a>
 </h3>
-<p>Demo files are available in the built-in DEMO_files_harmo object.
+<p>Demo files are available in the built-in Rmonize_DEMO object.
 library. These provide illustrative examples of the main inputs and are
 used to run commands in this vignette.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">DEMO_files_harmo</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">Rmonize_DEMO</span><span class="op">)</span></span>
 <span><span class="co"># To see examples</span></span>
-<span><span class="co"># View(DEMO_files_harmo$dd_TOKYO_format_maelstrom_tagged)   # A data dictionary</span></span>
-<span><span class="co"># View(DEMO_files_harmo$dataset_TOKYO)                      # A datasets</span></span>
-<span><span class="co"># View(DEMO_files_harmo$`data_processing_elements - final`) # A Data Processing Elements</span></span>
-<span><span class="co"># View(DEMO_files_harmo$`dataschema - final`)               # A DataSchema </span></span>
+<span><span class="co"># View(Rmonize_DEMO$data_dict_TOKYO)   # A data dictionary</span></span>
+<span><span class="co"># View(Rmonize_DEMO$dataset_TOKYO)                      # A datasets</span></span>
+<span><span class="co"># View(Rmonize_DEMO$`data_processing_elements - final`) # A Data Processing Elements</span></span>
+<span><span class="co"># View(Rmonize_DEMO$`dataschema - final`)               # A DataSchema </span></span>
 <span>                  </span></code></pre></div>
 </div>
 </div>
@@ -154,17 +154,17 @@ are then grouped into a dossier.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Associate metadata from data dictionary to the the data</span></span>
 <span></span>
-<span><span class="va">dataset_MELBOURNE_1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/data_dict_apply.html">data_dict_apply</a></span><span class="op">(</span></span>
-<span>  dataset <span class="op">=</span> <span class="va">DEMO_files_harmo</span><span class="op">$</span><span class="va">dataset_MELBOURNE_1</span>,</span>
-<span>  data_dict <span class="op">=</span> <span class="va">DEMO_files_harmo</span><span class="op">$</span><span class="va">dd_MELBOURNE_1_format_maelstrom</span><span class="op">)</span></span>
+<span><span class="va">dataset_MELBOURNE</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/data_dict_apply.html">data_dict_apply</a></span><span class="op">(</span></span>
+<span>  dataset <span class="op">=</span> <span class="va">Rmonize_DEMO</span><span class="op">$</span><span class="va">dataset_MELBOURNE</span>,</span>
+<span>  data_dict <span class="op">=</span> <span class="va">Rmonize_DEMO</span><span class="op">$</span><span class="va">data_dict_MELBOURNE</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">dataset_PARIS</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/data_dict_apply.html">data_dict_apply</a></span><span class="op">(</span></span>
-<span>  dataset <span class="op">=</span> <span class="va">DEMO_files_harmo</span><span class="op">$</span><span class="va">dataset_PARIS</span>,</span>
-<span>  data_dict <span class="op">=</span> <span class="va">DEMO_files_harmo</span><span class="op">$</span><span class="va">dd_PARIS_format_maelstrom</span><span class="op">)</span></span>
+<span>  dataset <span class="op">=</span> <span class="va">Rmonize_DEMO</span><span class="op">$</span><span class="va">dataset_PARIS</span>,</span>
+<span>  data_dict <span class="op">=</span> <span class="va">Rmonize_DEMO</span><span class="op">$</span><span class="va">data_dict_PARIS</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">dataset_TOKYO</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/data_dict_apply.html">data_dict_apply</a></span><span class="op">(</span></span>
-<span>  dataset <span class="op">=</span> <span class="va">DEMO_files_harmo</span><span class="op">$</span><span class="va">dataset_TOKYO</span>,</span>
-<span>  data_dict <span class="op">=</span> <span class="va">DEMO_files_harmo</span><span class="op">$</span><span class="va">dd_TOKYO_format_maelstrom</span><span class="op">)</span></span></code></pre></div>
+<span>  dataset <span class="op">=</span> <span class="va">Rmonize_DEMO</span><span class="op">$</span><span class="va">dataset_TOKYO</span>,</span>
+<span>  data_dict <span class="op">=</span> <span class="va">Rmonize_DEMO</span><span class="op">$</span><span class="va">data_dict_TOKYO</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="generate-harmonized-data">Generate harmonized data<a class="anchor" aria-label="anchor" href="#generate-harmonized-data"></a>
@@ -178,12 +178,12 @@ Elements) are prepared,</p>
 <span></span>
 <span><span class="va">dossier</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dossier_create.html">dossier_create</a></span><span class="op">(</span></span>
 <span>  dataset_list <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
-<span>    <span class="va">dataset_MELBOURNE_1</span>, </span>
+<span>    <span class="va">dataset_MELBOURNE</span>, </span>
 <span>    <span class="va">dataset_PARIS</span>, </span>
 <span>    <span class="va">dataset_TOKYO</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">dataschema</span> <span class="op">&lt;-</span> <span class="va">DEMO_files_harmo</span><span class="op">$</span><span class="va">`dataschema - final`</span></span>
-<span><span class="va">data_proc_elem</span> <span class="op">&lt;-</span> <span class="va">DEMO_files_harmo</span><span class="op">$</span><span class="va">`data_processing_elements - final`</span></span></code></pre></div>
+<span><span class="va">dataschema</span> <span class="op">&lt;-</span> <span class="va">Rmonize_DEMO</span><span class="op">$</span><span class="va">`dataschema - final`</span></span>
+<span><span class="va">data_proc_elem</span> <span class="op">&lt;-</span> <span class="va">Rmonize_DEMO</span><span class="op">$</span><span class="va">`data_processing_elements - final`</span></span></code></pre></div>
 <p>You can proceed with harmonization using
 <code>harmo_process</code>.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">

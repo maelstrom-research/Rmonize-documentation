@@ -23,7 +23,7 @@ exported as an Excel spreadsheet."><!-- mathjax --><script src="https://cdnjs.cl
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Rmonize</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.0.9012</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.1</span>
       </span>
     </div>
 
@@ -129,9 +129,9 @@ case, the tibble must also contain 'vocabulary_short', 'taxonomy_scale',
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="op">{</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># use DEMO_files_harmo provided by the package</span></span></span>
+<span class="r-in"><span><span class="co"># use Rmonize_DEMO provided by the package</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">data_proc_elem</span> <span class="op">&lt;-</span> <span class="va">DEMO_files_harmo</span><span class="op">$</span><span class="va">`data_processing_elements - final`</span>   </span></span>
+<span class="r-in"><span><span class="va">data_proc_elem</span> <span class="op">&lt;-</span> <span class="va">Rmonize_DEMO</span><span class="op">$</span><span class="va">`data_processing_elements - final`</span>   </span></span>
 <span class="r-in"><span><span class="fu">data_proc_elem_evaluate</span><span class="op">(</span><span class="va">data_proc_elem</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
@@ -144,24 +144,24 @@ case, the tibble must also contain 'vocabulary_short', 'taxonomy_scale',
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  - WARNING MESSAGES (if any): --------------------------------------------</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`Data Processing Elements summary`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 52 × 12</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    `Row number` index dataschema_variable valueType input_dataset      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>            1     1 adm_unique_id       text      dataset_MELBOURNE_1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span>            2     1 adm_unique_id       text      dataset_MELBOURNE_2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>            3     1 adm_unique_id       text      dataset_PARIS      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span>            4     1 adm_unique_id       text      dataset_TOKYO      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>            5     2 adm_study           text      dataset_MELBOURNE_1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span>            6     2 adm_study           text      dataset_MELBOURNE_2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>            7     2 adm_study           text      dataset_PARIS      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>            8     2 adm_study           text      dataset_TOKYO      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>            9     3 adm_year_dce        text      dataset_MELBOURNE_1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>           10     3 adm_year_dce        text      dataset_MELBOURNE_2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 42 more rows</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 7 more variables: input_variables &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 39 × 11</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    `Row number` index dataschema_variable valueType input_dataset    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>            1     1 adm_unique_id       <span style="color: #BB0000;">NA</span>        dataset_MELBOURNE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span>            2     1 adm_unique_id       <span style="color: #BB0000;">NA</span>        dataset_PARIS    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>            3     1 adm_unique_id       <span style="color: #BB0000;">NA</span>        dataset_TOKYO    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span>            4     2 adm_study           <span style="color: #BB0000;">NA</span>        dataset_MELBOURNE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>            5     2 adm_study           <span style="color: #BB0000;">NA</span>        dataset_PARIS    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span>            6     2 adm_study           <span style="color: #BB0000;">NA</span>        dataset_TOKYO    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>            7     3 adm_year_dce        <span style="color: #BB0000;">NA</span>        dataset_MELBOURNE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>            8     3 adm_year_dce        <span style="color: #BB0000;">NA</span>        dataset_PARIS    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>            9     3 adm_year_dce        <span style="color: #BB0000;">NA</span>        dataset_TOKYO    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>           10     4 sdc_age             <span style="color: #BB0000;">NA</span>        dataset_MELBOURNE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 29 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 6 more variables: input_variables &lt;chr&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `Mlstr_harmo::rule_category` &lt;chr&gt;, `Mlstr_harmo::algorithm` &lt;chr&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `Mlstr_harmo::status` &lt;chr&gt;, `Mlstr_harmo::status_detail` &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `Mlstr_harmo::comment` &lt;chr&gt;, `label:en` &lt;chr&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `Mlstr_harmo::comment` &lt;chr&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 </code></pre></div>

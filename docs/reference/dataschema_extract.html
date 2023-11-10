@@ -19,7 +19,7 @@ Data Processing Elements."><!-- mathjax --><script src="https://cdnjs.cloudflare
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Rmonize</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.0.9012</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.1</span>
       </span>
     </div>
 
@@ -110,7 +110,7 @@ identifier of each dataset to initiate the process of harmonization.</p>
 <span class="r-in"><span><span class="co"># You can use our demonstration files to run examples</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">dataschema_extract</span><span class="op">(</span></span></span>
-<span class="r-in"><span>  data_proc_elem <span class="op">=</span> <span class="va">DEMO_files_harmo</span><span class="op">$</span><span class="va">`data_processing_elements - final`</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  data_proc_elem <span class="op">=</span> <span class="va">Rmonize_DEMO</span><span class="op">$</span><span class="va">`data_processing_elements - final`</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $Variables</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 13 × 3</span></span>
@@ -119,16 +119,16 @@ identifier of each dataset to initiate the process of harmonization.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> adm_unique_id  adm_unique_id  text     </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> adm_study      adm_study      text     </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> adm_year_dce   adm_year_dce   text     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> sdc_age        sdc_age        integer  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> sdc_sex        sdc_sex        integer  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> phy_height     phy_height     decimal  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> phy_weight     phy_weight     decimal  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> phy_bmi        phy_bmi        decimal  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> rep_preg_ever  rep_preg_ever  integer  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> rep_preg_curr  rep_preg_curr  integer  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> lsb_smo_ever   lsb_smo_ever   integer  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> lsb_smo_curr   lsb_smo_curr   integer  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> lsb_smo_status lsb_smo_status integer  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> sdc_age        sdc_age        text     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> sdc_sex        sdc_sex        text     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> phy_height     phy_height     text     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> phy_weight     phy_weight     text     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> phy_bmi        phy_bmi        text     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> rep_preg_ever  rep_preg_ever  text     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> rep_preg_curr  rep_preg_curr  text     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> lsb_smo_ever   lsb_smo_ever   text     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> lsb_smo_curr   lsb_smo_curr   text     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> lsb_smo_status lsb_smo_status text     </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"madshapR::class")</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "data_dict_mlstr"</span>

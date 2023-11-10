@@ -1,9 +1,12 @@
+
+# git log --oneline --since="YYYY-MM-DD" > new_commits.txt
+
 library(Rmonize)
 # usethis::use_pkgdown()
 
-# devtools::document(roclets = c('rd', 'collate', 'namespace', 'vignette'))
-# devtools::build_readme()
-# devtools::build_rmd('NEWS.Rmd')
+devtools::document(roclets = c('rd', 'collate', 'namespace', 'vignette'))
+devtools::build_readme()
+devtools::build_rmd('NEWS.Rmd')
 
 fs::dir_delete("docs")
 pkgdown::build_site()
@@ -18,11 +21,12 @@ fs::dir_copy(
   "../Rmonize-documentation/docs",
   overwrite = TRUE)
 
-fs::file_move(
-  "../Rmonize-documentation/index.html",
-  "../Rmonize-documentation/docs/reference/index.html")
-
 file.edit("../Rmonize-documentation/docs/reference/index.html")
+file.edit("../Rmonize-documentation/index.html")
+
+fs::file_delete("../Rmonize-documentation/index.html")
+
+browseURL('docs/index.html')
 
 # switch to documentation
 source('template_script.R')

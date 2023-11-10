@@ -22,7 +22,7 @@ with Excel and can be exported as an Excel spreadsheet."><!-- mathjax --><script
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Rmonize</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.0.9012</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.1</span>
       </span>
     </div>
 
@@ -131,7 +131,7 @@ case, the tibble must also contain 'vocabulary_short', 'taxonomy_scale',
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="op">{</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu">harmonized_dossier_evaluate</span><span class="op">(</span><span class="va">DEMO_files_harmo</span><span class="op">$</span><span class="va">harmonized_dossier</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">harmonized_dossier_evaluate</span><span class="op">(</span><span class="va">Rmonize_DEMO</span><span class="op">$</span><span class="va">harmonized_dossier</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">- DOSSIER ASSESSMENT: ----------------------------------------------------</span></span>
@@ -147,7 +147,7 @@ case, the tibble must also contain 'vocabulary_short', 'taxonomy_scale',
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  - WARNING MESSAGES (if any): --------------------------------------------</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> - DATASET ASSESSMENT: <span style="font-weight: bold;">dataset_MELBOURNE_1</span> --------------------------</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> - DATASET ASSESSMENT: <span style="font-weight: bold;">dataset_MELBOURNE</span> --------------------------</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the standard adequacy of naming</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of variable names both in dataset and data dictionary</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of possible duplicated variable in the dataset</span>
@@ -161,23 +161,23 @@ case, the tibble must also contain 'vocabulary_short', 'taxonomy_scale',
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  - WARNING MESSAGES (if any): -------------------------------------------------</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">    </span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $dataset_MELBOURNE_1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $dataset_MELBOURNE_1$`Harmonized Data dictionary summary`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 11</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   index name          `label:en`  valueType `Mlstr_area::1` `Mlstr_area::1.term`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>     1 adm_unique_id Unique ide… text      ADM             Identifiers         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 5 more variables: `Mlstr_harmo::rule_category` &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `Mlstr_harmo::algorithm` &lt;chr&gt;, `Rmonize::r_script` &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `Mlstr_harmo::status` &lt;chr&gt;, `Mlstr_harmo::status_detail` &lt;chr&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $dataset_MELBOURNE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $dataset_MELBOURNE$`Harmonized Data dictionary summary`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 9</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   index name  `label:en` valueType Mlstr_harmo::rule_ca…¹ Mlstr_harmo::algorit…²</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>     1 adm_… Unique id… text      id_creation            id_creation           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ abbreviated names: ¹​`Mlstr_harmo::rule_category`, ²​`Mlstr_harmo::algorithm`</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 3 more variables: `Rmonize::r_script` &lt;chr&gt;, `Mlstr_harmo::status` &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `Mlstr_harmo::status_detail` &lt;chr&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $dataset_MELBOURNE_1$`Harmonized Data dictionary assessement`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $dataset_MELBOURNE$`Harmonized Data dictionary assessement`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 5</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   sheet     col_name    name_var `Quality assessment comment`         value     </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Variables Mlstr_harmo <span style="color: #BB0000;">NA</span>       [INFO] - Possible duplicated columns Mlstr_har…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $dataset_MELBOURNE_1$`Harmonized Dataset assessment`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $dataset_MELBOURNE$`Harmonized Dataset assessment`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 5</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   `index in data dict.` name          Quality assessment comm…¹ value suggestion</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     </span>

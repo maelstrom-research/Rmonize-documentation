@@ -73,9 +73,6 @@
     <loc>/reference/data_proc_elem_evaluate.html</loc>
   </url>
   <url>
-    <loc>/reference/DEMO_files_harmo.html</loc>
-  </url>
-  <url>
     <loc>/reference/dossier_create.html</loc>
   </url>
   <url>
@@ -83,9 +80,6 @@
   </url>
   <url>
     <loc>/reference/dossier_summarize.html</loc>
-  </url>
-  <url>
-    <loc>/reference/download_templates.html</loc>
   </url>
   <url>
     <loc>/reference/harmonized_dossier_evaluate.html</loc>
@@ -121,7 +115,13 @@
     <loc>/reference/Rmonize-package.html</loc>
   </url>
   <url>
+    <loc>/reference/Rmonize_DEMO.html</loc>
+  </url>
+  <url>
     <loc>/reference/Rmonize_help.html</loc>
+  </url>
+  <url>
+    <loc>/reference/Rmonize_templates.html</loc>
   </url>
   <url>
     <loc>/reference/show_harmo_error.html</loc>

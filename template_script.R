@@ -8,9 +8,9 @@ library(fs)
 
 #### data_proc_elem_template ####
 data_proc_elem_template <- 
-  DEMO_files_harmo$`data_processing_elements - final` %>%
+  Rmonize_DEMO$`data_processing_elements - final` %>%
   as_data_proc_elem() %>%
-  slice(4,8) %>%
+  slice(3,6) %>%
   mutate(
     index = c(1,2) ,
     input_dataset = c('STUDY_1','STUDY_1'),
@@ -19,10 +19,10 @@ data_proc_elem_template <-
 #### dataschema_template ####
 dataschema_template <- 
   list(Variables = 
-         DEMO_files_harmo$`dataschema - final`$Variables %>%
+         Rmonize_DEMO$`dataschema - final`$Variables %>%
          select(name, `label:en`,valueType) %>% slice(1,2),
        Categories = 
-         DEMO_files_harmo$`dataschema - final`$Categories %>%
+         Rmonize_DEMO$`dataschema - final`$Categories %>%
          select(variable, name, `label:en`, missing) %>% slice(1) %>%
          mutate(variable = 'adm_study', `label:en` = 'Study n. 1', name = 'study_1', missing = FALSE)) %>%
   as_data_dict_mlstr()
@@ -30,13 +30,13 @@ dataschema_template <-
 #### data_dict_template ####
 data_dict_template <- 
   list(Variables = 
-         DEMO_files$dd_TOKYO_format_maelstrom_tagged$Variables %>%
+         Rmonize_DEMO$data_dict_TOKYO$Variables %>%
          select(name, `label:en`,valueType) %>% slice(1) %>%
          add_row(name = 'cat_example', 
                  `label:en` = "Categorical variable. See 'Categories'", 
                  valueType = 'integer'),
        Categories = 
-         DEMO_files$dd_TOKYO_format_maelstrom_tagged$Categories %>%
+         Rmonize_DEMO$data_dict_TOKYO$Categories %>%
          select(variable, name, `label:en`, missing) %>% slice(0) %>%
          add_row(variable = 'cat_example', 
                  `label:en` = 'First category' , 
@@ -51,7 +51,7 @@ data_dict_template <-
 
 #### dataset_template ####
 dataset_template <- 
-  DEMO_files$dataset_TOKYO %>%
+  Rmonize_DEMO$dataset_TOKYO %>%
   select(1) %>%
   slice(1) %>%
   add_column(cat_example = 1L) %>%
@@ -96,32 +96,27 @@ write_excel_csv2(na = '',   harmonized_dataset_template,        paste0(path,"doc
 write_excel_csv2(na = '',   pooled_harmonized_dataset_template, paste0(path,"docs/templates/pooled_harmonized_dataset - template.csv"))  
 
 
-dataschema_demo <- as_dataschema_mlstr(DEMO_files_harmo$`dataschema - final`)
-data_proc_elem_demo <- as_data_proc_elem(DEMO_files_harmo$`data_processing_elements - final`)
-dd_MELBOURNE_1_demo <- as_data_dict_mlstr(DEMO_files$dd_MELBOURNE_1_format_maelstrom)
-dd_MELBOURNE_2_demo <- as_data_dict_mlstr(DEMO_files$dd_MELBOURNE_2_format_maelstrom)
-dd_PARIS_demo <- as_data_dict_mlstr(DEMO_files$dd_PARIS_format_maelstrom)
-dd_TOKYO_demo <- as_data_dict_mlstr(DEMO_files$dd_TOKYO_format_maelstrom_tagged)
-dataset_MELBOURNE_1_demo <- DEMO_files$dataset_MELBOURNE_1
-dataset_MELBOURNE_2_demo <- DEMO_files$dataset_MELBOURNE_2
-dataset_PARIS_demo <- DEMO_files$dataset_PARIS
-dataset_TOKYO_demo <- DEMO_files$dataset_TOKYO
-study_specific_dossier_demo       <- 
+dataschema_demo          <- as_dataschema_mlstr(Rmonize_DEMO$`dataschema - final`)
+data_proc_elem_demo      <- as_data_proc_elem(Rmonize_DEMO$`data_processing_elements - final`)
+data_dict_MELBOURNE_demo <- as_data_dict_mlstr(Rmonize_DEMO$data_dict_MELBOURNE)
+data_dict_PARIS_demo     <- as_data_dict_mlstr(Rmonize_DEMO$data_dict_PARIS)
+data_dict_TOKYO_demo     <- as_data_dict_mlstr(Rmonize_DEMO$data_dict_TOKYO)
+dataset_MELBOURNE_demo   <- Rmonize_DEMO$dataset_MELBOURNE
+dataset_PARIS_demo       <- Rmonize_DEMO$dataset_PARIS
+dataset_TOKYO_demo       <- Rmonize_DEMO$dataset_TOKYO
+input_dossier_demo       <- 
   dossier_create(list(
-    dataset_MELBOURNE_1 = dataset_MELBOURNE_1_demo,
-    dataset_MELBOURNE_2 = dataset_MELBOURNE_2_demo,
-    dataset_PARIS = dataset_PARIS_demo,
-    dataset_TOKYO = dataset_TOKYO_demo))
+    dataset_MELBOURNE = dataset_MELBOURNE_demo,
+    dataset_PARIS     = dataset_PARIS_demo,
+    dataset_TOKYO     = dataset_TOKYO_demo))
 
 write_excel_allsheets(    dataschema_demo,             paste0(path,"demo-files/dataschema - demo.xlsx"))
-write_excel_allsheets(    dd_MELBOURNE_1_demo,         paste0(path,"demo-files/data dictionary MELBOURNE_1 - demo.xlsx"))
-write_excel_allsheets(    dd_MELBOURNE_2_demo,         paste0(path,"demo-files/data dictionary MELBOURNE_2 - demo.xlsx"))
-write_excel_allsheets(    dd_PARIS_demo,               paste0(path,"demo-files/data dictionary PARIS - demo.xlsx"))
-write_excel_allsheets(    dd_TOKYO_demo,               paste0(path,"demo-files/data dictionary TOKYO - demo.xlsx"))
-write_excel_allsheets(    study_specific_dossier_demo, paste0(path,"demo-files/study specific dossier - demo.xlsx"))
+write_excel_allsheets(    data_dict_MELBOURNE_demo,    paste0(path,"demo-files/data dictionary MELBOURNE - demo.xlsx"))
+write_excel_allsheets(    data_dict_PARIS_demo,        paste0(path,"demo-files/data dictionary PARIS - demo.xlsx"))
+write_excel_allsheets(    data_dict_TOKYO_demo,        paste0(path,"demo-files/data dictionary TOKYO - demo.xlsx"))
+write_excel_allsheets(    input_dossier_demo,          paste0(path,"demo-files/input dossier - demo.xlsx"))
 write_excel_csv2(na = '', data_proc_elem_demo,         paste0(path,"demo-files/data_processing_elements - demo.csv"))
-write_excel_csv2(na = '', dataset_MELBOURNE_1_demo,    paste0(path,"demo-files/dataset MELBOURNE_1 - demo.csv"))
-write_excel_csv2(na = '', dataset_MELBOURNE_2_demo,    paste0(path,"demo-files/dataset MELBOURNE_2 - demo.csv"))
+write_excel_csv2(na = '', dataset_MELBOURNE_demo,      paste0(path,"demo-files/dataset MELBOURNE - demo.csv"))
 write_excel_csv2(na = '', dataset_PARIS_demo,          paste0(path,"demo-files/dataset PARIS - demo.csv"))
 write_excel_csv2(na = '', dataset_TOKYO_demo,          paste0(path,"demo-files/dataset TOKYO - demo.csv"))
 
