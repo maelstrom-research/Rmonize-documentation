@@ -125,6 +125,3 @@ zip(zipfile = 'demo-files', files = files2zip)
 dir_delete('demo-files')
 file_copy('demo-files.zip','docs/demo-files.zip',overwrite = TRUE)
 file_delete('demo-files.zip')
-
-
-
