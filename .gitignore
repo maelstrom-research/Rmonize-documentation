@@ -3,4 +3,5 @@
 .RData
 .Ruserdata
 *.Rproj
-template_script.R
+template_script*
+update_files*
