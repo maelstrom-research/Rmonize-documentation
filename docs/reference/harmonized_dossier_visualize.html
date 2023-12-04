@@ -30,7 +30,7 @@ must have the same parameters to operate."><!-- mathjax --><script src="https://
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Rmonize</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.1.0003</span>
       </span>
     </div>
 
@@ -48,10 +48,10 @@ must have the same parameters to operate."><!-- mathjax --><script src="https://
       <a href="../articles/a-Glossary-and-templates.html">Glossary and templates</a>
     </li>
     <li>
-      <a href="../articles/b-The-Data-processing-elements.html">The Data Processing Elements</a>
+      <a href="../articles/b-Data-processing-elements.html">Data Processing Elements</a>
     </li>
     <li>
-      <a href="../articles/c-Example-with-DEMO-files.html">Example with DEMO files</a>
+      <a href="../articles/c-Example-with-Rmonize_DEMO.html">Example with Rmonize_DEMO</a>
     </li>
   </ul></li>
 <li>
@@ -96,15 +96,14 @@ must have the same parameters to operate.</p>
 
     <div id="ref-usage">
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">harmonized_dossier_visualize</span><span class="op">(</span></span>
-<span>  harmonized_dossier <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  pooled_harmonized_dataset <span class="op">=</span> <span class="fu"><a href="pooled_harmonized_dataset_create.html">pooled_harmonized_dataset_create</a></span><span class="op">(</span><span class="va">harmonized_dossier</span><span class="op">)</span>,</span>
-<span>  dataschema <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/madshapR/man/data_dict_extract.html" class="external-link">data_dict_extract</a></span><span class="op">(</span><span class="va">pooled_harmonized_dataset</span><span class="op">)</span>,</span>
-<span>  group_by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/attributes.html" class="external-link">attributes</a></span><span class="op">(</span><span class="va">pooled_harmonized_dataset</span><span class="op">)</span><span class="op">$</span><span class="va">`Rmonize::unique_col_dataset`</span>,</span>
+<span>  <span class="va">harmonized_dossier</span>,</span>
 <span>  <span class="va">bookdown_path</span>,</span>
-<span>  taxonomy <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  group_by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/attributes.html" class="external-link">attributes</a></span><span class="op">(</span><span class="va">harmonized_dossier</span><span class="op">)</span><span class="op">$</span><span class="va">`Rmonize::harmonized_col_dataset`</span>,</span>
+<span>  harmonized_dossier_summary <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  dataschema <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/attributes.html" class="external-link">attributes</a></span><span class="op">(</span><span class="va">harmonized_dossier</span><span class="op">)</span><span class="op">$</span><span class="va">`Rmonize::DataSchema`</span>,</span>
+<span>  data_proc_elem <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/attributes.html" class="external-link">attributes</a></span><span class="op">(</span><span class="va">harmonized_dossier</span><span class="op">)</span><span class="op">$</span><span class="va">`Rmonize::Data Processing Element`</span>,</span>
 <span>  valueType_guess <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>  render <span class="op">=</span> <span class="st">"html"</span>,</span>
-<span>  .summary_pool <span class="op">=</span> <span class="cn">NULL</span></span>
+<span>  taxonomy <span class="op">=</span> <span class="cn">NULL</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -115,9 +114,20 @@ must have the same parameters to operate.</p>
 harmonized dataset.</p></dd>
 
 
-<dt>pooled_harmonized_dataset</dt>
-<dd><p>A tibble, identifying the
-pooled harmonized dataset.</p></dd>
+<dt>bookdown_path</dt>
+<dd><p>A character string identifying the folder path where the
+bookdown report will be saved.</p></dd>
+
+
+<dt>group_by</dt>
+<dd><p>A character string of one column in the dataset that can be
+taken as a grouping column. The visual element will be grouped and displayed
+by this column.</p></dd>
+
+
+<dt>harmonized_dossier_summary</dt>
+<dd><p>A list which is the summary of the
+harmonized dossier.</p></dd>
 
 
 <dt>dataschema</dt>
@@ -125,34 +135,20 @@ pooled harmonized dataset.</p></dd>
 associated harmonized dossier.</p></dd>
 
 
-<dt>group_by</dt>
-<dd><p>A character string of one column in the
-pooled harmonized dataset that can be taken as a grouping column.
+<dt>data_proc_elem</dt>
+<dd><p>A tibble, identifying the input
+Data Processing Elements.</p></dd>
+
+
+<dt>valueType_guess</dt>
+<dd><p>Whether the output should include a more accurate
+valueType that could be applied to the dataset. FALSE by default.
 The visual element will be grouped and displayed by this column.</p></dd>
-
-
-<dt>bookdown_path</dt>
-<dd><p>A character string identifying the folder path where the
-bookdown report will be saved.</p></dd>
 
 
 <dt>taxonomy</dt>
 <dd><p>A tibble identifying the scheme used for variables
 classification.</p></dd>
-
-
-<dt>valueType_guess</dt>
-<dd><p>Whether the output should include a more accurate
-valueType that could be applied to the dataset. FALSE by default.</p></dd>
-
-
-<dt>render</dt>
-<dd><p>Output format of the visual report. To date, the format can
-only be 'html', but will be expand to other formats in the future.</p></dd>
-
-
-<dt>.summary_pool</dt>
-<dd><p>A list which is the summary of the variables.</p></dd>
 
 </dl></div>
     <div id="value">
@@ -211,40 +207,57 @@ possibilities and their correspondence with R data types are available using
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># You can use our demonstration files to run examples</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/maelstrom-research/madshapR" class="external-link">madshapR</a></span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://fs.r-lib.org" class="external-link">fs</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">pooled_harmonized_dataset</span> <span class="op">&lt;-</span> <span class="va">Rmonize_DEMO</span><span class="op">$</span><span class="va">pooled_harmonized_dataset</span></span></span>
-<span class="r-in"><span><span class="va">dataschema</span> <span class="op">&lt;-</span> <span class="va">Rmonize_DEMO</span><span class="op">$</span><span class="va">`dataschema - final`</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
-<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/pkg/madshapR/man/data_dict_filter.html" class="external-link">data_dict_filter</a></span><span class="op">(</span><span class="st">'name == "adm_unique_id"'</span><span class="op">)</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">summary_var_harmo</span> <span class="op">&lt;-</span> <span class="va">Rmonize_DEMO</span><span class="op">$</span><span class="va">summary_var_harmo</span></span></span>
+<span class="r-in"><span><span class="va">harmonized_dossier</span> <span class="op">&lt;-</span> <span class="va">Rmonize_DEMO</span><span class="op">$</span><span class="va">harmonized_dossier</span></span></span>
+<span class="r-in"><span><span class="va">harmonized_dossier_summary</span> <span class="op">&lt;-</span> <span class="va">Rmonize_DEMO</span><span class="op">$</span><span class="va">harmonized_dossier_summary</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="kw">if</span><span class="op">(</span><span class="fu"><a href="https://fs.r-lib.org/reference/file_access.html" class="external-link">dir_exists</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://fs.r-lib.org/reference/delete.html" class="external-link">dir_delete</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">bookdown_path</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">harmonized_dossier_visualize</span><span class="op">(</span></span></span>
-<span class="r-in"><span>  pooled_harmonized_dataset <span class="op">=</span> <span class="va">pooled_harmonized_dataset</span>,</span></span>
-<span class="r-in"><span>  dataschema <span class="op">=</span> <span class="va">dataschema</span>,</span></span>
+<span class="r-in"><span>  <span class="va">harmonized_dossier</span>,</span></span>
 <span class="r-in"><span>  bookdown_path <span class="op">=</span> <span class="va">bookdown_path</span>,</span></span>
-<span class="r-in"><span>  .summary_pool <span class="op">=</span> <span class="va">summary_var_harmo</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  harmonized_dossier_summary <span class="op">=</span> <span class="va">harmonized_dossier_summary</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># To open the file in browser, open 'bookdown_path/docs/index.html'.</span></span></span>
 <span class="r-in"><span><span class="co"># Or use bookdown_open(bookdown_path) function</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1/7                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2/7 [unnamed-chunk-1]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3/7                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4/7 [unnamed-chunk-2]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5/7                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6/7 [unnamed-chunk-3]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7/7                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> "C:/Program Files/RStudio/resources/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS bookdownproj.knit.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output bookdownproj.html --lua-filter "C:\Users\guill\AppData\Local\R\win-library\4.3\bookdown\rmarkdown\lua\custom-environment.lua" --lua-filter "C:\Users\guill\AppData\Local\R\win-library\4.3\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\guill\AppData\Local\R\win-library\4.3\rmarkdown\rmarkdown\lua\latex-div.lua" --lua-filter "C:\Users\guill\AppData\Local\R\win-library\4.3\rmarkdown\rmarkdown\lua\anchor-sections.lua" --metadata-file "C:\Users\guill\AppData\Local\Temp\RtmpKCvtQX\file58e8419015f4" --wrap preserve --standalone --section-divs --table-of-contents --toc-depth 3 --template "C:\Users\guill\AppData\Local\R\win-library\4.3\bookdown\templates\gitbook.html" --highlight-style pygments --number-sections --css style.css --mathjax --include-in-header "C:\Users\guill\AppData\Local\Temp\RtmpKCvtQX\rmarkdown-str58e87734971.html" </span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span></span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> An additional variable `Rmonize::harmonized_col_dataset` has been created</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> with harmonized dataset names as values for each harmonized dataset.</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> Useful tip:</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> To avoid this message, we recommend to set `harmonized_col_dataset` as a </span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> categorical variable DataSchema, or to set `add_col_dataset` = FALSE.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1/23                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2/23 [unnamed-chunk-1] </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3/23                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4/23 [unnamed-chunk-2] </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5/23                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6/23 [unnamed-chunk-3] </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7/23                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8/23 [unnamed-chunk-4] </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9/23                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10/23 [unnamed-chunk-5] </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11/23                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12/23 [unnamed-chunk-6] </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13/23                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14/23 [figures-plot12-1]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15/23                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16/23 [unnamed-chunk-7] </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17/23                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18/23 [unnamed-chunk-8] </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 19/23                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20/23 [unnamed-chunk-9] </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 21/23                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 22/23 [figures-plot12-2]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 23/23                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> "C:/Program Files/RStudio/resources/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS bookdownproj.knit.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output bookdownproj.html --lua-filter "C:\Users\guill\AppData\Local\R\win-library\4.3\bookdown\rmarkdown\lua\custom-environment.lua" --lua-filter "C:\Users\guill\AppData\Local\R\win-library\4.3\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\guill\AppData\Local\R\win-library\4.3\rmarkdown\rmarkdown\lua\latex-div.lua" --lua-filter "C:\Users\guill\AppData\Local\R\win-library\4.3\rmarkdown\rmarkdown\lua\anchor-sections.lua" --metadata-file "C:\Users\guill\AppData\Local\Temp\Rtmpu2xSU1\file24e44bec390" --wrap preserve --standalone --section-divs --table-of-contents --toc-depth 3 --template "C:\Users\guill\AppData\Local\R\win-library\4.3\bookdown\templates\gitbook.html" --highlight-style pygments --number-sections --css style.css --mathjax --include-in-header "C:\Users\guill\AppData\Local\Temp\Rtmpu2xSU1\rmarkdown-str24e43b753c9.html" </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> To edit your file, You can use the function `bookdown_open('C:\Users\guill\AppData\Local\Temp\RtmpKCvtQX')`</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> To edit your file, You can use the function `bookdown_open('C:\Users\guill\AppData\Local\Temp\Rtmpu2xSU1')`</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> (Compatibility tested on Chrome, Edge and Mozilla)</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
@@ -258,7 +271,7 @@ possibilities and their correspondence with R data types are available using
 
 
       <footer><div class="copyright">
-  <p></p><p>Developed by Guillaume Fabre, Maelstrom-research, ReACH (Research Advancement through Cohort Cataloguing and Harmonization), CITF (COVID-19 Immunity Task Force), EUCAN-connect.</p>
+  <p></p><p>Developed by Guillaume Fabre, Maelstrom-research.</p>
 </div>
 
 <div class="pkgdown">

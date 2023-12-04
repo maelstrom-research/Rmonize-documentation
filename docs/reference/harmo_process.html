@@ -28,7 +28,7 @@ potential of the DataSchema variables across input dataset(s)."><!-- mathjax -->
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Rmonize</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.1.0003</span>
       </span>
     </div>
 
@@ -46,10 +46,10 @@ potential of the DataSchema variables across input dataset(s)."><!-- mathjax -->
       <a href="../articles/a-Glossary-and-templates.html">Glossary and templates</a>
     </li>
     <li>
-      <a href="../articles/b-The-Data-processing-elements.html">The Data Processing Elements</a>
+      <a href="../articles/b-Data-processing-elements.html">Data Processing Elements</a>
     </li>
     <li>
-      <a href="../articles/c-Example-with-DEMO-files.html">Example with DEMO files</a>
+      <a href="../articles/c-Example-with-Rmonize_DEMO.html">Example with Rmonize_DEMO</a>
     </li>
   </ul></li>
 <li>
@@ -91,7 +91,12 @@ potential of the DataSchema variables across input dataset(s).</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">harmo_process</span><span class="op">(</span><span class="va">dossier</span>, dataschema <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">data_proc_elem</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">harmo_process</span><span class="op">(</span></span>
+<span>  <span class="va">dossier</span>,</span>
+<span>  dataschema <span class="op">=</span> <span class="fu"><a href="dataschema_extract.html">dataschema_extract</a></span><span class="op">(</span><span class="va">data_proc_elem</span><span class="op">)</span>,</span>
+<span>  <span class="va">data_proc_elem</span>,</span>
+<span>  harmonized_col_dataset <span class="op">=</span> <span class="cn">NULL</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -109,6 +114,11 @@ associated harmonized dossier.</p></dd>
 <dt>data_proc_elem</dt>
 <dd><p>A tibble, identifying the input
 Data Processing Elements.</p></dd>
+
+
+<dt>harmonized_col_dataset</dt>
+<dd><p>A character string identifying the name of the
+column present in every dataset as identifier of the dataset name.</p></dd>
 
 </dl></div>
     <div id="value">
@@ -239,7 +249,7 @@ identifier of each dataset to initiate the process of harmonization.</p>
 
 
       <footer><div class="copyright">
-  <p></p><p>Developed by Guillaume Fabre, Maelstrom-research, ReACH (Research Advancement through Cohort Cataloguing and Harmonization), CITF (COVID-19 Immunity Task Force), EUCAN-connect.</p>
+  <p></p><p>Developed by Guillaume Fabre, Maelstrom-research.</p>
 </div>
 
 <div class="pkgdown">

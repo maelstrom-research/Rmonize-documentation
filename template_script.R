@@ -8,13 +8,13 @@ library(fs)
 
 #### data_proc_elem_template ####
 data_proc_elem_template <- 
-  Rmonize_DEMO$`data_processing_elements - final` %>%
+  Rmonize_DEMO$`data_processing_elements - final` %>% 
   as_data_proc_elem() %>%
-  slice(3,6) %>%
+  slice(27,28) %>%
   mutate(
     index = c(1,2) ,
     input_dataset = c('STUDY_1','STUDY_1'),
-    `Mlstr_harmo::algorithm` = c("part_id","'study_1'"))
+    `Mlstr_harmo::algorithm` = c("id_creation","'study_1'"))
 
 #### dataschema_template ####
 dataschema_template <- 
@@ -94,7 +94,6 @@ write_excel_csv2(na = '',   data_proc_elem_template,            paste0(path,"doc
 write_excel_csv2(na = '',   dataset_template,                   paste0(path,"docs/templates/dataset - template.csv"))
 write_excel_csv2(na = '',   harmonized_dataset_template,        paste0(path,"docs/templates/harmonized_dataset - template.csv"))
 write_excel_csv2(na = '',   pooled_harmonized_dataset_template, paste0(path,"docs/templates/pooled_harmonized_dataset - template.csv"))  
-
 
 dataschema_demo          <- as_dataschema_mlstr(Rmonize_DEMO$`dataschema - final`)
 data_proc_elem_demo      <- as_data_proc_elem(Rmonize_DEMO$`data_processing_elements - final`)

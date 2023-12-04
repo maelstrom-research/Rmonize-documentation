@@ -28,7 +28,7 @@ fs::file_delete("../Rmonize-documentation/index.html")
 
 browseURL('docs/index.html')
 
-# switch to documentation
+# switch to Rmonize-documentation
 source('template_script.R')
 
 # push to git

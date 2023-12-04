@@ -3,7 +3,7 @@ pkgdown: 2.0.7
 pkgdown_sha: ~
 articles:
   a-Glossary-and-templates: a-Glossary-and-templates.html
-  b-The-Data-processing-elements: b-The-Data-processing-elements.html
-  c-Example-with-DEMO-files: c-Example-with-DEMO-files.html
-last_built: 2023-11-15T14:51Z
+  b-Data-processing-elements: b-Data-processing-elements.html
+  c-Example-with-Rmonize_DEMO: c-Example-with-Rmonize_DEMO.html
+last_built: 2023-12-04T17:41Z
 

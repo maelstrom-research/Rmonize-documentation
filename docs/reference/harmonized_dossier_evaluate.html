@@ -22,7 +22,7 @@ with Excel and can be exported as an Excel spreadsheet."><!-- mathjax --><script
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Rmonize</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.1.0003</span>
       </span>
     </div>
 
@@ -40,10 +40,10 @@ with Excel and can be exported as an Excel spreadsheet."><!-- mathjax --><script
       <a href="../articles/a-Glossary-and-templates.html">Glossary and templates</a>
     </li>
     <li>
-      <a href="../articles/b-The-Data-processing-elements.html">The Data Processing Elements</a>
+      <a href="../articles/b-Data-processing-elements.html">Data Processing Elements</a>
     </li>
     <li>
-      <a href="../articles/c-Example-with-DEMO-files.html">Example with DEMO files</a>
+      <a href="../articles/c-Example-with-Rmonize_DEMO.html">Example with Rmonize_DEMO</a>
     </li>
   </ul></li>
 <li>
@@ -79,7 +79,12 @@ with Excel and can be exported as an Excel spreadsheet.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">harmonized_dossier_evaluate</span><span class="op">(</span><span class="va">harmonized_dossier</span>, taxonomy <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">harmonized_dossier_evaluate</span><span class="op">(</span></span>
+<span>  <span class="va">harmonized_dossier</span>,</span>
+<span>  dataschema <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/attributes.html" class="external-link">attributes</a></span><span class="op">(</span><span class="va">harmonized_dossier</span><span class="op">)</span><span class="op">$</span><span class="va">`Rmonize::DataSchema`</span>,</span>
+<span>  taxonomy <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  as_dataschema_mlstr <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -89,9 +94,21 @@ with Excel and can be exported as an Excel spreadsheet.</p>
 harmonized dataset.</p></dd>
 
 
+<dt>dataschema</dt>
+<dd><p>A list of tibble(s) representing metadata of an
+associated harmonized dossier.</p></dd>
+
+
 <dt>taxonomy</dt>
 <dd><p>A tibble identifying the scheme used for variables
 classification.</p></dd>
+
+
+<dt>as_dataschema_mlstr</dt>
+<dd><p>Whether the output data dictionary has a simple
+data dictionary structure or not (meaning has a Maelstrom data dictionary
+structure, compatible with Maelstrom Research ecosystem, including Opal).
+TRUE by default.</p></dd>
 
 </dl></div>
     <div id="value">
@@ -134,7 +151,6 @@ case, the tibble must also contain 'vocabulary_short', 'taxonomy_scale',
 <span class="r-in"><span><span class="fu">harmonized_dossier_evaluate</span><span class="op">(</span><span class="va">Rmonize_DEMO</span><span class="op">$</span><span class="va">harmonized_dossier</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">- DOSSIER ASSESSMENT: ----------------------------------------------------</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> - DATA DICTIONARY ASSESSMENT: <span style="font-weight: bold;">data_dict</span> --------------</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the standard adequacy of naming</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the uniqueness of variable names</span>
@@ -145,45 +161,30 @@ case, the tibble must also contain 'vocabulary_short', 'taxonomy_scale',
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the `valueType` column in 'Variables'</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Generate report</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     The data dictionary contains no error/warning.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  - WARNING MESSAGES (if any): --------------------------------------------</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> - DATASET ASSESSMENT: <span style="font-weight: bold;">dataset_MELBOURNE</span> --------------------------</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> - DATASET ASSESSMENT: <span style="font-weight: bold;">pooled_harmonized_dataset</span> (empty dataset) --------------------------</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the standard adequacy of naming</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of variable names both in dataset and data dictionary</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of possible duplicated variable in the dataset</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of duplicated participants in the dataset</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of unique value columns in dataset</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of empty rows in the data dictionary</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence all NA(s) of columns in the data dictionary</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of categories not in the data dictionary</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the `valueType` comparison in dataset and data dictionary</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Generate report</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     The dataset contains no error/warning.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  - WARNING MESSAGES (if any): -------------------------------------------------</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">    </span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $dataset_MELBOURNE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $dataset_MELBOURNE$`Harmonized Data dictionary summary`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 9</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   index name  `label:en` valueType Mlstr_harmo::rule_ca…¹ Mlstr_harmo::algorit…²</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>     1 adm_… Unique id… text      id_creation            id_creation           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ abbreviated names: ¹​`Mlstr_harmo::rule_category`, ²​`Mlstr_harmo::algorithm`</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 3 more variables: `Rmonize::r_script` &lt;chr&gt;, `Mlstr_harmo::status` &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `Mlstr_harmo::status_detail` &lt;chr&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $dataset_MELBOURNE$`Harmonized Data dictionary assessement`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 5</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   sheet     col_name    name_var `Quality assessment comment`         value     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Variables Mlstr_harmo <span style="color: #BB0000;">NA</span>       [INFO] - Possible duplicated columns Mlstr_har…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $dataset_MELBOURNE$`Harmonized Dataset assessment`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 5</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   `index in data dict.` name          Quality assessment comm…¹ value suggestion</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>                     1 adm_unique_id [INFO] - refined valueTy… text  integer   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ abbreviated name: ¹​`Quality assessment comment`</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`Data dictionary summary`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 4</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   index name          `label:en`                                     valueType</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>     1 adm_unique_id Unique identification code of the participant. text     </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
@@ -196,7 +197,7 @@ case, the tibble must also contain 'vocabulary_short', 'taxonomy_scale',
 
 
       <footer><div class="copyright">
-  <p></p><p>Developed by Guillaume Fabre, Maelstrom-research, ReACH (Research Advancement through Cohort Cataloguing and Harmonization), CITF (COVID-19 Immunity Task Force), EUCAN-connect.</p>
+  <p></p><p>Developed by Guillaume Fabre, Maelstrom-research.</p>
 </div>
 
 <div class="pkgdown">

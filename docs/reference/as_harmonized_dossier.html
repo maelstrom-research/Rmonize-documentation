@@ -20,7 +20,7 @@ check if an object is valid for use in a function."><!-- mathjax --><script src=
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Rmonize</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.1.0003</span>
       </span>
     </div>
 
@@ -38,10 +38,10 @@ check if an object is valid for use in a function."><!-- mathjax --><script src=
       <a href="../articles/a-Glossary-and-templates.html">Glossary and templates</a>
     </li>
     <li>
-      <a href="../articles/b-The-Data-processing-elements.html">The Data Processing Elements</a>
+      <a href="../articles/b-Data-processing-elements.html">Data Processing Elements</a>
     </li>
     <li>
-      <a href="../articles/c-Example-with-DEMO-files.html">Example with DEMO files</a>
+      <a href="../articles/c-Example-with-Rmonize_DEMO.html">Example with Rmonize_DEMO</a>
     </li>
   </ul></li>
 <li>
@@ -77,9 +77,11 @@ check if an object is valid for use in a function.</p>
     <div id="ref-usage">
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">as_harmonized_dossier</span><span class="op">(</span></span>
 <span>  <span class="va">object</span>,</span>
-<span>  dataschema <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  data_proc_elem <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  harmonized_col_id <span class="op">=</span> <span class="cn">NULL</span></span>
+<span>  dataschema <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/attributes.html" class="external-link">attributes</a></span><span class="op">(</span><span class="va">object</span><span class="op">)</span><span class="op">$</span><span class="va">`Rmonize::DataSchema`</span>,</span>
+<span>  data_proc_elem <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/attributes.html" class="external-link">attributes</a></span><span class="op">(</span><span class="va">object</span><span class="op">)</span><span class="op">$</span><span class="va">`Rmonize::Data Processing Elements`</span>,</span>
+<span>  harmonized_col_id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/attributes.html" class="external-link">attributes</a></span><span class="op">(</span><span class="va">object</span><span class="op">)</span><span class="op">$</span><span class="va">`Rmonize::harmonized_col_id`</span>,</span>
+<span>  harmonized_col_dataset <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/attributes.html" class="external-link">attributes</a></span><span class="op">(</span><span class="va">object</span><span class="op">)</span><span class="op">$</span><span class="va">`Rmonize::harmonized_col_dataset`</span>,</span>
+<span>  dataschema_apply <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -101,7 +103,19 @@ Data Processing Elements.</p></dd>
 
 <dt>harmonized_col_id</dt>
 <dd><p>A character string identifying the name of the
-column present in every dataset as identifier of the dataset.</p></dd>
+column present in every dataset as identifier of each observation.</p></dd>
+
+
+<dt>harmonized_col_dataset</dt>
+<dd><p>A character string identifying the name of the
+column present in every dataset as identifier of the dataset name.</p></dd>
+
+
+<dt>dataschema_apply</dt>
+<dd><p>whether to apply the datashema to each
+harmonized dataset. The resulting tibble will have for each column its
+associated meta data as attributes. The factors will be preserved.
+TRUE by default.</p></dd>
 
 </dl></div>
     <div id="value">
@@ -149,32 +163,14 @@ identifier of each dataset to initiate the process of harmonization.</p>
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="op">{</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu">as_harmonized_dossier</span><span class="op">(</span>object <span class="op">=</span> <span class="va">Rmonize_DEMO</span><span class="op">$</span><span class="va">harmonized_dossier</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">as_harmonized_dossier</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  object <span class="op">=</span> <span class="va">Rmonize_DEMO</span><span class="op">$</span><span class="va">harmonized_dossier</span>,</span></span>
+<span class="r-in"><span>  dataschema_apply <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  </span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $dataset_MELBOURNE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 19 × 1</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    adm_unique_id</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #BCBCBC;">*</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 377943       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 497013       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 927676       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 995667       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 21829        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 209432       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 272983       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 580632       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 304624       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 637551       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> 279817       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> 235415       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> 373673       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> 485098       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">15</span> 299427       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">16</span> 854073       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">17</span> 197666       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">18</span> 130327       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">19</span> 220050       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 0 × 1</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 1 variable: adm_unique_id &lt;chr&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"Rmonize::class")</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "harmonized_dossier"</span>
@@ -211,7 +207,7 @@ identifier of each dataset to initiate the process of harmonization.</p>
 
 
       <footer><div class="copyright">
-  <p></p><p>Developed by Guillaume Fabre, Maelstrom-research, ReACH (Research Advancement through Cohort Cataloguing and Harmonization), CITF (COVID-19 Immunity Task Force), EUCAN-connect.</p>
+  <p></p><p>Developed by Guillaume Fabre, Maelstrom-research.</p>
 </div>
 
 <div class="pkgdown">

@@ -7,10 +7,10 @@
     <loc>/articles/a-Glossary-and-templates.html</loc>
   </url>
   <url>
-    <loc>/articles/b-The-Data-processing-elements.html</loc>
+    <loc>/articles/b-Data-processing-elements.html</loc>
   </url>
   <url>
-    <loc>/articles/c-Example-with-DEMO-files.html</loc>
+    <loc>/articles/c-Example-with-Rmonize_DEMO.html</loc>
   </url>
   <url>
     <loc>/articles/index.html</loc>
@@ -70,6 +70,9 @@
     <loc>/reference/data_dict_evaluate.html</loc>
   </url>
   <url>
+    <loc>/reference/data_dict_extract.html</loc>
+  </url>
+  <url>
     <loc>/reference/data_proc_elem_evaluate.html</loc>
   </url>
   <url>
@@ -85,7 +88,7 @@
     <loc>/reference/harmonized_dossier_evaluate.html</loc>
   </url>
   <url>
-    <loc>/reference/harmonized_dossier_summarise.html</loc>
+    <loc>/reference/harmonized_dossier_summarize.html</loc>
   </url>
   <url>
     <loc>/reference/harmonized_dossier_visualize.html</loc>
