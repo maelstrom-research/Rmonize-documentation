@@ -32,5 +32,6 @@ browseURL('docs/index.html')
 source('template_script.R')
 
 # push to git
+"update documentation"
 "https://github.com/maelstrom-research/Rmonize-documentation/actions/"
 Rmonize_help()
