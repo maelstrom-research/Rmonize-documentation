@@ -20,7 +20,7 @@ object has an appropriate structure."><!-- mathjax --><script src="https://cdnjs
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Rmonize</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.1.0003</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.1</span>
       </span>
     </div>
 
@@ -117,53 +117,34 @@ in particular <a href="https://www.obiba.org/pages/products/opal" class="externa
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="op">{</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Use Rmonize_DEMO to run examples.</span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu">as_dataschema</span><span class="op">(</span><span class="va">Rmonize_DEMO</span><span class="op">$</span><span class="va">`dataschema - final`</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="fu">as_dataschema</span><span class="op">(</span><span class="va">Rmonize_DEMO</span><span class="op">$</span><span class="va">`dataschema - final`</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $Variables</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 13 × 5</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    name           typeof    index `label:en`                           valueType</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> adm_unique_id  character 1     Unique identification code of the p… text     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> adm_study      character 2     Indicator of the survey study.       text     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> adm_year_dce   character 3     Indicator of the survey data collec… text     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> sdc_age        integer   4     Participant's age at time of data c… integer  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> sdc_sex        integer   5     Sex at birth of the participant.     integer  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> phy_height     double    6     participant's height.                decimal  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> phy_weight     double    7     participant's weight.                decimal  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> phy_bmi        double    8     participant's BMI calculation.       decimal  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> rep_preg_ever  integer   9     whether the participant (female) ha… integer  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> rep_preg_curr  integer   10    whether the participant (female) is… integer  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> lsb_smo_ever   integer   11    whether the participant has ever sm… integer  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> lsb_smo_curr   integer   12    whether the participant is currentl… integer  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> lsb_smo_status integer   13    participant status regarding cigare… integer  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $Categories</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 16 × 5</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    variable       name      labels    `label:en`                         missing</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> adm_study      MELBOURNE MELBOURNE MELBOURNE                          0      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> adm_study      PARIS     PARIS     PARIS                              0      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> adm_study      TOKYO     TOKYO     TOKYO                              0      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> sdc_sex        1         1         Male                               0      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> sdc_sex        2         2         Female                             0      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> rep_preg_ever  0         0         never pregnant                     0      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> rep_preg_ever  1         1         pregnant once or more              0      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> rep_preg_curr  0         0         currently pregnant                 0      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> rep_preg_curr  1         1         not currently pregnant             0      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> lsb_smo_ever   0         0         never smoked                       0      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> lsb_smo_ever   1         1         smoked one pack of cigarette or m… 0      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> lsb_smo_curr   0         0         currently smoker                   0      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> lsb_smo_curr   1         1         not currently smoker               0      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> lsb_smo_status 0         0         never smoker                       0      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">15</span> lsb_smo_status 1         1         former smoker                      0      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">16</span> lsb_smo_status 2         2         current smoker                     0      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"madshapR::class")</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "data_dict"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"Rmonize::class")</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "dataschema"</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Attaching package: 'dplyr'</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> The following objects are masked from 'package:stats':</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     filter, lag</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> The following objects are masked from 'package:base':</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     intersect, setdiff, setequal, union</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> List of 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ Variables : tibble [13 × 5] (S3: tbl_df/tbl/data.frame)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ name     : chr [1:13] "adm_unique_id" "adm_study" "adm_year_dce" "sdc_age" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ typeof   : chr [1:13] "character" "character" "character" "integer" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ index    : chr [1:13] "1" "2" "3" "4" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ label:en : chr [1:13] "Unique identification code of the participant." "Indicator of the survey study." "Indicator of the survey data collection event." "Participant's age at time of data collection event." ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ valueType: chr [1:13] "text" "text" "text" "integer" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ Categories: tibble [16 × 5] (S3: tbl_df/tbl/data.frame)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ variable: chr [1:16] "adm_study" "adm_study" "adm_study" "sdc_sex" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ name    : chr [1:16] "MELBOURNE" "PARIS" "TOKYO" "1" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ labels  : chr [1:16] "MELBOURNE" "PARIS" "TOKYO" "1" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ label:en: chr [1:16] "MELBOURNE" "PARIS" "TOKYO" "Male" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ missing : chr [1:16] "0" "0" "0" "0" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  - attr(*, "madshapR::class")= chr "data_dict"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  - attr(*, "Rmonize::class")= chr "dataschema"</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
@@ -175,7 +156,7 @@ in particular <a href="https://www.obiba.org/pages/products/opal" class="externa
 
 
       <footer><div class="copyright">
-  <p></p><p>Developed by Guillaume Fabre, Maelstrom-research.</p>
+  <p></p><p>Developed by Guillaume Fabre, Maelstrom-research group.</p>
 </div>
 
 <div class="pkgdown">

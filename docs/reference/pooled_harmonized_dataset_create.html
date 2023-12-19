@@ -23,7 +23,7 @@ that there is always a unique entity identifier when datasets are pooled."><!-- 
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Rmonize</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.1.0003</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.1</span>
       </span>
     </div>
 
@@ -105,7 +105,7 @@ to use for dataset names.</p></dd>
 
 <dt>harmonized_col_id</dt>
 <dd><p>A character string identifying the name of the
-column present in every datase to use as a dataset identifier.</p></dd>
+column present in every dataset to use as a dataset identifier.</p></dd>
 
 
 <dt>add_col_dataset</dt>
@@ -159,14 +159,18 @@ primary identifier variable (e.g., participant unique ID).</p>
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="op">{</span></span></span>
 <span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># use madshapR_DEMO provided by the package</span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">harmonized_dossier</span> <span class="op">&lt;-</span> <span class="va">Rmonize_DEMO</span><span class="op">$</span><span class="va">harmonized_dossier</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu">pooled_harmonized_dataset_create</span><span class="op">(</span></span></span>
-<span class="r-in"><span> <span class="va">harmonized_dossier</span>,harmonized_col_id <span class="op">=</span> <span class="st">'adm_unique_id'</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="fu">pooled_harmonized_dataset_create</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  <span class="va">harmonized_dossier</span>,harmonized_col_id <span class="op">=</span> <span class="st">'adm_unique_id'</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  </span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 0 × 1</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 1 variable: adm_unique_id &lt;chr&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Rows: 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Columns: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ adm_unique_id <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> </span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
@@ -178,7 +182,7 @@ primary identifier variable (e.g., participant unique ID).</p>
 
 
       <footer><div class="copyright">
-  <p></p><p>Developed by Guillaume Fabre, Maelstrom-research.</p>
+  <p></p><p>Developed by Guillaume Fabre, Maelstrom-research group.</p>
 </div>
 
 <div class="pkgdown">

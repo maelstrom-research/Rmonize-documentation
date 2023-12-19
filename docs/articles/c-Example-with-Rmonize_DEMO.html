@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Rmonize</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.1.0003</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.1</span>
       </span>
     </div>
 
@@ -95,6 +95,16 @@
     
     
 <div class="section level2">
+<h2 id="objective-of-the-vignette">Objective of the vignette<a class="anchor" aria-label="anchor" href="#objective-of-the-vignette"></a>
+</h2>
+<p>This vignette provides examples of applying Rmonize functions to
+prepare inputs, process data, and validate and consolidate harmonized
+data, using illustrative demo objects included with the package. The
+vignette focuses on demonstrating the usage of functions on inputs that
+already have valid structure and content. See the <a href="../articles/a-Glossary-and-templates.html">Glossary</a> and <a href="../reference/index.html">Reference</a> pages for more details
+about the terms used in this document.</p>
+</div>
+<div class="section level2">
 <h2 id="get-started">Get started<a class="anchor" aria-label="anchor" href="#get-started"></a>
 </h2>
 <div class="section level3">
@@ -112,52 +122,62 @@
 <span><span class="fu"><a href="../reference/Rmonize_templates.html">Rmonize_templates</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Demo files are available here, along with an online demonstration process </span></span>
-<span><span class="fu"><a href="../reference/Rmonize_DEMO.html">Rmonize_DEMO</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-</div>
-<div class="section level3">
-<h3 id="rmonize_demo-objets">Rmonize_DEMO objets<a class="anchor" aria-label="anchor" href="#rmonize_demo-objets"></a>
-</h3>
-<p>Demonstration elements are available in the built-in Rmonize_DEMO
-object. These provide illustrative examples of the main inputs and are
-used to run commands in this vignette.</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">Rmonize_DEMO</span><span class="op">)</span></span>
-<span><span class="co"># To see examples</span></span>
-<span><span class="co"># View(Rmonize_DEMO$data_dict_TOKYO)   # A data dictionary</span></span>
-<span><span class="co"># View(Rmonize_DEMO$dataset_TOKYO)                      # A datasets</span></span>
-<span><span class="co"># View(Rmonize_DEMO$`data_processing_elements - final`) # A Data Processing Elements</span></span>
-<span><span class="co"># View(Rmonize_DEMO$`dataschema - final`)               # A DataSchema </span></span>
-<span>                  </span></code></pre></div>
+<span><span class="va">Rmonize_DEMO</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
-<h2 id="general-objective-of-this-demonstration">General objective of this demonstration<a class="anchor" aria-label="anchor" href="#general-objective-of-this-demonstration"></a>
+<h2 id="demo-objects">Demo objects<a class="anchor" aria-label="anchor" href="#demo-objects"></a>
 </h2>
-<p>A general process with <strong>Rmonize</strong> involves the
-following steps:</p>
-<ul>
-<li>Associate input datasets with their data dictionaries.</li>
-<li>Prepare a “dossier” of input datasets and data dictionaries.</li>
-<li>Harmonize a dossier of datasets using the DataSchema and Data
-Processing Elements.</li>
-<li>Review the dossier of harmonized datasets.</li>
-</ul>
-<p>The process is demonstrated below with all inputs in valid formats
-and no errors, i.e., assuming that the content and structure of all
-inputs are compatible with <strong>Rmonize</strong>. Error-checking and
-other manipulations of inputs will be covered in other vignettes.</p>
+<p>Demo objects are available through the built-in <a href="../reference/Rmonize_DEMO.html">Rmonize_DEMO</a> object. They
+include example input datasets, input data dictionaries, DataSchema,
+Data Processing Elements (DPE), and harmonized datasets that provide
+illustrative examples of the structure and content of the main objects
+used by Rmonize functions.</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># To see contents</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">Rmonize_DEMO</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">Rmonize_DEMO</span><span class="op">$</span><span class="va">dataset_TOKYO</span><span class="op">)</span>                        <span class="co"># An input dataset</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">Rmonize_DEMO</span><span class="op">$</span><span class="va">data_dict_TOKYO</span><span class="op">)</span>                      <span class="co"># An input data dictionary</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">Rmonize_DEMO</span><span class="op">$</span><span class="va">`data_processing_elements - final`</span><span class="op">)</span> <span class="co"># A Data Processing Elements </span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">Rmonize_DEMO</span><span class="op">$</span><span class="va">`dataschema - final`</span><span class="op">)</span>                 <span class="co"># A DataSchema</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="pipeline">Pipeline<a class="anchor" aria-label="anchor" href="#pipeline"></a>
+</h2>
 <div class="section level3">
-<h3 id="prepare-the-inputs">Prepare the inputs<a class="anchor" aria-label="anchor" href="#prepare-the-inputs"></a>
+<h3 id="prepare-inputs">Prepare inputs<a class="anchor" aria-label="anchor" href="#prepare-inputs"></a>
 </h3>
-<p>If input data dictionaries are available, they can be associated with
-their corresponding datasets using the function
-<code>data_dict_apply</code>. If not provided, minimal data dictionaries
-will automatically be created to meet technical requirements of the
-following functions. The input datasets and associated data dictionaries
-are then grouped into a dossier.</p>
+<div class="section level4">
+<h4 id="dataschema-and-data-processing-elements-dpe">DataSchema and Data Processing Elements (DPE)<a class="anchor" aria-label="anchor" href="#dataschema-and-data-processing-elements-dpe"></a>
+</h4>
+<p>The DataSchema and DPE are generally prepared from Excel <a href="../articles/a-Glossary-and-templates.html">templates</a> and
+imported into R. Separate documentation is provided for preparing Data
+Processing Elements. The DataSchema will be an R list with named
+elements Variables and Categories. The DPE will be a data frame. You can
+check the structure of each object and assign the correct attributes
+explicitly to ensure compatibility with Rmonize functions.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Associate metadata from data dictionary to the the data</span></span>
+<code class="sourceCode R"><span><span class="co"># as_dataschema and as_data_proc_elem will check the structure of object and </span></span>
+<span><span class="co"># assign attributes to them.</span></span>
+<span></span>
+<span><span class="va">dataschema</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as_dataschema.html">as_dataschema</a></span><span class="op">(</span><span class="va">Rmonize_DEMO</span><span class="op">$</span><span class="va">`dataschema - final`</span><span class="op">)</span></span>
+<span><span class="va">data_proc_elem</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as_data_proc_elem.html">as_data_proc_elem</a></span><span class="op">(</span><span class="va">Rmonize_DEMO</span><span class="op">$</span><span class="va">`data_processing_elements - final`</span><span class="op">)</span></span></code></pre></div>
+<p><em> Note: In the DEMO DPEs, all elements for three different input
+datasets are combined in one file. A DPE can also be prepared for each
+input dataset separately, and the individual DPEs combined as needed for
+processing. The DataSchema and DPE objects can be assigned explicitly
+</em></p>
+</div>
+<div class="section level4">
+<h4 id="combine-input-datasets-and-data-dictionaries-in-a-dossier">Combine input datasets and data dictionaries in a dossier<a class="anchor" aria-label="anchor" href="#combine-input-datasets-and-data-dictionaries-in-a-dossier"></a>
+</h4>
+<p>If input data dictionaries (with metadata about variables and
+categories in input datasets) are available, they can be associated with
+their corresponding datasets using the function <a href="../reference/data_dict_apply.html">data_dict_apply()</a>. If not
+provided, minimal data dictionaries will automatically be created to
+meet technical requirements of Rmonize functions as needed.</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Associate metadata from input data dictionaries to the input datasets.</span></span>
 <span></span>
 <span><span class="va">dataset_MELBOURNE</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/data_dict_apply.html">data_dict_apply</a></span><span class="op">(</span></span>
 <span>  dataset <span class="op">=</span> <span class="va">Rmonize_DEMO</span><span class="op">$</span><span class="va">dataset_MELBOURNE</span>,</span>
@@ -170,54 +190,107 @@ are then grouped into a dossier.</p>
 <span><span class="va">dataset_TOKYO</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/data_dict_apply.html">data_dict_apply</a></span><span class="op">(</span></span>
 <span>  dataset <span class="op">=</span> <span class="va">Rmonize_DEMO</span><span class="op">$</span><span class="va">dataset_TOKYO</span>,</span>
 <span>  data_dict <span class="op">=</span> <span class="va">Rmonize_DEMO</span><span class="op">$</span><span class="va">data_dict_TOKYO</span><span class="op">)</span></span></code></pre></div>
-</div>
-<div class="section level3">
-<h3 id="generate-harmonized-data">Generate harmonized data<a class="anchor" aria-label="anchor" href="#generate-harmonized-data"></a>
-</h3>
-<p>When the main inputs (dossier, DataSchema, and Data Processing
-Elements) are prepared,</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Group the dataset in a dossier object</span></span>
+<p>For use in <a href="../reference/harmo_process.html">harmo_process()</a>, one or more
+input datasets and any associated data dictionaries must be grouped into
+a named list (referred to as a ‘dossier’ in Rmonize). This can be done
+explicitly with <a href="../reference/dossier_create.html">dossier_create()</a>.</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="co"># Group the datasets into a dossier object.</span></span>
 <span><span class="co"># NB: The names of the datasets in the dossier must match the column </span></span>
 <span><span class="co"># input_dataset in the Data Processing Elements</span></span>
 <span></span>
-<span><span class="va">dossier</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dossier_create.html">dossier_create</a></span><span class="op">(</span></span>
-<span>  dataset_list <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
-<span>    <span class="va">dataset_MELBOURNE</span>, </span>
-<span>    <span class="va">dataset_PARIS</span>, </span>
-<span>    <span class="va">dataset_TOKYO</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">dataschema</span> <span class="op">&lt;-</span> <span class="va">Rmonize_DEMO</span><span class="op">$</span><span class="va">`dataschema - final`</span></span>
-<span><span class="va">data_proc_elem</span> <span class="op">&lt;-</span> <span class="va">Rmonize_DEMO</span><span class="op">$</span><span class="va">`data_processing_elements - final`</span></span></code></pre></div>
-<p>You can proceed with harmonization using
-<code>harmo_process</code>.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="co"># Data processing</span></span>
-<span></span>
-<span><span class="va">harmonized_dossier</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/harmo_process.html">harmo_process</a></span><span class="op">(</span><span class="va">dossier</span>, <span class="va">dataschema</span>, <span class="va">data_proc_elem</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/show_harmo_error.html">show_harmo_error</a></span><span class="op">(</span><span class="va">harmonized_dossier</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">dossier</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dossier_create.html">dossier_create</a></span><span class="op">(</span> dataset_list <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>  <span class="va">dataset_MELBOURNE</span>, </span>
+<span>  <span class="va">dataset_PARIS</span>, </span>
+<span>  <span class="va">dataset_TOKYO</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+</div>
 </div>
 <div class="section level3">
-<h3 id="assess-harmonized-data">Assess harmonized data<a class="anchor" aria-label="anchor" href="#assess-harmonized-data"></a>
+<h3 id="process-data">Process data<a class="anchor" aria-label="anchor" href="#process-data"></a>
 </h3>
-<p>You can then assess and summarize the harmonized data to identify
-potential issues, produce summary statistics, and generate visual
-reports.</p>
-<p><strong>Warning ⚠</strong> <em>This tutorial creates a folder ‘tmp’
-where the visual report is generated.</em></p>
+<p>When the input dossier, DataSchema, and DPE are prepared, you can
+initiate processing using <a href="../reference/harmo_process.html">harmo_process()</a>, which uses
+information from the inputs jointly to generate harmonized datasets (one
+for each input dataset).</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
-<span><span class="co"># These reports can be downloaded as Excel files</span></span>
-<span><span class="va">harmonized_dossier_evaluate</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/harmonized_dossier_evaluate.html">harmonized_dossier_evaluate</a></span><span class="op">(</span><span class="va">harmonized_dossier</span><span class="op">)</span></span>
-<span><span class="va">harmonized_dossier_summary</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/harmonized_dossier_summarize.html">harmonized_dossier_summarize</a></span><span class="op">(</span><span class="va">harmonized_dossier</span><span class="op">)</span></span>
+<span><span class="va">harmonized_dossier</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/harmo_process.html">harmo_process</a></span><span class="op">(</span></span>
+<span>    <span class="va">dossier</span>, </span>
+<span>    <span class="va">dataschema</span>, </span>
+<span>    <span class="va">data_proc_elem</span><span class="op">)</span></span></code></pre></div>
+<p>This produces a harmonized dossier (a list of harmonized datasets and
+associated metadata, with associated information from the DataSchema and
+DPE). If there were any errors or warnings during the process, these
+will be printed in the console. You can print a summary of any errors
+and warnings associated with individual algorithms in the console with
+<a href="../reference/show_harmo_error.html">show_harmo_error()</a>.</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="fu"><a href="../reference/show_harmo_error.html">show_harmo_error</a></span><span class="op">(</span><span class="va">harmonized_dossier</span><span class="op">)</span></span></code></pre></div>
+<p><em> Note: If there is a processing error, a harmonized dossier will
+be created, but the affected harmonized dataset(s) will be empty.
+</em></p>
+</div>
+<div class="section level3">
+<h3 id="validate-and-consolidate-harmonized-data">Validate and consolidate harmonized data<a class="anchor" aria-label="anchor" href="#validate-and-consolidate-harmonized-data"></a>
+</h3>
+<p>You can assess and summarize harmonized datasets to identify
+potential issues, produce summary statistics, and generate visual
+reports. To perform evaluations and summaries of the entire harmonized
+dossier, you can use <a href="../reference/harmonized_dossier_evaluate.html">harmonized_dossier_evaluate()</a>
+and <a href="../reference/harmonized_dossier_summarize.html">harmonized_dossier_summarize()</a>,
+which produce summary tables (that can be exported to Excel).</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Evaluate and summarize a harmonized dossier containing multiple harmonized datasets.</span></span>
+<span></span>
+<span><span class="va">harmonized_dossier_evaluation</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/harmonized_dossier_evaluate.html">harmonized_dossier_evaluate</a></span><span class="op">(</span><span class="va">harmonized_dossier</span><span class="op">)</span></span>
+<span><span class="va">harmonized_dossier_summary</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/harmonized_dossier_summarize.html">harmonized_dossier_summarize</a></span><span class="op">(</span><span class="va">harmonized_dossier</span><span class="op">)</span></span></code></pre></div>
+<p>A visual report with summary figures for each variable can also be
+produced using <a href="../reference/harmonized_dossier_visualize.html">harmonized_dossier_visualize()</a>.</p>
+<p><strong>Warning ⚠</strong> <em>This tutorial creates a folder ‘tmp’
+where the visual report is generated.</em></p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># place your harmonized dossier in a folder. This folder name is mandatory, and </span></span>
+<span><span class="co"># must not previously exist.</span></span>
 <span></span>
 <span><span class="va">bookdown_path</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">'tmp/'</span>,<span class="fu"><a href="https://rdrr.io/r/base/basename.html" class="external-link">basename</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="../reference/harmonized_dossier_visualize.html">harmonized_dossier_visualize</a></span><span class="op">(</span></span>
-<span>  <span class="va">harmonized_dossier</span>, </span>
-<span>  bookdown_path <span class="op">=</span> <span class="va">bookdown_path</span>,</span>
-<span>  group_by <span class="op">=</span> <span class="st">'adm_study'</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="../reference/harmonized_dossier_visualize.html">harmonized_dossier_visualize</a></span><span class="op">(</span><span class="va">harmonized_dossier</span>, <span class="va">bookdown_path</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Open the visual report in a browser.</span></span>
+<span><span class="fu"><a href="../reference/bookdown_open.html">bookdown_open</a></span><span class="op">(</span><span class="va">bookdown_path</span><span class="op">)</span></span></code></pre></div>
+<p>To combine the individual harmonized datasets in a harmonized dossier
+into one pooled harmonized dataset, use <a href="../reference/pooled_harmonized_dataset_create.html">pooled_harmonized_dataset_create()</a>.</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="co"># Generate one pooled harmonized dataset from a harmonized dossier</span></span>
+<span><span class="va">pooled_harmonized_dataset</span> <span class="op">&lt;-</span> </span>
+<span>  <span class="fu"><a href="../reference/pooled_harmonized_dataset_create.html">pooled_harmonized_dataset_create</a></span><span class="op">(</span><span class="va">harmonized_dossier</span><span class="op">)</span></span></code></pre></div>
+<p>To get the harmonized data dictionary for an individual harmonized
+dataset (which contains more details about algorithms and R scripts used
+in processing for that dataset), use <a href="../reference/data_dict_extract.html">data_dict_extract()</a>.</p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="co"># Extract the harmonized data dictionary for one harmonized dataset.</span></span>
+<span></span>
+<span><span class="va">harmonized_TOKYO_dd</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/data_dict_extract.html">data_dict_extract</a></span><span class="op">(</span><span class="va">harmonized_dossier</span><span class="op">$</span><span class="va">dataset_TOKYO</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="use-harmonized-data">Use harmonized data<a class="anchor" aria-label="anchor" href="#use-harmonized-data"></a>
+</h3>
+<p>Once you are satisfied with the outputs, they can be exported in any
+R compatible format. For example, harmonized datasets can be exported as
+labelled datasets that keep variable attributes as metadata (e.g. SAS
+files), and tabular reports can be exported as Excel files.</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/GuiFabre/fabR" class="external-link">fabR</a></span><span class="op">)</span></span>
+<span><span class="co">## Examples of exporting objects as Excel files.</span></span>
+<span></span>
+<span><span class="co"># write_excel_allsheets(harmonized_dossier, "myfile.xlsx")</span></span>
+<span><span class="co"># write_excel_allsheets(harmonized_dossier_summary, "myfile.xlsx")</span></span>
+<span><span class="co"># write_excel_allsheets(harmonized_TOKYO_dd, "myfile.xlsx")</span></span></code></pre></div>
 </div>
 </div>
   </div>
@@ -234,7 +307,7 @@ where the visual report is generated.</em></p>
 
       <footer><div class="copyright">
   <p></p>
-<p>Developed by Guillaume Fabre, Maelstrom-research.</p>
+<p>Developed by Guillaume Fabre, Maelstrom-research group.</p>
 </div>
 
 <div class="pkgdown">

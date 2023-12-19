@@ -20,7 +20,7 @@ formats."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/ma
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Rmonize</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.1.0003</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.1</span>
       </span>
     </div>
 
@@ -94,8 +94,8 @@ formats.</p>
 
 
 <dt>taxonomy</dt>
-<dd><p>An optional data frame identifying a variable
-classification schema.</p></dd>
+<dd><p>An optional data frame identifying a variable classification
+schema.</p></dd>
 
 
 <dt>as_dataschema_mlstr</dt>
@@ -142,7 +142,10 @@ in particular <a href="https://www.obiba.org/pages/products/opal" class="externa
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="op">{</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu">harmonized_dossier_evaluate</span><span class="op">(</span><span class="va">Rmonize_DEMO</span><span class="op">$</span><span class="va">harmonized_dossier</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co">#' # use Rmonize_DEMO provided by the package</span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="fu">harmonized_dossier_evaluate</span><span class="op">(</span><span class="va">Rmonize_DEMO</span><span class="op">$</span><span class="va">harmonized_dossier</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> - DATA DICTIONARY ASSESSMENT: <span style="font-weight: bold;">data_dict</span> --------------</span>
@@ -174,12 +177,12 @@ in particular <a href="https://www.obiba.org/pages/products/opal" class="externa
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  - WARNING MESSAGES (if any): -------------------------------------------------</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">    </span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`Data dictionary summary`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 4</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   index name          `label:en`                                     valueType</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>     1 adm_unique_id Unique identification code of the participant. text     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> List of 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ Data dictionary summary: tibble [1 × 4] (S3: tbl_df/tbl/data.frame)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ index    : int 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ name     : chr "adm_unique_id"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ label:en : chr "Unique identification code of the participant."</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ valueType: chr "text"</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
@@ -191,7 +194,7 @@ in particular <a href="https://www.obiba.org/pages/products/opal" class="externa
 
 
       <footer><div class="copyright">
-  <p></p><p>Developed by Guillaume Fabre, Maelstrom-research.</p>
+  <p></p><p>Developed by Guillaume Fabre, Maelstrom-research group.</p>
 </div>
 
 <div class="pkgdown">

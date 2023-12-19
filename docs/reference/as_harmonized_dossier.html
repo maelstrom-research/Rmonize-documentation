@@ -26,7 +26,7 @@ that there is always a unique entity identifier when datasets are pooled."><!-- 
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Rmonize</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.1.0003</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.1</span>
       </span>
     </div>
 
@@ -113,7 +113,7 @@ that there is always a unique entity identifier when datasets are pooled.</p>
 
 <dt>harmonized_col_id</dt>
 <dd><p>A character string identifying the name of the
-column present in every datase to use as a dataset identifier.</p></dd>
+column present in every dataset to use as a dataset identifier.</p></dd>
 
 
 <dt>harmonized_col_dataset</dt>
@@ -142,9 +142,6 @@ product of applying processing to a dossier object The name of each
 harmonized dataset (data frame) is taken from the reference input dataset.
 A harmonized dossier also contains the DataSchema and
 Data Processing Elements used in processing as attributes.</p>
-<p>A harmonized data dictionary contains the list of variables and metadata
-about the variables and can be associated with each dataset in a
-harmonized dossier.</p>
 <p>A DataSchema is the list of core variables to generate across datasets and
 related metadata. A DataSchema object is a list of data frames with elements
 named 'Variables' (required) and 'Categories' (if any). The 'Variables'
@@ -167,37 +164,44 @@ primary identifier variable (e.g., participant unique ID).</p>
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="op">{</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu">as_harmonized_dossier</span><span class="op">(</span><span class="va">Rmonize_DEMO</span><span class="op">$</span><span class="va">harmonized_dossier</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># Use Rmonize_DEMO to run examples.</span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="fu">as_harmonized_dossier</span><span class="op">(</span><span class="va">Rmonize_DEMO</span><span class="op">$</span><span class="va">harmonized_dossier</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  </span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $dataset_MELBOURNE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 0 × 1</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 1 variable: adm_unique_id &lt;chr&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"Rmonize::class")</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "harmonized_dossier"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"Rmonize::DataSchema")</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"Rmonize::DataSchema")$Variables</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 4</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   name          `label:en`                                     valueType index</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> adm_unique_id Unique identification code of the participant. text      1    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"Rmonize::DataSchema")attr(,"madshapR::class")</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "data_dict_mlstr"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"Rmonize::DataSchema")attr(,"Rmonize::class")</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "dataschema_mlstr"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"Rmonize::Data Processing Elements")</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 11</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   index dataschema_variable valueType input_dataset     input_variables</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">*</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>     1 adm_unique_id       <span style="color: #BB0000;">NA</span>        dataset_MELBOURNE id             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 6 more variables: `Mlstr_harmo::rule_category` &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `Mlstr_harmo::algorithm` &lt;chr&gt;, `Mlstr_harmo::status` &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `Mlstr_harmo::status_detail` &lt;chr&gt;, `Mlstr_harmo::comment` &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `Rmonize::r_script` &lt;chr&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"Rmonize::harmonized_col_id")</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "adm_unique_id"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> List of 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ dataset_MELBOURNE: tibble [0 × 1] (S3: tbl_df/tbl/data.frame)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ adm_unique_id: chr(0) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..- attr(*, "Variables::label:en")= chr "Unique identification code of the participant."</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..- attr(*, "Variables::typeof")= chr "character"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..- attr(*, "Variables::index")= chr "1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..- attr(*, "Variables::Mlstr_harmo::rule_category")= chr "id_creation"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..- attr(*, "Variables::Mlstr_harmo::algorithm")= chr "id_creation"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..- attr(*, "Variables::Rmonize::r_script")= chr "`dataset_MELBOURNE` %&gt;% select('adm_unique_id' = 'id')"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..- attr(*, "Variables::Mlstr_harmo::status")= chr "complete"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..- attr(*, "Variables::Mlstr_harmo::status_detail")= chr "unknown"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..- attr(*, "madshapR::class")= chr "dataset"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..- attr(*, "madshapR::col_id")= chr "adm_unique_id"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  - attr(*, "Rmonize::class")= chr "harmonized_dossier"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  - attr(*, "Rmonize::DataSchema")=List of 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Variables: tibble [1 × 4] (S3: tbl_df/tbl/data.frame)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..- attr(*, "madshapR::class")= chr "data_dict_mlstr"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..- attr(*, "Rmonize::class")= chr "dataschema_mlstr"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  - attr(*, "Rmonize::Data Processing Elements")= tibble [1 × 11] (S3: tbl_df/tbl/data.frame)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ index                     : num 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ dataschema_variable       : chr "adm_unique_id"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ valueType                 : chr NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ input_dataset             : chr "dataset_MELBOURNE"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ input_variables           : chr "id"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Mlstr_harmo::rule_category: chr "id_creation"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Mlstr_harmo::algorithm    : chr "id_creation"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Mlstr_harmo::status       : chr "complete"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Mlstr_harmo::status_detail: chr "unknown"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Mlstr_harmo::comment      : chr NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Rmonize::r_script         : chr "`dataset_MELBOURNE` %&gt;% \n  select('adm_unique_id' = 'id')"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..- attr(*, "Rmonize::class")= chr "data_proc_elem"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  - attr(*, "Rmonize::harmonized_col_id")= chr "adm_unique_id"</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
@@ -209,7 +213,7 @@ primary identifier variable (e.g., participant unique ID).</p>
 
 
       <footer><div class="copyright">
-  <p></p><p>Developed by Guillaume Fabre, Maelstrom-research.</p>
+  <p></p><p>Developed by Guillaume Fabre, Maelstrom-research group.</p>
 </div>
 
 <div class="pkgdown">

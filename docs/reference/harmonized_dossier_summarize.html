@@ -21,7 +21,7 @@ variable distributions and descriptive statistics."><!-- mathjax --><script src=
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Rmonize</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.1.0003</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.1</span>
       </span>
     </div>
 
@@ -94,9 +94,9 @@ variable distributions and descriptive statistics.</p>
 
 
 <dt>group_by</dt>
-<dd><p>A character string identifying the column in each
-harmonized dataset to use as a grouping variable. Summary elements will be
-grouped by this column.</p></dd>
+<dd><p>A character string identifying the column in the dataset
+to use as a grouping variable. Elements will be grouped by this
+column.</p></dd>
 
 
 <dt>dataschema</dt>
@@ -108,14 +108,13 @@ grouped by this column.</p></dd>
 
 
 <dt>taxonomy</dt>
-<dd><p>An optional data frame identifying a variable
-classification schema.</p></dd>
+<dd><p>An optional data frame identifying a variable classification
+schema.</p></dd>
 
 
 <dt>valueType_guess</dt>
-<dd><p>Whether the output should be generated based on more
-precise valueType inferred from the data. FALSE by default
-(will use the valueType declared).</p></dd>
+<dd><p>Whether the output should include a more accurate
+valueType that could be applied to the dataset. FALSE by default.</p></dd>
 
 </dl></div>
     <div id="value">
@@ -164,7 +163,8 @@ The valueType is specified in a data dictionary in a column 'valueType' and
 can be associated with variables as attributes. Acceptable valueTypes
 include 'text', 'integer', 'decimal', 'boolean', datetime', 'date'. The full
 list of OBiBa valueType possibilities and their correspondence with R data
-types are available using <a href="https://rdrr.io/pkg/madshapR/man/valueType_list.html" class="external-link">valueType_list</a>.</p>
+types are available using <a href="https://rdrr.io/pkg/madshapR/man/valueType_list.html" class="external-link">valueType_list</a>. The valueType can be used to
+coerce the variable to the corresponding data type.</p>
     </div>
 
     <div id="ref-examples">
@@ -217,7 +217,7 @@ types are available using <a href="https://rdrr.io/pkg/madshapR/man/valueType_li
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 15 × 2</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    `Quality control of dataset`                           `(all)`               </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> <span style="color: #949494;">"</span>Date<span style="color: #949494;">"</span>                                                 <span style="color: #949494;">"</span>2023-12-05<span style="color: #949494;">"</span>          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> <span style="color: #949494;">"</span>Date<span style="color: #949494;">"</span>                                                 <span style="color: #949494;">"</span>2023-12-19<span style="color: #949494;">"</span>          </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> <span style="color: #949494;">"</span>Name of the dataset<span style="color: #949494;">"</span>                                  <span style="color: #949494;">"</span>pooled_harmonized_da…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> <span style="color: #949494;">"</span>    Identifier Variable<span style="color: #949494;">"</span>                              <span style="color: #949494;">""</span>                    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> <span style="color: #949494;">"</span>    Variables<span style="color: #949494;">"</span>                                        <span style="color: #949494;">"</span> <span style="color: #949494;">"</span>                   </span>
@@ -278,7 +278,7 @@ types are available using <a href="https://rdrr.io/pkg/madshapR/man/valueType_li
 
 
       <footer><div class="copyright">
-  <p></p><p>Developed by Guillaume Fabre, Maelstrom-research.</p>
+  <p></p><p>Developed by Guillaume Fabre, Maelstrom-research group.</p>
 </div>
 
 <div class="pkgdown">

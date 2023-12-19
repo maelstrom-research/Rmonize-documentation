@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Rmonize</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.1.0003</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.1</span>
       </span>
     </div>
 
@@ -68,6 +68,9 @@
 <p>Bug corrections and enhancements after testing with real data.</p>
 <div class="section level3">
 <h3 id="bug-fixes-and-improvements-1-0-1">Bug fixes and improvements<a class="anchor" aria-label="anchor" href="#bug-fixes-and-improvements-1-0-1"></a></h3>
+<div class="section level4">
+<h4 id="improvement-in-handling-pooled-data-1-0-1">Improvement in handling pooled data<a class="anchor" aria-label="anchor" href="#improvement-in-handling-pooled-data-1-0-1"></a></h4>
+<p>The functions <code><a href="../reference/harmo_process.html">harmo_process()</a></code>, <code>pool_harmonized_dataset_create()</code>, <code>harmonized_dossier_create()</code>, <code><a href="../reference/harmonized_dossier_evaluate.html">harmonized_dossier_evaluate()</a></code>, <code><a href="../reference/harmonized_dossier_summarize.html">harmonized_dossier_summarize()</a></code>, <code><a href="../reference/harmonized_dossier_visualize.html">harmonized_dossier_visualize()</a></code> share the same parameter “harmonized_col_dataset” which is (if exists) the name of the column referring the input dataset names. If this column exists and is declared by the user, this will be used across the pipeline as a grouping/separating variable. By default, the name of each dataset will be used instead.</p>
 <p>rename DEMO_file_harmo into Rmonize_DEMO and update examples</p>
 <p>suppress the parameter overwrite = TRUE in the functions xxx_visualize()</p>
 <ul><li><a href="https://github.com/maelstrom-research/Rmonize/issues/38" class="external-link uri">https://github.com/maelstrom-research/Rmonize/issues/38</a></li>
@@ -92,6 +95,7 @@
 </ul><p>in reports, all of the percentages are now included under “Other values (non categorical)”, which gives a single value.</p>
 <ul><li><a href="https://github.com/maelstrom-research/Rmonize/issues/4" class="external-link uri">https://github.com/maelstrom-research/Rmonize/issues/4</a></li>
 </ul><p>Function recode with special character is possible now</p>
+</div>
 </div>
 </div>
     <div class="section level2">
@@ -153,7 +157,7 @@
 
 
       <footer><div class="copyright">
-  <p></p><p>Developed by Guillaume Fabre, Maelstrom-research.</p>
+  <p></p><p>Developed by Guillaume Fabre, Maelstrom-research group.</p>
 </div>
 
 <div class="pkgdown">

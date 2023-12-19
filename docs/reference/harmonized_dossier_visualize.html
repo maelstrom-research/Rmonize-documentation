@@ -19,7 +19,7 @@ The report outputs can be grouped by a categorical variable."><!-- mathjax --><s
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Rmonize</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.1.0003</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.1</span>
       </span>
     </div>
 
@@ -97,9 +97,9 @@ the bookdown report files will be saved.</p></dd>
 
 
 <dt>group_by</dt>
-<dd><p>A character string identifying the column in each
-harmonized dataset to use as a grouping variable. Visual elements will be
-grouped by this column.</p></dd>
+<dd><p>A character string identifying the column in the dataset
+to use as a grouping variable. Elements will be grouped by this
+column.</p></dd>
 
 
 <dt>harmonized_dossier_summary</dt>
@@ -118,14 +118,13 @@ Using this parameter can save time in generating the visual report.</p></dd>
 
 
 <dt>valueType_guess</dt>
-<dd><p>Whether the output should be generated based on more
-precise valueType inferred from the data. FALSE by default
-(will use the valueType declared).</p></dd>
+<dd><p>Whether the output should include a more accurate
+valueType that could be applied to the dataset. FALSE by default.</p></dd>
 
 
 <dt>taxonomy</dt>
-<dd><p>An optional data frame identifying a variable
-classification schema.</p></dd>
+<dd><p>An optional data frame identifying a variable classification
+schema.</p></dd>
 
 </dl></div>
     <div id="value">
@@ -168,7 +167,8 @@ The valueType is specified in a data dictionary in a column 'valueType' and
 can be associated with variables as attributes. Acceptable valueTypes
 include 'text', 'integer', 'decimal', 'boolean', datetime', 'date'. The full
 list of OBiBa valueType possibilities and their correspondence with R data
-types are available using <a href="https://rdrr.io/pkg/madshapR/man/valueType_list.html" class="external-link">valueType_list</a>.</p>
+types are available using <a href="https://rdrr.io/pkg/madshapR/man/valueType_list.html" class="external-link">valueType_list</a>. The valueType can be used to
+coerce the variable to the corresponding data type.</p>
 <p>A taxonomy is a classification schema that can be defined for variable
 attributes. A taxonomy is usually extracted from an
 <a href="https://www.obiba.org/pages/products/opal/" class="external-link">Opal environment</a>, and a
@@ -190,17 +190,17 @@ taxonomies are
 <span class="r-in"><span><span class="co"># Use Rmonize_DEMO to run examples.</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://fs.r-lib.org" class="external-link">fs</a></span><span class="op">)</span></span></span>
-<span class="r-in"><span></span></span>
+<span class="r-in"><span> </span></span>
 <span class="r-in"><span><span class="va">harmonized_dossier</span> <span class="op">&lt;-</span> <span class="va">Rmonize_DEMO</span><span class="op">$</span><span class="va">harmonized_dossier</span></span></span>
 <span class="r-in"><span><span class="va">harmonized_dossier_summary</span> <span class="op">&lt;-</span> <span class="va">Rmonize_DEMO</span><span class="op">$</span><span class="va">harmonized_dossier_summary</span></span></span>
-<span class="r-in"><span></span></span>
+<span class="r-in"><span> </span></span>
 <span class="r-in"><span><span class="kw">if</span><span class="op">(</span><span class="fu"><a href="https://fs.r-lib.org/reference/file_access.html" class="external-link">dir_exists</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://fs.r-lib.org/reference/delete.html" class="external-link">dir_delete</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">bookdown_path</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-in"><span></span></span>
+<span class="r-in"><span> </span></span>
 <span class="r-in"><span><span class="fu">harmonized_dossier_visualize</span><span class="op">(</span></span></span>
-<span class="r-in"><span>  <span class="va">harmonized_dossier</span>,</span></span>
-<span class="r-in"><span>  bookdown_path <span class="op">=</span> <span class="va">bookdown_path</span>,</span></span>
-<span class="r-in"><span>  harmonized_dossier_summary <span class="op">=</span> <span class="va">harmonized_dossier_summary</span><span class="op">)</span></span></span>
+<span class="r-in"><span>   <span class="va">harmonized_dossier</span>,</span></span>
+<span class="r-in"><span>   bookdown_path <span class="op">=</span> <span class="va">bookdown_path</span>,</span></span>
+<span class="r-in"><span>   harmonized_dossier_summary <span class="op">=</span> <span class="va">harmonized_dossier_summary</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># To open the file in browser, open 'bookdown_path/docs/index.html'.</span></span></span>
 <span class="r-in"><span><span class="co"># Or use bookdown_open(bookdown_path) function</span></span></span>
@@ -236,10 +236,10 @@ taxonomies are
 <span class="r-out co"><span class="r-pr">#&gt;</span> 21/23                   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 22/23 [figures-plot12-2]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 23/23                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> "C:/Program Files/RStudio/resources/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS bookdownproj.knit.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output bookdownproj.html --lua-filter "C:\Users\guill\AppData\Local\R\win-library\4.3\bookdown\rmarkdown\lua\custom-environment.lua" --lua-filter "C:\Users\guill\AppData\Local\R\win-library\4.3\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\guill\AppData\Local\R\win-library\4.3\rmarkdown\rmarkdown\lua\latex-div.lua" --lua-filter "C:\Users\guill\AppData\Local\R\win-library\4.3\rmarkdown\rmarkdown\lua\anchor-sections.lua" --metadata-file "C:\Users\guill\AppData\Local\Temp\RtmpUlyF6C\file706012de7b6f" --wrap preserve --standalone --section-divs --table-of-contents --toc-depth 3 --template "C:\Users\guill\AppData\Local\R\win-library\4.3\bookdown\templates\gitbook.html" --highlight-style pygments --number-sections --css style.css --mathjax --include-in-header "C:\Users\guill\AppData\Local\Temp\RtmpUlyF6C\rmarkdown-str7060603a3a1c.html" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> "C:/Program Files/RStudio/resources/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS bookdownproj.knit.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output bookdownproj.html --lua-filter "C:\Users\guill\AppData\Local\R\win-library\4.3\bookdown\rmarkdown\lua\custom-environment.lua" --lua-filter "C:\Users\guill\AppData\Local\R\win-library\4.3\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\Users\guill\AppData\Local\R\win-library\4.3\rmarkdown\rmarkdown\lua\latex-div.lua" --lua-filter "C:\Users\guill\AppData\Local\R\win-library\4.3\rmarkdown\rmarkdown\lua\anchor-sections.lua" --metadata-file "C:\Users\guill\AppData\Local\Temp\Rtmpc1LgDB\file376c19d4ce8" --wrap preserve --standalone --section-divs --table-of-contents --toc-depth 3 --template "C:\Users\guill\AppData\Local\R\win-library\4.3\bookdown\templates\gitbook.html" --highlight-style pygments --number-sections --css style.css --mathjax --include-in-header "C:\Users\guill\AppData\Local\Temp\Rtmpc1LgDB\rmarkdown-str376c8355a79.html" </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> To edit your file, You can use the function `bookdown_open('C:\Users\guill\AppData\Local\Temp\RtmpUlyF6C')`</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> To edit your file, You can use the function `bookdown_open('C:\Users\guill\AppData\Local\Temp\Rtmpc1LgDB')`</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> (Compatibility tested on Chrome, Edge and Mozilla)</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
@@ -253,7 +253,7 @@ taxonomies are
 
 
       <footer><div class="copyright">
-  <p></p><p>Developed by Guillaume Fabre, Maelstrom-research.</p>
+  <p></p><p>Developed by Guillaume Fabre, Maelstrom-research group.</p>
 </div>
 
 <div class="pkgdown">

@@ -10,7 +10,7 @@ glossary <-
     # dataschema
     '<h3>DataSchema</h3>
 A DataSchema defines the harmonized variables to be generated, representing 
-meta data of an associated harmonized dossier. It must be a 
+metadata of an associated harmonized dossier. It must be a 
 list of data frame like objects with elements named "Variables" (required) 
 and "Categories" (if any). The "Variables" element must contain at least the 
 `name` column, and the "Categories" element must contain at least the 
