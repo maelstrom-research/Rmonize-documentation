@@ -5,13 +5,13 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Support Retrospective Harmonization of data • Rmonize</title>
+<title>Support Retrospective Harmonization of Data • Rmonize</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="bootstrap-toc.css">
 <script src="bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="pkgdown.js"></script><meta property="og:title" content="Support Retrospective Harmonization of data">
+<script src="pkgdown.js"></script><meta property="og:title" content="Support Retrospective Harmonization of Data">
 <meta property="og:description" content="Functions to support rigorous retrospective data harmonization 
     processing, evaluation, and documentation across datasets from different 
     studies based on Maelstrom Research guidelines. The package includes the 
@@ -111,10 +111,9 @@
 <div class="section level1">
 <h1 id="pipeline">Pipeline<a class="anchor" aria-label="anchor" href="#pipeline"></a>
 </h1>
-<p><b style="color:red">(figure to be discussed)</b></p>
 <p><img src="reference/figures/fig_readme.png" style="width: 50%; margin: 0 auto; display: flex; justify-content: center;"></p>
 <p><br></p>
-<p>Data processing in Rmonize depends on three external user-provided elements: the input datasets (datasets collected by individual studies or data collection centres), DataSchema (list of core variables to generate across input datasets), and Data Processing Elements (elements and algorithms needed to process variables from input datasets into DataSchema formats). The DataSchema and Data Processing Elements are prepared in Excel spreadsheets and imported into R, and they can be easily modified and shared outside of R. The package includes integrated functions to support organized data processing and generate well documented outputs. These functions help to prepare and validate inputs, process input datasets into harmonized datasets, identify and troubleshoot errors in processing elements, and produce documentation to help users evaluate harmonized data content and quality. The main outputs provided by Rmonize are the harmonized datasets, their associated data dictionaries, and reports with descriptive statistics, provided in summary tables or figures. Rmonize also uses two underlying packages, <a href="https://cran.r-project.org/web/packages/madshapR/index.html" target="_blank" class="external-link">madshapR</a> and <a href="https://cran.r-project.org/web/packages/fabR/index.html" target="_blank" class="external-link">fabR</a>, which include many functions to work with data and metadata. The specific functions required by Rmonize are automatically loaded and accessible to the user without separately loading madshapR and fabR.</p>
+<p>Data processing in Rmonize depends on three external user-provided elements: the input datasets (datasets collected by individual studies or data collection centres), DataSchema (list of core variables to generate across input datasets), and Data Processing Elements (elements and algorithms needed to process variables from input datasets into DataSchema formats). The DataSchema and Data Processing Elements are prepared in Excel spreadsheets and imported into R, and they can be easily modified and shared outside of R. The package includes integrated functions to support organized data processing and generate well documented outputs. These functions help to prepare and validate inputs, process input datasets into harmonized datasets, identify and troubleshoot errors in processing elements, and produce documentation to help users evaluate harmonized data content and quality. The main outputs provided by Rmonize are the harmonized datasets, their associated data dictionaries, and reports with descriptive statistics, provided in summary tables or figures. Rmonize also uses two underlying packages, <a href="https://CRAN.R-project.org/package=madshapR" target="_blank" class="external-link">madshapR</a> and <a href="https://CRAN.R-project.org/package=fabR" target="_blank" class="external-link">fabR</a>, which include many functions to work with data and metadata. The specific functions required by Rmonize are automatically loaded and accessible to the user without separately loading madshapR and fabR.</p>
 </div>
 <div class="section level1">
 <h1 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
@@ -136,10 +135,10 @@
 <h2 id="getting-started">Getting started<a class="anchor" aria-label="anchor" href="#getting-started"></a>
 </h2>
 <p>For more information, you can go to:</p>
-<p><a href="reference/index.html">Documentation on Rmonize functions and help pages.</a></p>
-<p><a href="articles/a-Glossary-and-templates.html">Descriptions of key terms and downloadable templates.</a> (for DataSchema, Data Processing Elements, data dictionaries)</p>
-<p><a href="articles/b-The-Data-processing-elements.html">Explanation of how to prepare the Data Processing Elements.</a></p>
-<p><a href="articles/c-Example-with-DEMO-files.html">Example scripts with demo files.</a></p>
+<p><a href="https://maelstrom-research.github.io/Rmonize-documentation/reference/index.html" class="external-link">Documentation on Rmonize functions and help pages.</a></p>
+<p><a href="https://maelstrom-research.github.io/Rmonize-documentation/articles/a-Glossary-and-templates.html" class="external-link">Descriptions of key terms and downloadable templates.</a></p>
+<p><a href="https://maelstrom-research.github.io/Rmonize-documentation/articles/b-Data-processing-elements.html" class="external-link">Explanation of how to prepare the Data Processing Elements.</a></p>
+<p><a href="https://maelstrom-research.github.io/Rmonize-documentation/articles/c-Example-with-Rmonize_DEMO.html" class="external-link">Example scripts with demo files.</a></p>
 </div>
 </div>
 
@@ -165,7 +164,7 @@
 <div class="citation">
 <h2 data-toc-skip>Citation</h2>
 <ul class="list-unstyled">
-<li><a href="authors.html#citation">Citing Rmonize</a></li>
+<li><a href="authors.html#authors">Citing Rmonize</a></li>
 </ul>
 </div>
 

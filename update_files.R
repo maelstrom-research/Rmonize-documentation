@@ -11,8 +11,19 @@ devtools::build_rmd('NEWS.Rmd')
 fs::dir_delete("docs")
 pkgdown::build_site()
 
+
+file.edit("docs/index.html")
+# replace ligne 168
+<li><a href="authors.html#authors">Citing Rmonize</a></li>
+
+
+
 file.edit("docs/authors.html")
-# apres la ligne 75
+
+# replace ligne 63
+        <h1 id="authors">Authors</h1>
+  
+# insert after ligne 75
 
      <div class="section level2 aknowledgment-section">
        <div>
@@ -58,6 +69,8 @@ fs::dir_copy(
 
 file.edit("../Rmonize-documentation/docs/reference/index.html")
 file.edit("../Rmonize-documentation/index.html")
+
+# remplacer from 60-241 to 60-195
 
 fs::file_delete("../Rmonize-documentation/index.html")
 
