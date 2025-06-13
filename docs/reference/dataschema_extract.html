@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Rmonize</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.0.9599</span>
       </span>
     </div>
 
@@ -32,13 +32,19 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu"><li>
-      <a href="../articles/a-Glossary-and-templates.html">Glossary and templates</a>
+      <a href="../articles/a-install-your-working-environment.html">Install your working environment</a>
     </li>
     <li>
-      <a href="../articles/b-Data-processing-elements.html">Data Processing Elements</a>
+      <a href="../articles/b-simple-example-of-data-processing-with-Rmonize.html">Simple example of data processing with Rmonize</a>
     </li>
     <li>
-      <a href="../articles/c-Example-with-Rmonize_DEMO.html">Example with Rmonize_DEMO</a>
+      <a href="../articles/c-explore-and-prepare-input-datasets-and-data-dictionaries.html">Explore and prepare input datasets and data dictionaries</a>
+    </li>
+    <li>
+      <a href="../articles/d-process-inputs-and-generate-harmonized-outputs.html">Process inputs and generate harmonized outputs</a>
+    </li>
+    <li>
+      <a href="../articles/e-summarize-and-secure-harmonized-outputs.html">Summarize and secure harmonized outputs</a>
     </li>
   </ul></li>
 <li>
@@ -87,31 +93,43 @@
     </div>
     <div id="details">
     <h2>Details</h2>
-    <p>The Data Processing Elements specifies the algorithms used to process input
-variables into harmonized variables in the DataSchema format. It is also
+    <p>The Data Processing Elements specifies the input elements and processing algorithms
+to generate harmonized variables in the DataSchema formats. It is also
 contains metadata used to generate documentation of the processing.
 A Data Processing Elements object is a data frame with specific columns
 used in data processing: <code>dataschema_variable</code>, <code>input_dataset</code>,
 <code>input_variables</code>, <code>Mlstr_harmo::rule_category</code> and <code>Mlstr_harmo::algorithm</code>.
 To initiate processing, the first entry must be the creation of a harmonized
 primary identifier variable (e.g., participant unique ID).</p>
+<p>A DataSchema is the list of core variables to generate across datasets and
+related metadata. A DataSchema object is a list of data frames with elements
+named 'Variables' (required) and 'Categories' (if any). The 'Variables'
+element must contain at least the <code>name</code> column, and the 'Categories'
+element must contain at least the <code>variable</code> and <code>name</code> columns to be usable
+in any function. In 'Variables' the <code>name</code> column must also have unique
+entries, and in 'Categories' the combination of <code>variable</code> and <code>name</code> columns
+must also be unique.
+The object may be specifically formatted to be compatible with additional
+<a href="https://maelstrom-research.org/page/software" class="external-link">Maelstrom Research software</a>,
+in particular <a href="https://www.obiba.org/pages/products/opal/" class="external-link">Opal environments</a>.</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="op">{</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># Use Rmonize_DEMO to run examples.</span></span></span>
+<span class="r-in"><span><span class="co"># Use Rmonize_examples to run examples.</span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="fu">dataschema_extract</span><span class="op">(</span></span></span>
-<span class="r-in"><span>  data_proc_elem <span class="op">=</span> <span class="va">Rmonize_DEMO</span><span class="op">$</span><span class="va">`data_processing_elements - final`</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">dataschema</span> <span class="op">&lt;-</span> <span class="fu">dataschema_extract</span><span class="op">(</span><span class="va">Rmonize_examples</span><span class="op">$</span><span class="va">`Data_Processing_Element_no errors`</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">dataschema</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> List of 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ Variables: tibble [13 × 3] (S3: tbl_df/tbl/data.frame)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ name     : chr [1:13] "adm_unique_id" "adm_study" "adm_year_dce" "sdc_age" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ label    : chr [1:13] "adm_unique_id" "adm_study" "adm_year_dce" "sdc_age" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ valueType: chr [1:13] "text" "text" "text" "text" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ Variables: tibble [9 × 3] (S3: tbl_df/tbl/data.frame)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ name     : chr [1:9] "adm_unique_id" "adm_study_id" "sdc_age_m" "sdc_marital_m" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ label    : chr [1:9] "adm_unique_id" "adm_study_id" "sdc_age_m" "sdc_marital_m" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ valueType: chr [1:9] "text" "text" "text" "text" ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..- attr(*, "Rmonize::class")= chr "data_proc_elem"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  - attr(*, "madshapR::class")= chr "data_dict_mlstr"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  - attr(*, "Rmonize::class")= chr "dataschema_mlstr"</span>

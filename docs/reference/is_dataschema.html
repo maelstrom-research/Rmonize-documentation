@@ -19,7 +19,7 @@ check if an object is valid for use in a function."><!-- mathjax --><script src=
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Rmonize</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.0.9599</span>
       </span>
     </div>
 
@@ -34,13 +34,19 @@ check if an object is valid for use in a function."><!-- mathjax --><script src=
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu"><li>
-      <a href="../articles/a-Glossary-and-templates.html">Glossary and templates</a>
+      <a href="../articles/a-install-your-working-environment.html">Install your working environment</a>
     </li>
     <li>
-      <a href="../articles/b-Data-processing-elements.html">Data Processing Elements</a>
+      <a href="../articles/b-simple-example-of-data-processing-with-Rmonize.html">Simple example of data processing with Rmonize</a>
     </li>
     <li>
-      <a href="../articles/c-Example-with-Rmonize_DEMO.html">Example with Rmonize_DEMO</a>
+      <a href="../articles/c-explore-and-prepare-input-datasets-and-data-dictionaries.html">Explore and prepare input datasets and data dictionaries</a>
+    </li>
+    <li>
+      <a href="../articles/d-process-inputs-and-generate-harmonized-outputs.html">Process inputs and generate harmonized outputs</a>
+    </li>
+    <li>
+      <a href="../articles/e-summarize-and-secure-harmonized-outputs.html">Summarize and secure harmonized outputs</a>
     </li>
   </ul></li>
 <li>
@@ -101,17 +107,17 @@ must also be unique.</p>
     </div>
     <div id="see-also">
     <h2>See also</h2>
-    <div class="dont-index"><p>For a better assessment, please use <code><a href="dataschema_evaluate.html">dataschema_evaluate()</a></code>.</p></div>
+    <div class="dont-index"><p><code><a href="dataschema_evaluate.html">dataschema_evaluate()</a></code>.</p></div>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="op">{</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># use Rmonize_DEMO provided by the package</span></span></span>
+<span class="r-in"><span><span class="co"># Use Rmonize_examples to run examples.</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">dataschema</span> <span class="op">&lt;-</span> <span class="va">Rmonize_DEMO</span><span class="op">$</span><span class="va">`dataschema - final`</span></span></span>
-<span class="r-in"><span><span class="fu">is_dataschema</span><span class="op">(</span><span class="va">dataschema</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">is_dataschema</span><span class="op">(</span><span class="va">Rmonize_examples</span><span class="op">$</span><span class="va">`DataSchema`</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">is_dataschema</span><span class="op">(</span><span class="va">Rmonize_examples</span><span class="op">$</span><span class="va">`Data_Processing_Element_no errors`</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">is_dataschema</span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>

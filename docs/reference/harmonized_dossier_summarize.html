@@ -21,7 +21,7 @@ variable distributions and descriptive statistics."><!-- mathjax --><script src=
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Rmonize</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.0.9599</span>
       </span>
     </div>
 
@@ -36,13 +36,19 @@ variable distributions and descriptive statistics."><!-- mathjax --><script src=
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu"><li>
-      <a href="../articles/a-Glossary-and-templates.html">Glossary and templates</a>
+      <a href="../articles/a-install-your-working-environment.html">Install your working environment</a>
     </li>
     <li>
-      <a href="../articles/b-Data-processing-elements.html">Data Processing Elements</a>
+      <a href="../articles/b-simple-example-of-data-processing-with-Rmonize.html">Simple example of data processing with Rmonize</a>
     </li>
     <li>
-      <a href="../articles/c-Example-with-Rmonize_DEMO.html">Example with Rmonize_DEMO</a>
+      <a href="../articles/c-explore-and-prepare-input-datasets-and-data-dictionaries.html">Explore and prepare input datasets and data dictionaries</a>
+    </li>
+    <li>
+      <a href="../articles/d-process-inputs-and-generate-harmonized-outputs.html">Process inputs and generate harmonized outputs</a>
+    </li>
+    <li>
+      <a href="../articles/e-summarize-and-secure-harmonized-outputs.html">Summarize and secure harmonized outputs</a>
     </li>
   </ul></li>
 <li>
@@ -77,44 +83,13 @@ variable distributions and descriptive statistics.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">harmonized_dossier_summarize</span><span class="op">(</span></span>
-<span>  <span class="va">harmonized_dossier</span>,</span>
-<span>  group_by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/attributes.html" class="external-link">attributes</a></span><span class="op">(</span><span class="va">harmonized_dossier</span><span class="op">)</span><span class="op">$</span><span class="va">`Rmonize::harmonized_col_dataset`</span>,</span>
-<span>  dataschema <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/attributes.html" class="external-link">attributes</a></span><span class="op">(</span><span class="va">harmonized_dossier</span><span class="op">)</span><span class="op">$</span><span class="va">`Rmonize::DataSchema`</span>,</span>
-<span>  data_proc_elem <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/attributes.html" class="external-link">attributes</a></span><span class="op">(</span><span class="va">harmonized_dossier</span><span class="op">)</span><span class="op">$</span><span class="va">`Rmonize::Data Processing Element`</span>,</span>
-<span>  taxonomy <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  valueType_guess <span class="op">=</span> <span class="cn">FALSE</span></span>
-<span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">harmonized_dossier_summarize</span><span class="op">(</span><span class="va">harmonized_dossier</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>harmonized_dossier</dt>
 <dd><p>A list containing the harmonized dataset(s).</p></dd>
-
-
-<dt>group_by</dt>
-<dd><p>A character string identifying the column in the dataset
-to use as a grouping variable. Elements will be grouped by this
-column.</p></dd>
-
-
-<dt>dataschema</dt>
-<dd><p>A DataSchema object.</p></dd>
-
-
-<dt>data_proc_elem</dt>
-<dd><p>A Data Processing Elements object.</p></dd>
-
-
-<dt>taxonomy</dt>
-<dd><p>An optional data frame identifying a variable classification
-schema.</p></dd>
-
-
-<dt>valueType_guess</dt>
-<dd><p>Whether the output should include a more accurate
-valueType that could be applied to the dataset. FALSE by default.</p></dd>
 
 </dl></div>
     <div id="value">
@@ -128,7 +103,7 @@ grouped by harmonized dataset.</p>
     <h2>Details</h2>
     <p>A harmonized dossier is a named list containing one or more data frames,
 which are harmonized datasets. A harmonized dossier is generally the
-product of applying processing to a dossier object The name of each
+product of applying processing to a dossier object. The name of each
 harmonized dataset (data frame) is taken from the reference input dataset.
 A harmonized dossier also contains the DataSchema and
 Data Processing Elements used in processing as attributes.</p>
@@ -140,8 +115,8 @@ element must contain at least the <code>variable</code> and <code>name</code> co
 in any function. In 'Variables' the <code>name</code> column must also have unique
 entries, and in 'Categories' the combination of <code>variable</code> and <code>name</code> columns
 must also be unique.</p>
-<p>The Data Processing Elements specifies the algorithms used to process input
-variables into harmonized variables in the DataSchema format. It is also
+<p>The Data Processing Elements specifies the input elements and processing algorithms
+to generate harmonized variables in the DataSchema formats. It is also
 contains metadata used to generate documentation of the processing.
 A Data Processing Elements object is a data frame with specific columns
 used in data processing: <code>dataschema_variable</code>, <code>input_dataset</code>,
@@ -163,110 +138,143 @@ The valueType is specified in a data dictionary in a column 'valueType' and
 can be associated with variables as attributes. Acceptable valueTypes
 include 'text', 'integer', 'decimal', 'boolean', datetime', 'date'. The full
 list of OBiBa valueType possibilities and their correspondence with R data
-types are available using <a href="https://rdrr.io/pkg/madshapR/man/valueType_list.html" class="external-link">valueType_list</a>. The valueType can be used to
+types are available using valueType_list. The valueType can be used to
 coerce the variable to the corresponding data type.</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="op">{</span></span></span>
+<span class="r-in"><span><span class="co"># Use Rmonize_examples to run examples.</span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">harmonized_dossier</span> <span class="op">&lt;-</span> <span class="va">Rmonize_DEMO</span><span class="op">$</span><span class="va">harmonized_dossier</span></span></span>
+<span class="r-in"><span><span class="co"># Perform data processing</span></span></span>
+<span class="r-in"><span><span class="va">harmonized_dossier</span> <span class="op">&lt;-</span> <span class="va">Rmonize_examples</span><span class="op">$</span><span class="va">`harmonized_dossier`</span></span></span>
+<span class="r-in"><span><span class="va">summary_harmo</span> <span class="op">&lt;-</span> <span class="fu">harmonized_dossier_summarize</span><span class="op">(</span><span class="va">harmonized_dossier</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># summary harmonization</span></span></span>
-<span class="r-in"><span><span class="fu">harmonized_dossier_summarize</span><span class="op">(</span><span class="va">harmonized_dossier</span><span class="op">)</span></span></span>
-<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">summary_harmo</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> An additional variable `Rmonize::harmonized_col_dataset` has been created</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> with harmonized dataset names as values for each harmonized dataset.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> Useful tip:</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> To avoid this message, we recommend to set `harmonized_col_dataset` as a </span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> categorical variable DataSchema, or to set `add_col_dataset` = FALSE.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> - DATA DICTIONARY ASSESSMENT: <span style="font-weight: bold;">data_dict</span> --------------</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the standard adequacy of naming</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the uniqueness of variable names</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the uniqueness and presence of variable names</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of possible duplicated columns</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of duplicated rows</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of empty rows in the data dictionary</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of empty columns in the data dictionary</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the completion of `label(:xx)` column in 'Variables'</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of empty column in the data dictionary</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of categories not in the data dictionary</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the `valueType` column in 'Variables'</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the completion of `label` column in 'Variables'</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess presence and completion of `label` column in 'Categories'</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the logical values of missing column in Categories</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Generate report</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     The data dictionary contains no errors/warnings.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  - WARNING MESSAGES (if any): --------------------------------------------</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> - DATASET ASSESSMENT: <span style="font-weight: bold;">pooled_harmonized_dataset</span> (empty dataset) --------------------------</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> - DATASET ASSESSMENT: <span style="font-weight: bold;">pooled_harmonized_dataset</span> --------------------------</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the standard adequacy of naming</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of variable names both in dataset and data dictionary</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of possible duplicated variable in the dataset</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of duplicated participants in the dataset</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of empty rows in the data dictionary</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence all NA(s) of columns in the data dictionary</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of categories not in the data dictionary</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of possible duplicated participants</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of unique value columns in dataset</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence of empty rows in the dataset</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the presence all empty variable in the dataset</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the Categories comparison in dataset and data dictionary</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Assess the `valueType` comparison in dataset and data dictionary</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Generate report</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">  - WARNING MESSAGES (if any): -------------------------------------------------</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">    </span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> - DATASET SUMMARIZE: <span style="font-weight: bold;">pooled_harmonized_dataset</span> (empty dataset) --------------------------</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> - DATASET SUMMARIZE: <span style="font-weight: bold;">pooled_harmonized_dataset</span> --------------------------</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Summarize the data type of each variable across the dataset</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Summarize information for all variables</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Summarize information for numerical variables</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     Summarize information for categorical variables</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Summarize global information (Overview)</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Generate report</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`Harmonization Overview`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 15 × 2</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    `Quality control of dataset`                           `(all)`               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> <span style="color: #949494;">"</span>Date<span style="color: #949494;">"</span>                                                 <span style="color: #949494;">"</span>2023-12-20<span style="color: #949494;">"</span>          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> <span style="color: #949494;">"</span>Name of the dataset<span style="color: #949494;">"</span>                                  <span style="color: #949494;">"</span>pooled_harmonized_da…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> <span style="color: #949494;">"</span>    Identifier Variable<span style="color: #949494;">"</span>                              <span style="color: #949494;">""</span>                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> <span style="color: #949494;">"</span>    Variables<span style="color: #949494;">"</span>                                        <span style="color: #949494;">"</span> <span style="color: #949494;">"</span>                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> <span style="color: #949494;">"</span>        Total number of variables (incl. identifier)<span style="color: #949494;">"</span> <span style="color: #949494;">"</span>2<span style="color: #949494;">"</span>                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> <span style="color: #949494;">"</span>        Total number of empty columns<span style="color: #949494;">"</span>                <span style="color: #949494;">"</span>2<span style="color: #949494;">"</span>                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> <span style="color: #949494;">"</span>    Data type in dictionary (valueType)<span style="color: #949494;">"</span>              <span style="color: #949494;">"</span> <span style="color: #949494;">"</span>                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> <span style="color: #949494;">"</span>        Nb. text variables<span style="color: #949494;">"</span>                           <span style="color: #949494;">"</span>2<span style="color: #949494;">"</span>                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> <span style="color: #949494;">"</span>        Nb. date variables<span style="color: #949494;">"</span>                           <span style="color: #949494;">"</span>0<span style="color: #949494;">"</span>                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> <span style="color: #949494;">"</span>        Nb. datetime variables<span style="color: #949494;">"</span>                       <span style="color: #949494;">"</span>0<span style="color: #949494;">"</span>                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> <span style="color: #949494;">"</span>        Nb. numerical variables<span style="color: #949494;">"</span>                      <span style="color: #949494;">"</span>0<span style="color: #949494;">"</span>                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> <span style="color: #949494;">"</span>        Nb. categorical variables<span style="color: #949494;">"</span>                    <span style="color: #949494;">"</span>0<span style="color: #949494;">"</span>                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> <span style="color: #949494;">"</span>    Rows<span style="color: #949494;">"</span>                                             <span style="color: #949494;">"</span>(all)<span style="color: #949494;">"</span>               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> <span style="color: #949494;">"</span>        Total number of observations<span style="color: #949494;">"</span>                 <span style="color: #949494;">"</span>0<span style="color: #949494;">"</span>                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">15</span> <span style="color: #949494;">"</span>        Nb. distinct observations<span style="color: #949494;">"</span>                    <span style="color: #949494;">"</span>0<span style="color: #949494;">"</span>                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`Harmonized Data dictionary assessement`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 5</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   sheet     col_name name_var                       Quality assessment c…¹ value</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Variables name     Rmonize::harmonized_col_datas… [INFO] - Incompatible… <span style="color: #BB0000;">NA</span>   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ abbreviated name: ¹​`Quality assessment comment`</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`Harmonized Dataset assessment`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 5</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   `index in data dict.` name             Quality assessment c…¹ value suggestion</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>                     2 Rmonize::harmon… [INFO] - Incompatible… <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ abbreviated name: ¹​`Quality assessment comment`</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`Harmonized Variables summary (all)`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 2 × 7</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   `index in data dict.` name                   `label:en` Data Dictionary valu…¹</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>                     1 adm_unique_id          Unique id… text                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>                     2 Rmonize::harmonized_c… Rmonize::… text                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ abbreviated name: ¹​`Data Dictionary valueType`</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 3 more variables: `Estimated dataset valueType` &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `Actual dataset valueType` &lt;chr&gt;, `Categories in data dictionary` &lt;chr&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`Text variable summary`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 2 × 7</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   `index in data dict.` name                   `label:en` Data Dictionary valu…¹</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>                     1 adm_unique_id          Unique id… text                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>                     2 Rmonize::harmonized_c… Rmonize::… text                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ abbreviated name: ¹​`Data Dictionary valueType`</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 3 more variables: `Estimated dataset valueType` &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `Actual dataset valueType` &lt;chr&gt;, `Categories in data dictionary` &lt;chr&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> List of 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ Harmonization overview      : tibble [13 × 7] (S3: tbl_df/tbl/data.frame)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Harmonization overview: chr [1:13] "Date report generated" "Name of the dataset" "    Harmonized identifier variable" "    Harmonized dataset variable" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ (all)                 : chr [1:13] "2025-06-13" "pooled_harmonized_dataset" "adm_unique_id" "adm_study_id" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Study 1               : chr [1:13] " " " " " " " " ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Study 2               : chr [1:13] " " " " " " " " ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Study 3               : chr [1:13] " " " " " " " " ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Study 4               : chr [1:13] " " " " " " " " ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Study 5               : chr [1:13] " " " " " " " " ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ Variables summary (all)     : tibble [41 × 20] (S3: tbl_df/tbl/data.frame)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Index                          : chr [1:41] "1" "1" "1" "1" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Grouping variable: adm_study_id: chr [1:41] "[1] Study 1" "[2] Study 2" "[3] Study 3" "[4] Study 4" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Variable name                  : chr [1:41] "adm_unique_id" "adm_unique_id" "adm_unique_id" "adm_unique_id" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Variable label                 : chr [1:41] "Participant identifier" "Participant identifier" "Participant identifier" "Participant identifier" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Harmonization status           : chr [1:41] "complete" "complete" "complete" "complete" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Quality assessment comment     : chr [1:41] "[INFO] - Harmonized identifier variable." "[INFO] - Harmonized identifier variable." "[INFO] - Harmonized identifier variable." "[INFO] - Harmonized identifier variable." ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Data dictionary valueType      : chr [1:41] "text" "text" "text" "text" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Dataset valueType              : chr [1:41] "text" "text" "text" "text" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Suggested valueType            : chr [1:41] NA NA NA NA ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Categorical variable           : chr [1:41] "no" "no" "no" "no" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Categories in data dictionary  : chr [1:41] NA NA NA NA ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Non-valid categories           : chr [1:41] NA NA NA NA ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Number of rows                 : chr [1:41] "4000" "3000" "1000" "2500" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Number of valid values         : chr [1:41] "4000" "3000" "1000" "2500" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Number of non-valid values     : chr [1:41] "0" "0" "0" "0" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Number of empty values         : chr [1:41] "0" "0" "0" "0" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ % Valid values                 : chr [1:41] "100" "100" "100" "100" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ % Non-valid values             : chr [1:41] "0" "0" "0" "0" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ % Empty values                 : chr [1:41] "0" "0" "0" "0" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Number of distinct values      : chr [1:41] "4000" "3000" "1000" "2500" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ Numerical variable summary  : tibble [15 × 23] (S3: tbl_df/tbl/data.frame)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Index                          : chr [1:15] "3" "3" "3" "3" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Grouping variable: adm_study_id: chr [1:15] "[1] Study 1" "[2] Study 2" "[3] Study 3" "[4] Study 4" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Variable name                  : chr [1:15] "sdc_age_m" "sdc_age_m" "sdc_age_m" "sdc_age_m" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Variable label                 : chr [1:15] "Age of mother at first visit" "Age of mother at first visit" "Age of mother at first visit" "Age of mother at first visit" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Harmonization status           : chr [1:15] "complete" "complete" "complete" "complete" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Quality assessment comment     : chr [1:15] NA NA NA NA ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Data dictionary valueType      : chr [1:15] "integer" "integer" "integer" "integer" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Categorical variable           : chr [1:15] "no" "no" "no" "no" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Number of rows                 : chr [1:15] "4000" "3000" "1000" "2500" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Number of valid values         : chr [1:15] "3912" "2943" "1000" "2402" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Number of non-valid values     : chr [1:15] "0" "0" "0" "0" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Number of empty values         : chr [1:15] "88" "57" "0" "98" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ % Valid values                 : chr [1:15] "97.8" "98.1" "100" "96.08" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ % Non-valid values             : chr [1:15] "0" "0" "0" "0" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ % Empty values                 : chr [1:15] "2.2" "1.9" "0" "3.92" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Number of distinct values      : chr [1:15] "27" "29" "31" "27" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Minimum                        : chr [1:15] "19" "16" "16" "20" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ 1st quartile                   : chr [1:15] "28" "29" "28" "31" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Median                         : chr [1:15] "31" "32" "31" "34" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ 3rd quartile                   : chr [1:15] "34" "34" "35" "36" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Maximum                        : chr [1:15] "47" "44" "47" "51" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Mean                           : chr [1:15] "30.83" "31.75" "31.29" "33.87" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Standard deviation             : chr [1:15] "4.42" "4.25" "5.22" "3.93" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ Categorical variable summary: tibble [21 × 21] (S3: tbl_df/tbl/data.frame)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Index                                            : chr [1:21] "2" "4" "4" "4" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Grouping variable: adm_study_id                  : chr [1:21] "(all)" "[1] Study 1" "[2] Study 2" "[3] Study 3" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Variable name                                    : chr [1:21] "adm_study_id" "sdc_marital_m" "sdc_marital_m" "sdc_marital_m" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Variable label                                   : chr [1:21] "Study ID" "Marital status of mother at first visit" "Marital status of mother at first visit" "Marital status of mother at first visit" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Harmonization status                             : chr [1:21] "complete" "complete" "complete" "impossible" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Quality assessment comment                       : chr [1:21] "[INFO] - Harmonized dataset identifier variable." NA NA "[INFO] - Empty variable." ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Data dictionary valueType                        : chr [1:21] "text" "integer" "integer" "integer" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Categorical variable                             : chr [1:21] "yes" "yes" "yes" "yes" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Categories in data dictionary                    : chr [1:21] "[1] Study 1\n[2] Study 2\n[3] Study 3\n[4] Study 4\n[5] Study 5" "[0] Single (never married) or not living with partner\n[1] Married or living with partner\n[2] Divorced or sepa"| __truncated__ "[0] Single (never married) or not living with partner\n[1] Married or living with partner\n[2] Divorced or sepa"| __truncated__ "[0] Single (never married) or not living with partner\n[1] Married or living with partner\n[2] Divorced or sepa"| __truncated__ ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Non-valid categories                             : chr [1:21] NA NA NA NA ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Number of rows                                   : chr [1:21] "13500" "4000" "3000" "1000" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Number of valid values                           : chr [1:21] "13500" "3994" "2961" "0" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Number of non-valid values                       : chr [1:21] "0" "0" "0" "0" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Number of empty values                           : chr [1:21] "0" "6" "39" "1000" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ % Valid values                                   : chr [1:21] "100" "99.85" "98.7" "0" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ % Non-valid values                               : chr [1:21] "0" "0" "0" "0" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ % Empty values                                   : chr [1:21] "0" "0.15" "1.3" "100" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Number of distinct values                        : chr [1:21] "5" "3" "3" "0" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Values present in dataset                        : chr [1:21] "Valid values : \n[1] Study 1 : 29.63%\n[2] Study 2 : 22.22%\n[3] Study 3 : 7.41%\n[4] Study 4 : 18.52%\n[5] Study 5 : 22.22%\n" "Valid values : \n[0] Single (never married) or not living with partner : 4.12%\n[1] Married or living with part"| __truncated__ "Valid values : \n[0] Single (never married) or not living with partner : 2.4%\n[1] Married or living with partn"| __truncated__ "Valid values : \n[0] Single (never married) or not living with partner : 0%\n[1] Married or living with partner"| __truncated__ ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Data dictionary categories not present in dataset: chr [1:21] NA "[3] Widowed\n" "[3] Widowed\n" "[0] Single (never married) or not living with partner\n[1] Married or living with partner\n[2] Divorced or sepa"| __truncated__ ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Dataset values not present in data dictionary    : chr [1:21] NA NA NA NA ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ Harmo dataset assessment    : tibble [1,155 × 4] (S3: tbl_df/tbl/data.frame)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Index                   : chr [1:1155] "1" "1" "1" "1" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Variable name           : chr [1:1155] "adm_unique_id" "adm_unique_id" "adm_unique_id" "adm_unique_id" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Harmo dataset assessment: chr [1:1155] "[INFO] - Duplicated rows (excluding identifier)." "[INFO] - Duplicated rows (excluding identifier)." "[INFO] - Duplicated rows (excluding identifier)." "[INFO] - Duplicated rows (excluding identifier)." ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Value                   : chr [1:1155] "PID2444 ; PID6070" "PID5531 ; PID7645" "PID2866 ; PID1861 ; PID8315" "PID3435 ; PID3700" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  - attr(*, "madshapR_group::group_by")= chr "adm_study_id"</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

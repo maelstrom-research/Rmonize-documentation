@@ -23,7 +23,7 @@ is always a unique entity identifier when datasets are pooled."><!-- mathjax -->
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Rmonize</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.0.9599</span>
       </span>
     </div>
 
@@ -38,13 +38,19 @@ is always a unique entity identifier when datasets are pooled."><!-- mathjax -->
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu"><li>
-      <a href="../articles/a-Glossary-and-templates.html">Glossary and templates</a>
+      <a href="../articles/a-install-your-working-environment.html">Install your working environment</a>
     </li>
     <li>
-      <a href="../articles/b-Data-processing-elements.html">Data Processing Elements</a>
+      <a href="../articles/b-simple-example-of-data-processing-with-Rmonize.html">Simple example of data processing with Rmonize</a>
     </li>
     <li>
-      <a href="../articles/c-Example-with-Rmonize_DEMO.html">Example with Rmonize_DEMO</a>
+      <a href="../articles/c-explore-and-prepare-input-datasets-and-data-dictionaries.html">Explore and prepare input datasets and data dictionaries</a>
+    </li>
+    <li>
+      <a href="../articles/d-process-inputs-and-generate-harmonized-outputs.html">Process inputs and generate harmonized outputs</a>
+    </li>
+    <li>
+      <a href="../articles/e-summarize-and-secure-harmonized-outputs.html">Summarize and secure harmonized outputs</a>
     </li>
   </ul></li>
 <li>
@@ -82,18 +88,21 @@ is always a unique entity identifier when datasets are pooled.</p>
 
     <div id="ref-usage">
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">harmo_process</span><span class="op">(</span></span>
-<span>  <span class="va">dossier</span>,</span>
+<span>  object <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  dataschema <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/attributes.html" class="external-link">attributes</a></span><span class="op">(</span><span class="va">dossier</span><span class="op">)</span><span class="op">$</span><span class="va">`Rmonize::DataSchema`</span>,</span>
 <span>  data_proc_elem <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/attributes.html" class="external-link">attributes</a></span><span class="op">(</span><span class="va">dossier</span><span class="op">)</span><span class="op">$</span><span class="va">`Rmonize::Data Processing Elements`</span>,</span>
 <span>  harmonized_col_dataset <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/attributes.html" class="external-link">attributes</a></span><span class="op">(</span><span class="va">dossier</span><span class="op">)</span><span class="op">$</span><span class="va">`Rmonize::harmonized_col_dataset`</span>,</span>
-<span>  harmonized_col_id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/attributes.html" class="external-link">attributes</a></span><span class="op">(</span><span class="va">dossier</span><span class="op">)</span><span class="op">$</span><span class="va">`Rmonize::harmonized_col_id`</span></span>
+<span>  harmonized_col_id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/attributes.html" class="external-link">attributes</a></span><span class="op">(</span><span class="va">dossier</span><span class="op">)</span><span class="op">$</span><span class="va">`Rmonize::harmonized_col_id`</span>,</span>
+<span>  .debug <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  dossier <span class="op">=</span> <span class="va">object</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
-    <dl><dt>dossier</dt>
-<dd><p>List of data frame(s) containing input dataset(s).</p></dd>
+    <dl><dt>object</dt>
+<dd><p>Data frame(s) or list of data frame(s) containing input
+dataset(s).</p></dd>
 
 
 <dt>dataschema</dt>
@@ -106,22 +115,29 @@ is always a unique entity identifier when datasets are pooled.</p>
 
 <dt>harmonized_col_dataset</dt>
 <dd><p>A character string identifying the column
-to use for dataset names. NULL by default.</p></dd>
+to use for dataset names.</p></dd>
 
 
 <dt>harmonized_col_id</dt>
 <dd><p>A character string identifying the name of the
-column present in every dataset to use as a dataset identifier.
-NULL by default.</p></dd>
+column present in every dataset to use as a participant identifier.</p></dd>
+
+
+<dt>.debug</dt>
+<dd><p>Allow user to test the inputs before processing harmonization.</p></dd>
+
+
+<dt>dossier</dt>
+<dd><p><a href="https://lifecycle.r-lib.org/articles/stages.html#deprecated" class="external-link"><img src="figures/lifecycle-deprecated.svg" alt="[Deprecated]"></a></p></dd>
 
 </dl></div>
     <div id="value">
     <h2>Value</h2>
     
 
-<p>A list of data frame(s), containing harmonized dataset(s). The DataSchema
-and Data Processing Elements are preserved as attributes of the
-output harmonized dossier.</p>
+<p>A list of data frame(s) containing harmonized dataset(s).
+The DataSchema and Data Processing Elements are preserved as attributes of
+the harmonized dossier.</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -136,8 +152,8 @@ element must contain at least the <code>variable</code> and <code>name</code> co
 in any function. In 'Variables' the <code>name</code> column must also have unique
 entries, and in 'Categories' the combination of <code>variable</code> and <code>name</code> columns
 must also be unique.</p>
-<p>The Data Processing Elements specifies the algorithms used to process input
-variables into harmonized variables in the DataSchema format. It is also
+<p>The Data Processing Elements specifies the input elements and processing algorithms
+to generate harmonized variables in the DataSchema formats. It is also
 contains metadata used to generate documentation of the processing.
 A Data Processing Elements object is a data frame with specific columns
 used in data processing: <code>dataschema_variable</code>, <code>input_dataset</code>,
@@ -149,71 +165,123 @@ primary identifier variable (e.g., participant unique ID).</p>
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="op">{</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># Use Rmonize_DEMO to run examples.</span></span></span>
+<span class="r-in"><span><span class="co"># Use Rmonize_examples to run examples.</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/maelstrom-research/madshapR" class="external-link">madshapR</a></span><span class="op">)</span> <span class="co"># data_dict_filter</span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://stringr.tidyverse.org" class="external-link">stringr</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://lubridate.tidyverse.org" class="external-link">lubridate</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">dataset_MELBOURNE</span> <span class="op">&lt;-</span> <span class="va">Rmonize_DEMO</span><span class="op">$</span><span class="va">dataset_MELBOURNE</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span></span>
-<span class="r-in"><span><span class="va">dossier</span> <span class="op">&lt;-</span> <span class="fu"><a href="dossier_create.html">dossier_create</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">dataset_MELBOURNE</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># Perform data processing</span></span></span>
+<span class="r-in"><span><span class="va">dossier</span> <span class="op">&lt;-</span> <span class="va">Rmonize_examples</span><span class="op">[</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html" class="external-link">str_detect</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">Rmonize_examples</span><span class="op">)</span>,<span class="st">"input_dataset_study"</span><span class="op">)</span><span class="op">]</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">dossier</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_remove.html" class="external-link">str_remove</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">dossier</span><span class="op">)</span>, <span class="st">"input_"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">dataschema</span> <span class="op">&lt;-</span> <span class="va">Rmonize_examples</span><span class="op">$</span><span class="va">`DataSchema`</span></span></span>
+<span class="r-in"><span><span class="va">data_proc_elem</span> <span class="op">&lt;-</span> <span class="va">Rmonize_examples</span><span class="op">$</span><span class="va">`Data_Processing_Element_no errors`</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">dataschema</span> <span class="op">&lt;-</span> </span></span>
-<span class="r-in"><span>  <span class="va">Rmonize_DEMO</span><span class="op">$</span><span class="va">`dataschema - final`</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
-<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/pkg/madshapR/man/data_dict_filter.html" class="external-link">data_dict_filter</a></span><span class="op">(</span><span class="st">'name == "adm_unique_id"'</span><span class="op">)</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">data_proc_elem</span> <span class="op">&lt;-</span> <span class="va">Rmonize_DEMO</span><span class="op">$</span><span class="va">`data_processing_elements - final`</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
-<span class="r-in"><span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">dataschema_variable</span> <span class="op">==</span> <span class="st">'adm_unique_id'</span>,</span></span>
-<span class="r-in"><span>         <span class="va">input_dataset</span> <span class="op">==</span> <span class="st">'dataset_MELBOURNE'</span><span class="op">)</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># perform harmonization</span></span></span>
-<span class="r-in"><span><span class="va">harmonized_dossier</span> <span class="op">&lt;-</span> <span class="fu">harmo_process</span><span class="op">(</span><span class="va">dossier</span>,<span class="va">dataschema</span>,<span class="va">data_proc_elem</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">harmonized_dossier</span><span class="op">)</span></span></span>
-<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">harmonized_dossier</span> <span class="op">&lt;-</span> <span class="fu">harmo_process</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  <span class="va">dossier</span>,</span></span>
+<span class="r-in"><span>  <span class="va">dataschema</span>,</span></span>
+<span class="r-in"><span>  <span class="va">data_proc_elem</span>,</span></span>
+<span class="r-in"><span>  harmonized_col_dataset <span class="op">=</span> <span class="st">'adm_study_id'</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  </span></span>
+<span class="r-in"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">harmonized_dossier</span><span class="op">$</span><span class="va">dataset_study1</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Attaching package: 'lubridate'</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> The following objects are masked from 'package:base':</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     date, intersect, setdiff, union</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">- Data Processing Elements: ------------------------------------------------</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> --harmonization of : <span style="font-weight: bold;">dataset_MELBOURNE</span> --------------------------------</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     processing 1/1 : adm_unique_id                <span style="font-weight: bold;">id created</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> --harmonization of : <span style="font-weight: bold;">dataset_study1</span> -----------------------------------</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     processing 1/9 : adm_unique_id                <span style="font-weight: bold;">id created</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     processing 2/9 : adm_study_id                 complete</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     processing 3/9 : sdc_age_m                    complete</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     processing 4/9 : sdc_marital_m                complete</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     processing 5/9 : lsb_alc_binge_m_preg         complete</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     processing 6/9 : lsb_alc_binge_m_first_tri    impossible</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     processing 7/9 : preg_gestational_age_del     complete</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     processing 8/9 : sdc_sex_c                    complete</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     processing 9/9 : pm_birthweight               complete</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> --harmonization of : <span style="font-weight: bold;">dataset_study2</span> -----------------------------------</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     processing 1/9 : adm_unique_id                <span style="font-weight: bold;">id created</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     processing 2/9 : adm_study_id                 complete</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     processing 3/9 : sdc_age_m                    complete</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     processing 4/9 : sdc_marital_m                complete</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     processing 5/9 : lsb_alc_binge_m_preg         impossible</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     processing 6/9 : lsb_alc_binge_m_first_tri    impossible</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     processing 7/9 : preg_gestational_age_del     complete</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     processing 8/9 : sdc_sex_c                    complete</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     processing 9/9 : pm_birthweight               complete</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> --harmonization of : <span style="font-weight: bold;">dataset_study3</span> -----------------------------------</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     processing 1/9 : adm_unique_id                <span style="font-weight: bold;">id created</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     processing 2/9 : adm_study_id                 complete</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     processing 3/9 : sdc_age_m                    complete</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     processing 4/9 : sdc_marital_m                impossible</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     processing 5/9 : lsb_alc_binge_m_preg         complete</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     processing 6/9 : lsb_alc_binge_m_first_tri    impossible</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     processing 7/9 : preg_gestational_age_del     complete</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     processing 8/9 : sdc_sex_c                    complete</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     processing 9/9 : pm_birthweight               complete</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> --harmonization of : <span style="font-weight: bold;">dataset_study4</span> -----------------------------------</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     processing 1/9 : adm_unique_id                <span style="font-weight: bold;">id created</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     processing 2/9 : adm_study_id                 complete</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     processing 3/9 : sdc_age_m                    complete</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     processing 4/9 : sdc_marital_m                complete</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     processing 5/9 : lsb_alc_binge_m_preg         complete</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     processing 6/9 : lsb_alc_binge_m_first_tri    complete</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     processing 7/9 : preg_gestational_age_del     complete</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     processing 8/9 : sdc_sex_c                    complete</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     processing 9/9 : pm_birthweight               complete</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> --harmonization of : <span style="font-weight: bold;">dataset_study5</span> -----------------------------------</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     processing 1/9 : adm_unique_id                <span style="font-weight: bold;">id created</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     processing 2/9 : adm_study_id                 complete</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     processing 3/9 : sdc_age_m                    complete</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     processing 4/9 : sdc_marital_m                complete</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     processing 5/9 : lsb_alc_binge_m_preg         <span style="font-weight: bold;">**ERROR**</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     processing 6/9 : lsb_alc_binge_m_first_tri    complete</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     processing 7/9 : preg_gestational_age_del     complete</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     processing 8/9 : sdc_sex_c                    complete</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     processing 9/9 : pm_birthweight               complete</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> - CREATION OF HARMONIZED DATA DICTIONARY : --------------------------------</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">dataset_MELBOURNE</span> : done</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">dataset_study1</span> : done</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">dataset_study2</span> : done</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">dataset_study3</span> : done</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">dataset_study4</span> : done</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">dataset_study5</span> : done</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ------------------------------------------------------------------------------</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> The Data Processing Elements contain 'error' statuses. Dataset with any 'error' </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> status will appear as empty in the harmonized dossier. When the harmonization </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> statuses are finalized, remember to rerun the process with the updated </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Data Processing Elements and generate the final harmonized datasets.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Useful tip: If you identified errors and want to correct them later, you can specify</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 'undetermined' in the column 'Mlstr_harmo::algorithm' of your problematic </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Data Processing Elements(s). Such Data Processing Elements will be ignored.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">- WARNING MESSAGES (if any): ----------------------------------------------</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> List of 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ dataset_MELBOURNE: tibble [19 × 1] (S3: tbl_df/tbl/data.frame)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ adm_unique_id: chr [1:19] "377943" "497013" "927676" "995667" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..- attr(*, "Variables::label:en")= chr "Unique identification code of the participant."</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..- attr(*, "Variables::typeof")= chr "character"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..- attr(*, "Variables::index")= chr "1"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..- attr(*, "Variables::Mlstr_harmo::rule_category")= chr "id_creation"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..- attr(*, "Variables::Mlstr_harmo::algorithm")= chr "id_creation"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..- attr(*, "Variables::Rmonize::r_script")= chr "`dataset_MELBOURNE` %&gt;% select('adm_unique_id' = 'id')"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..- attr(*, "Variables::Mlstr_harmo::status")= chr "complete"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..- attr(*, "Variables::Mlstr_harmo::status_detail")= chr "unknown"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..- attr(*, "madshapR::class")= chr "dataset"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  - attr(*, "Rmonize::class")= chr "harmonized_dossier"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  - attr(*, "Rmonize::DataSchema")=List of 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Variables: tibble [1 × 4] (S3: tbl_df/tbl/data.frame)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..- attr(*, "madshapR::class")= chr "data_dict_mlstr"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..- attr(*, "Rmonize::class")= chr "dataschema_mlstr"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  - attr(*, "Rmonize::Data Processing Elements")= tibble [1 × 11] (S3: tbl_df/tbl/data.frame)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ index                     : num 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ dataschema_variable       : chr "adm_unique_id"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ valueType                 : chr NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ input_dataset             : chr "dataset_MELBOURNE"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ input_variables           : chr "id"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Mlstr_harmo::rule_category: chr "id_creation"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Mlstr_harmo::algorithm    : chr "id_creation"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Mlstr_harmo::status       : chr "complete"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Mlstr_harmo::status_detail: chr "unknown"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Mlstr_harmo::comment      : chr NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Rmonize::r_script         : chr "`dataset_MELBOURNE` %&gt;% \n  select('adm_unique_id' = 'id')"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..- attr(*, "Rmonize::class")= chr "data_proc_elem"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  - attr(*, "Rmonize::harmonized_col_id")= chr "adm_unique_id"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Rows: 4,000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Columns: 9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ adm_unique_id             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "PID7216", "PID5380", "PID5531", "PID7612", …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ adm_study_id              <span style="color: #949494; font-style: italic;">&lt;chr+lbl&gt;</span> "1", "1", "1", "1", "1", "1", "1", "1", …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ sdc_age_m                 <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 27, 38, 27, 26, 33, 31, 32, 29, 29, 26, 33, …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ sdc_marital_m             <span style="color: #949494; font-style: italic;">&lt;int+lbl&gt;</span> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ lsb_alc_binge_m_preg      <span style="color: #949494; font-style: italic;">&lt;int+lbl&gt;</span> 0, 0, 0, 0, <span style="color: #BB0000;">NA</span>, 0, 0, 0, 0, 0, 0, 0, 0, …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ lsb_alc_binge_m_first_tri <span style="color: #949494; font-style: italic;">&lt;int+lbl&gt;</span> <span style="color: #BB0000;">NA</span>, <span style="color: #BB0000;">NA</span>, <span style="color: #BB0000;">NA</span>, <span style="color: #BB0000;">NA</span>, <span style="color: #BB0000;">NA</span>, <span style="color: #BB0000;">NA</span>, <span style="color: #BB0000;">NA</span>, <span style="color: #BB0000;">NA</span>, <span style="color: #BB0000;">NA</span>, <span style="color: #BB0000;">NA</span>, …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ preg_gestational_age_del  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 41, 38, 39, 41, 40, 38, 38, 39, 41, 40, 41, …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ sdc_sex_c                 <span style="color: #949494; font-style: italic;">&lt;int+lbl&gt;</span> 1, 2, 1, 1, 1, 2, 1, 1, 1, 1, 1, 2, 1, 1…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ pm_birthweight            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 2603.164, 3295.346, 3426.888, 3112.095, 2394…</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

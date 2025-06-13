@@ -21,7 +21,7 @@ ensure that an object has an appropriate structure."><!-- mathjax --><script src
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Rmonize</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.0.9599</span>
       </span>
     </div>
 
@@ -36,13 +36,19 @@ ensure that an object has an appropriate structure."><!-- mathjax --><script src
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu"><li>
-      <a href="../articles/a-Glossary-and-templates.html">Glossary and templates</a>
+      <a href="../articles/a-install-your-working-environment.html">Install your working environment</a>
     </li>
     <li>
-      <a href="../articles/b-Data-processing-elements.html">Data Processing Elements</a>
+      <a href="../articles/b-simple-example-of-data-processing-with-Rmonize.html">Simple example of data processing with Rmonize</a>
     </li>
     <li>
-      <a href="../articles/c-Example-with-Rmonize_DEMO.html">Example with Rmonize_DEMO</a>
+      <a href="../articles/c-explore-and-prepare-input-datasets-and-data-dictionaries.html">Explore and prepare input datasets and data dictionaries</a>
+    </li>
+    <li>
+      <a href="../articles/d-process-inputs-and-generate-harmonized-outputs.html">Process inputs and generate harmonized outputs</a>
+    </li>
+    <li>
+      <a href="../articles/e-summarize-and-secure-harmonized-outputs.html">Summarize and secure harmonized outputs</a>
     </li>
   </ul></li>
 <li>
@@ -112,23 +118,32 @@ in particular <a href="https://www.obiba.org/pages/products/opal/" class="extern
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="op">{</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># Use Rmonize_DEMO to run examples.</span></span></span>
+<span class="r-in"><span><span class="co"># Use Rmonize_examples to run examples.</span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="fu">as_dataschema_mlstr</span><span class="op">(</span><span class="va">Rmonize_DEMO</span><span class="op">$</span><span class="va">`dataschema - final`</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">dataschema_mlstr</span> <span class="op">&lt;-</span> <span class="fu">as_dataschema_mlstr</span><span class="op">(</span><span class="va">Rmonize_examples</span><span class="op">$</span><span class="va">`DataSchema`</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">dataschema_mlstr</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> List of 2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ Variables : tibble [13 × 4] (S3: tbl_df/tbl/data.frame)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ name     : chr [1:13] "adm_unique_id" "adm_study" "adm_year_dce" "sdc_age" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ label:en : chr [1:13] "Unique identification code of the participant." "Indicator of the survey study." "Indicator of the survey data collection event." "Participant's age at time of data collection event." ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ valueType: chr [1:13] "text" "text" "text" "integer" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ index    : chr [1:13] "1" "2" "3" "4" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ Categories: tibble [16 × 4] (S3: tbl_df/tbl/data.frame)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ variable: chr [1:16] "adm_study" "adm_study" "adm_study" "sdc_sex" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ name    : chr [1:16] "MELBOURNE" "PARIS" "TOKYO" "1" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ label:en: chr [1:16] "MELBOURNE" "PARIS" "TOKYO" "Male" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ missing : logi [1:16] FALSE FALSE FALSE FALSE FALSE FALSE ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ Variables : tibble [9 × 12] (S3: tbl_df/tbl/data.frame)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ index                     : int [1:9] 1 2 3 4 5 6 7 8 9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ name                      : chr [1:9] "adm_unique_id" "adm_study_id" "sdc_age_m" "sdc_marital_m" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ label                     : chr [1:9] "Participant identifier" "Study ID" "Age of mother at first visit" "Marital status of mother at first visit" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ valueType                 : chr [1:9] "text" "text" "integer" "integer" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ unit                      : chr [1:9] NA NA "years" NA ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ categorical               : chr [1:9] "0" "1" "0" "1" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ target_entity             : chr [1:9] "Mother" "Study" "Mother" "Mother" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ target_time_period        : chr [1:9] NA NA "At beginning of pregnancy" "At beginning of pregnancy" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ acceptable_source         : chr [1:9] "N/A" "N/A" "Questionnaire or medical charts" "Questionnaire" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ acceptable_informant      : chr [1:9] "N/A" "N/A" "Participant or other" "Participant" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ acceptable_wording        : chr [1:9] "N/A" "N/A" "No restrictions" "No restrictions" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ harmonization_instructions: chr [1:9] NA NA "Use information from mother's first visit during pregnancy." "Use information from mother's first visit during pregnancy." ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ Categories: tibble [15 × 4] (S3: tbl_df/tbl/data.frame)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ variable: chr [1:15] "adm_study_id" "adm_study_id" "adm_study_id" "adm_study_id" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ name    : chr [1:15] "1" "2" "3" "4" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ label   : chr [1:15] "Study 1" "Study 2" "Study 3" "Study 4" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ missing : logi [1:15] FALSE FALSE FALSE FALSE FALSE FALSE ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  - attr(*, "madshapR::class")= chr "data_dict_mlstr"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  - attr(*, "Rmonize::class")= chr "dataschema_mlstr"</span>
 <span class="r-in"><span></span></span>

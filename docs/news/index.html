@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Rmonize</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.0.9599</span>
       </span>
     </div>
 
@@ -32,13 +32,19 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu"><li>
-      <a href="../articles/a-Glossary-and-templates.html">Glossary and templates</a>
+      <a href="../articles/a-install-your-working-environment.html">Install your working environment</a>
     </li>
     <li>
-      <a href="../articles/b-Data-processing-elements.html">Data Processing Elements</a>
+      <a href="../articles/b-simple-example-of-data-processing-with-Rmonize.html">Simple example of data processing with Rmonize</a>
     </li>
     <li>
-      <a href="../articles/c-Example-with-Rmonize_DEMO.html">Example with Rmonize_DEMO</a>
+      <a href="../articles/c-explore-and-prepare-input-datasets-and-data-dictionaries.html">Explore and prepare input datasets and data dictionaries</a>
+    </li>
+    <li>
+      <a href="../articles/d-process-inputs-and-generate-harmonized-outputs.html">Process inputs and generate harmonized outputs</a>
+    </li>
+    <li>
+      <a href="../articles/e-summarize-and-secure-harmonized-outputs.html">Summarize and secure harmonized outputs</a>
     </li>
   </ul></li>
 <li>
@@ -64,7 +70,24 @@
     </div>
 
     <div class="section level2">
-<h2 class="page-header" data-toc-text="1.0.1" id="rmonize-101">Rmonize 1.0.1<a class="anchor" aria-label="anchor" href="#rmonize-101"></a></h2>
+<h2 class="page-header" data-toc-text="1.1.0" id="rmonize-110-release--2024-05-01">Rmonize 1.1.0 (release : 2024-05-01)<small>2024-05-01</small><a class="anchor" aria-label="anchor" href="#rmonize-110-release--2024-05-01"></a></h2>
+<div class="section level3">
+<h3 id="bug-fixes-and-improvements-1-1-0">Bug fixes and improvements<a class="anchor" aria-label="anchor" href="#bug-fixes-and-improvements-1-1-0"></a></h3>
+<ul><li><p>To process the data during testing, the DataSchema and/or the Data Processing Elements and/or input datasets might not be available. To be able to perform testings on harmonization, an additional parameter <code>.debug</code> has been added <a href="https://github.com/maelstrom-research/Rmonize/issues/56" class="external-link uri">https://github.com/maelstrom-research/Rmonize/issues/56</a></p></li>
+<li><p>The report function can now work when the code is indented in the Data Processing Elements. <a href="https://github.com/maelstrom-research/Rmonize/issues/54" class="external-link uri">https://github.com/maelstrom-research/Rmonize/issues/54</a></p></li>
+<li><p>The function <code><a href="../reference/show_harmo_error.html">show_harmo_error()</a></code> now allows the user to avoid showing warnings <a href="https://github.com/maelstrom-research/Rmonize/issues/52" class="external-link uri">https://github.com/maelstrom-research/Rmonize/issues/52</a></p></li>
+</ul></div>
+<div class="section level3">
+<h3 id="deprecated-functions-1-1-0">deprecated functions<a class="anchor" aria-label="anchor" href="#deprecated-functions-1-1-0"></a></h3>
+<p>To avoid confusion with help(function), the function <code><a href="../reference/deprecated.html">Rmonize_help()</a></code> has been renamed <code><a href="../reference/Rmonize_website.html">Rmonize_website()</a></code>.</p>
+</div>
+<div class="section level3">
+<h3 id="dependency-changes-1-1-0">Dependency changes<a class="anchor" aria-label="anchor" href="#dependency-changes-1-1-0"></a></h3>
+<ul><li>set a minimum dplyr dependence to avoid bugs</li>
+</ul></div>
+</div>
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="1.0.1" id="rmonize-101">Rmonize 1.0.1<small>2023-12-21</small><a class="anchor" aria-label="anchor" href="#rmonize-101"></a></h2>
 <p>Bug corrections and enhancements after testing with real data.</p>
 <div class="section level3">
 <h3 id="bug-fixes-and-improvements-1-0-1">Bug fixes and improvements<a class="anchor" aria-label="anchor" href="#bug-fixes-and-improvements-1-0-1"></a></h3>
@@ -105,7 +128,7 @@
 <div class="section level3">
 <h3 id="helper-functions-and-objects-1-0-0">Helper functions and objects<a class="anchor" aria-label="anchor" href="#helper-functions-and-objects-1-0-0"></a></h3>
 <ul><li>
-<code><a href="../reference/Rmonize_help.html">Rmonize_help()</a></code> Call the help center for full documentation</li>
+<code><a href="../reference/deprecated.html">Rmonize_help()</a></code> Call the help center for full documentation</li>
 <li>
 <code>dowload_templates()</code> Call the help center to the download template page</li>
 <li>
@@ -133,7 +156,7 @@
 <ul><li>
 <code><a href="../reference/show_harmo_error.html">show_harmo_error()</a></code> Generate a summary of the annotated Data Processing Elements</li>
 <li>
-<code>data_proc_elem_evaluate()</code>,<code><a href="../reference/dataschema_evaluate.html">dataschema_evaluate()</a></code>, <code><a href="../reference/harmonized_dossier_evaluate.html">harmonized_dossier_evaluate()</a></code>,<code><a href="../reference/harmonized_dossier_summarize.html">harmonized_dossier_summarize()</a></code>, <code><a href="../reference/harmonized_dossier_visualize.html">harmonized_dossier_visualize()</a></code> Generate a quality assessment reports and summary statistics of inputs and outputs.</li>
+<code><a href="../reference/data_proc_elem_evaluate.html">data_proc_elem_evaluate()</a></code>,<code><a href="../reference/dataschema_evaluate.html">dataschema_evaluate()</a></code>, <code><a href="../reference/harmonized_dossier_evaluate.html">harmonized_dossier_evaluate()</a></code>,<code><a href="../reference/harmonized_dossier_summarize.html">harmonized_dossier_summarize()</a></code>, <code><a href="../reference/harmonized_dossier_visualize.html">harmonized_dossier_visualize()</a></code> Generate a quality assessment reports and summary statistics of inputs and outputs.</li>
 </ul></div>
 <div class="section level3">
 <h3 id="import-from-madshapr-package-1-0-0">import from madshapR package:<a class="anchor" aria-label="anchor" href="#import-from-madshapr-package-1-0-0"></a></h3>

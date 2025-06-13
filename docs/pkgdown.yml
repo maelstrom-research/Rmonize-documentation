@@ -1,9 +1,11 @@
-pandoc: 3.1.1
+pandoc: '3.2'
 pkgdown: 2.0.7
 pkgdown_sha: ~
 articles:
-  a-Glossary-and-templates: a-Glossary-and-templates.html
-  b-Data-processing-elements: b-Data-processing-elements.html
-  c-Example-with-Rmonize_DEMO: c-Example-with-Rmonize_DEMO.html
-last_built: 2023-12-20T14:24Z
+  a-install-your-working-environment: a-install-your-working-environment.html
+  b-simple-example-of-data-processing-with-Rmonize: b-simple-example-of-data-processing-with-Rmonize.html
+  c-explore-and-prepare-input-datasets-and-data-dictionaries: c-explore-and-prepare-input-datasets-and-data-dictionaries.html
+  d-process-inputs-and-generate-harmonized-outputs: d-process-inputs-and-generate-harmonized-outputs.html
+  e-summarize-and-secure-harmonized-outputs: e-summarize-and-secure-harmonized-outputs.html
+last_built: 2025-06-13T17:00Z
 
