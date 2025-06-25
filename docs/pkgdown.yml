@@ -1,4 +1,4 @@
-pandoc: '3.2'
+pandoc: '3.4'
 pkgdown: 2.0.7
 pkgdown_sha: ~
 articles:
@@ -7,5 +7,5 @@ articles:
   c-explore-and-prepare-input-datasets-and-data-dictionaries: c-explore-and-prepare-input-datasets-and-data-dictionaries.html
   d-process-inputs-and-generate-harmonized-outputs: d-process-inputs-and-generate-harmonized-outputs.html
   e-summarize-and-secure-harmonized-outputs: e-summarize-and-secure-harmonized-outputs.html
-last_built: 2025-06-13T17:00Z
+last_built: 2025-06-25T13:14Z
 
