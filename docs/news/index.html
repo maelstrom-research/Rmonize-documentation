@@ -17,60 +17,145 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Rmonize</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.0.9699</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">2.0.0</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav"><li>
-  <a href="../reference/index.html">Reference</a>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu"><li>
-      <a href="../articles/a-install-your-working-environment.html">Install your working environment</a>
-    </li>
-    <li>
-      <a href="../articles/b-simple-example-of-data-processing-with-Rmonize.html">Simple example of data processing with Rmonize</a>
-    </li>
-    <li>
-      <a href="../articles/c-explore-and-prepare-input-datasets-and-data-dictionaries.html">Explore and prepare input datasets and data dictionaries</a>
-    </li>
-    <li>
-      <a href="../articles/d-process-inputs-and-generate-harmonized-outputs.html">Process inputs and generate harmonized outputs</a>
-    </li>
-    <li>
-      <a href="../articles/e-summarize-and-secure-harmonized-outputs.html">Summarize and secure harmonized outputs</a>
-    </li>
-  </ul></li>
+<ul class="nav navbar-nav">
 <li>
-  <a href="../news/index.html">Changelog</a>
+  <a href="../process/index.html">Process</a>
 </li>
-      </ul><ul class="nav navbar-nav navbar-right"><li>
+<li>
+  <a href="../reference/index.html">Functions</a>
+</li>
+<li>
+  <a href="../glossary/index.html">Glossary</a>
+</li>
+<li>
+  <a href="../news/index.html">Updates</a>
+</li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
   <a href="https://github.com/maelstrom-research/Rmonize/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
-      </ul></div><!--/.nav-collapse -->
-  </div><!--/.container -->
-</div><!--/.navbar -->
+      </ul>
+</div>
+<!--/.nav-collapse -->
+  </div>
+<!--/.container -->
+</div>
+<!--/.navbar -->
 
       
 
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-      <h1 data-toc-skip>Changelog <small></small></h1>
+      <h1 data-toc-skip>Updates <small></small></h1>
       <small>Source: <a href="https://github.com/maelstrom-research/Rmonize/blob/HEAD/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
     <div class="section level2">
-<h2 class="page-header" data-toc-text="1.1.0" id="rmonize-110-release--2024-05-01">Rmonize 1.1.0 (release : 2024-05-01)<small>2024-05-01</small><a class="anchor" aria-label="anchor" href="#rmonize-110-release--2024-05-01"></a></h2>
+<h2 class="page-header" data-toc-text="2.0.0" id="rmonize-200-release--2025-06-26">Rmonize 2.0.0 (release : 2025-06-26)<a class="anchor" aria-label="anchor" href="#rmonize-200-release--2025-06-26"></a></h2>
+<blockquote>
+<p>Attention: Some changes to functions in the current version of madshapR may require updates of existing code.</p>
+</blockquote>
+<div class="section level3">
+<h3 id="superseded-object-2-0-0">Superseded object.<a class="anchor" aria-label="anchor" href="#superseded-object-2-0-0"></a></h3>
+<table class="table"><thead><tr><th>previous version (1.1.0 and older)</th>
+<th>version 2.0.0</th>
+</tr></thead><tbody><tr><td>Rmonize_DEMO</td>
+<td>Rmonize_examples</td>
+</tr></tbody></table></div>
+<div class="section level3">
+<h3 id="superseded-parameters-2-0-0">Superseded parameters.<a class="anchor" aria-label="anchor" href="#superseded-parameters-2-0-0"></a></h3>
+<p>In functions show_harmo_error(), harmonized_dossier_evaluate(), harmonized_dossier_summarize() and harmonized_dossier_visualize(), The parameters have been simplified into one and only “dossier” <a href="https://github.com/maelstrom-research/Rmonize/issues/110" class="external-link uri">https://github.com/maelstrom-research/Rmonize/issues/110</a> <a href="https://github.com/maelstrom-research/Rmonize/issues/109" class="external-link uri">https://github.com/maelstrom-research/Rmonize/issues/109</a> <a href="https://github.com/maelstrom-research/Rmonize/issues/108" class="external-link uri">https://github.com/maelstrom-research/Rmonize/issues/108</a> <a href="https://github.com/maelstrom-research/Rmonize/issues/98" class="external-link uri">https://github.com/maelstrom-research/Rmonize/issues/98</a> <a href="https://github.com/maelstrom-research/Rmonize/issues/93" class="external-link uri">https://github.com/maelstrom-research/Rmonize/issues/93</a> <a href="https://github.com/maelstrom-research/Rmonize/issues/92" class="external-link uri">https://github.com/maelstrom-research/Rmonize/issues/92</a></p>
+<p>previous version (1.1.0 and older)</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="fu"><a href="../reference/harmonized_dossier_evaluate.html">harmonized_dossier_evaluate</a></span><span class="op">(</span></span>
+<span>  <span class="va">harmonized_dossier</span>,<span class="va">dataschema</span>,<span class="va">taxonomy</span>,<span class="va">as_dataschema_mlstr</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="../reference/harmonized_dossier_summarize.html">harmonized_dossier_summarize</a></span><span class="op">(</span></span>
+<span>  <span class="va">harmonized_dossier</span>,<span class="va">group_by</span>,<span class="va">dataschema</span>,<span class="va">data_proc_elem</span>,</span>
+<span>  <span class="va">taxonomy</span>,<span class="va">valueType_guess</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="../reference/harmonized_dossier_visualize.html">harmonized_dossier_visualize</a></span><span class="op">(</span></span>
+<span>  <span class="va">harmonized_dossier</span>,<span class="va">bookdown_path</span>,<span class="va">group_by</span>,<span class="va">harmonized_dossier_summary</span>,</span>
+<span>  <span class="va">dataschema</span>,<span class="va">data_proc_elem</span>,<span class="va">valueType_guess</span>,<span class="va">taxonomy</span><span class="op">)</span></span></code></pre></div>
+<p>version 2.0.0</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="fu"><a href="../reference/harmonized_dossier_evaluate.html">harmonized_dossier_evaluate</a></span><span class="op">(</span><span class="va">harmonized_dossier</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/harmonized_dossier_summarize.html">harmonized_dossier_summarize</a></span><span class="op">(</span><span class="va">harmonized_dossier</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/harmonized_dossier_visualize.html">harmonized_dossier_visualize</a></span><span class="op">(</span><span class="va">harmonized_dossier</span>,<span class="va">bookdown_path</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="superseded-function-behaviors-andor-output-structures-2-0-0">Superseded function behaviors and/or output structures.<a class="anchor" aria-label="anchor" href="#superseded-function-behaviors-andor-output-structures-2-0-0"></a></h3>
+<p>In <code><a href="../reference/harmonized_dossier_evaluate.html">harmonized_dossier_evaluate()</a></code>, the columns generated in the outputs have been renamed as follows :</p>
+<table class="table"><thead><tr><th>previous version (1.1.0 and older)</th>
+<th>current version (2.0.0)</th>
+</tr></thead><tbody><tr><td>index</td>
+<td>Index</td>
+</tr><tr><td>name</td>
+<td>Variable name</td>
+</tr><tr><td>label</td>
+<td>Variable label</td>
+</tr><tr><td>valueType</td>
+<td>Data dictionary valueType</td>
+</tr><tr><td>Categories::label</td>
+<td>Categories in data dictionary</td>
+</tr><tr><td>Categories::missing</td>
+<td>Non-valid categories</td>
+</tr></tbody></table><p>In <code><a href="../reference/harmonized_dossier_summarize.html">harmonized_dossier_summarize()</a></code>, the columns generated in the outputs have been renamed as follows :</p>
+<table class="table"><thead><tr><th>previous version (1.1.0 and older)</th>
+<th>current version (2.0.0)</th>
+</tr></thead><tbody><tr><td>index in data dict.name</td>
+<td>Index</td>
+</tr><tr><td>name</td>
+<td>Variable name</td>
+</tr><tr><td>label</td>
+<td>Variable label</td>
+</tr><tr><td>Estimated dataset valueType</td>
+<td>Suggested valueType</td>
+</tr><tr><td>Actual dataset valueType</td>
+<td>Dataset valueType</td>
+</tr><tr><td>Total number of observations</td>
+<td>Number of rows</td>
+</tr><tr><td>Nb. distinct values</td>
+<td>Number of distinct values</td>
+</tr><tr><td>Nb. valid values</td>
+<td>Number of valid values</td>
+</tr><tr><td>Nb. non-valid values</td>
+<td>Number of non-valid values</td>
+</tr><tr><td>Nb. NA</td>
+<td>Number of empty values</td>
+</tr><tr><td>% total Valid values</td>
+<td>% Valid values</td>
+</tr><tr><td>% Non-valid values</td>
+<td>% Non-valid values</td>
+</tr><tr><td>% NA</td>
+<td>% Empty values</td>
+</tr><tr><td>————————————</td>
+<td>———————————</td>
+</tr></tbody></table></div>
+<div class="section level3">
+<h3 id="bug-fixes-and-improvements-2-0-0">Bug fixes and improvements<a class="anchor" aria-label="anchor" href="#bug-fixes-and-improvements-2-0-0"></a></h3>
+</div>
+<div class="section level3">
+<h3 id="enhancements-in-the-assessment-the-summary-and-the-visual-reports-2-0-0">Enhancements in the assessment, the summary and the visual reports!<a class="anchor" aria-label="anchor" href="#enhancements-in-the-assessment-the-summary-and-the-visual-reports-2-0-0"></a></h3>
+<ul><li><p>The assessment and summary reports had some updates, such as renamed columns and bug corrections. <a href="https://github.com/maelstrom-research/Rmonize/issues/104" class="external-link uri">https://github.com/maelstrom-research/Rmonize/issues/104</a> <a href="https://github.com/maelstrom-research/Rmonize/issues/103" class="external-link uri">https://github.com/maelstrom-research/Rmonize/issues/103</a> <a href="https://github.com/maelstrom-research/Rmonize/issues/89" class="external-link uri">https://github.com/maelstrom-research/Rmonize/issues/89</a> <a href="https://github.com/maelstrom-research/Rmonize/issues/88" class="external-link uri">https://github.com/maelstrom-research/Rmonize/issues/88</a> <a href="https://github.com/maelstrom-research/Rmonize/issues/87" class="external-link uri">https://github.com/maelstrom-research/Rmonize/issues/87</a> <a href="https://github.com/maelstrom-research/Rmonize/issues/86" class="external-link uri">https://github.com/maelstrom-research/Rmonize/issues/86</a> <a href="https://github.com/maelstrom-research/Rmonize/issues/85" class="external-link uri">https://github.com/maelstrom-research/Rmonize/issues/85</a> <a href="https://github.com/maelstrom-research/Rmonize/issues/84" class="external-link uri">https://github.com/maelstrom-research/Rmonize/issues/84</a> <a href="https://github.com/maelstrom-research/Rmonize/issues/68" class="external-link uri">https://github.com/maelstrom-research/Rmonize/issues/68</a> <a href="https://github.com/maelstrom-research/Rmonize/issues/21" class="external-link uri">https://github.com/maelstrom-research/Rmonize/issues/21</a></p></li>
+<li><p>The visual reports have been improved, including better visual outputs and color palettes, and new features such as total number of rows next to the bar charts.</p></li>
+</ul><p><a href="https://github.com/maelstrom-research/Rmonize/issues/57" class="external-link uri">https://github.com/maelstrom-research/Rmonize/issues/57</a> <a href="https://github.com/maelstrom-research/Rmonize/issues/53" class="external-link uri">https://github.com/maelstrom-research/Rmonize/issues/53</a> <a href="https://github.com/maelstrom-research/Rmonize/issues/49" class="external-link uri">https://github.com/maelstrom-research/Rmonize/issues/49</a> <a href="https://github.com/maelstrom-research/Rmonize/issues/48" class="external-link uri">https://github.com/maelstrom-research/Rmonize/issues/48</a> <a href="https://github.com/maelstrom-research/Rmonize/issues/39" class="external-link uri">https://github.com/maelstrom-research/Rmonize/issues/39</a> <a href="https://github.com/maelstrom-research/Rmonize/issues/37" class="external-link uri">https://github.com/maelstrom-research/Rmonize/issues/37</a> <a href="https://github.com/maelstrom-research/Rmonize/issues/33" class="external-link uri">https://github.com/maelstrom-research/Rmonize/issues/33</a> <a href="https://github.com/maelstrom-research/Rmonize/issues/32" class="external-link uri">https://github.com/maelstrom-research/Rmonize/issues/32</a> <a href="https://github.com/maelstrom-research/Rmonize/issues/29" class="external-link uri">https://github.com/maelstrom-research/Rmonize/issues/29</a></p>
+</div>
+</div>
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="1.1.0" id="rmonize-110">Rmonize 1.1.0<small>2024-05-01</small><a class="anchor" aria-label="anchor" href="#rmonize-110"></a></h2>
 <div class="section level3">
 <h3 id="bug-fixes-and-improvements-1-1-0">Bug fixes and improvements<a class="anchor" aria-label="anchor" href="#bug-fixes-and-improvements-1-1-0"></a></h3>
 <ul><li><p>To process the data during testing, the DataSchema and/or the Data Processing Elements and/or input datasets might not be available. To be able to perform testings on harmonization, an additional parameter <code>.debug</code> has been added <a href="https://github.com/maelstrom-research/Rmonize/issues/56" class="external-link uri">https://github.com/maelstrom-research/Rmonize/issues/56</a></p></li>
@@ -79,7 +164,7 @@
 </ul></div>
 <div class="section level3">
 <h3 id="deprecated-functions-1-1-0">deprecated functions<a class="anchor" aria-label="anchor" href="#deprecated-functions-1-1-0"></a></h3>
-<p>To avoid confusion with help(function), the function <code><a href="../reference/deprecated.html">Rmonize_help()</a></code> has been renamed <code><a href="../reference/Rmonize_website.html">Rmonize_website()</a></code>.</p>
+<p>To avoid confusion with help(function), the function <code>Rmonize_help()</code> has been renamed <code><a href="../reference/Rmonize_website.html">Rmonize_website()</a></code>.</p>
 </div>
 <div class="section level3">
 <h3 id="dependency-changes-1-1-0">Dependency changes<a class="anchor" aria-label="anchor" href="#dependency-changes-1-1-0"></a></h3>
@@ -128,7 +213,7 @@
 <div class="section level3">
 <h3 id="helper-functions-and-objects-1-0-0">Helper functions and objects<a class="anchor" aria-label="anchor" href="#helper-functions-and-objects-1-0-0"></a></h3>
 <ul><li>
-<code><a href="../reference/deprecated.html">Rmonize_help()</a></code> Call the help center for full documentation</li>
+<code>Rmonize_help()</code> Call the help center for full documentation</li>
 <li>
 <code>dowload_templates()</code> Call the help center to the download template page</li>
 <li>
@@ -180,7 +265,7 @@
 
 
       <footer><div class="copyright">
-  <p></p><p>Developed by Guillaume Fabre, Maelstrom Research.</p>
+  <p></p><p>Developed by Maelstrom Research.</p>
 </div>
 
 <div class="pkgdown">

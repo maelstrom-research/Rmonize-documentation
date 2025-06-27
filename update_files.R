@@ -5,9 +5,9 @@ library(Rmonize)
 # usethis::use_pkgdown()
 
 devtools::document(roclets = c('rd', 'collate', 'namespace', 'vignette'))
-devtools::build_readme()
 devtools::build_rmd('NEWS.Rmd')
 
+devtools::build_readme()
 fs::dir_delete("docs")
 pkgdown::build_site()
 
@@ -80,6 +80,7 @@ browseURL('docs/index.html')
 source('template_script.R')
 
 # push to git
-Update documentation following latest version of the package
-https://github.com/maelstrom-research/Rmonize-documentation/actions/
-Rmonize_help()
+'update documentation following latest version of the package'
+
+browseURL("https://github.com/maelstrom-research/Rmonize-documentation/actions/")
+madshapR_website()

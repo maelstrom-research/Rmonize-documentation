@@ -45,43 +45,25 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">Rmonize</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.0.9699</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">2.0.0</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
+<ul class="nav navbar-nav">
 <li>
-  <a href="reference/index.html">Reference</a>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-<li>
-      <a href="articles/a-install-your-working-environment.html">Install your working environment</a>
-    </li>
-    <li>
-      <a href="articles/b-simple-example-of-data-processing-with-Rmonize.html">Simple example of data processing with Rmonize</a>
-    </li>
-    <li>
-      <a href="articles/c-explore-and-prepare-input-datasets-and-data-dictionaries.html">Explore and prepare input datasets and data dictionaries</a>
-    </li>
-    <li>
-      <a href="articles/d-process-inputs-and-generate-harmonized-outputs.html">Process inputs and generate harmonized outputs</a>
-    </li>
-    <li>
-      <a href="articles/e-summarize-and-secure-harmonized-outputs.html">Summarize and secure harmonized outputs</a>
-    </li>
-  </ul>
+  <a href="process/index.html">Process</a>
 </li>
 <li>
-  <a href="news/index.html">Changelog</a>
+  <a href="reference/index.html">Functions</a>
 </li>
-      </ul>
+<li>
+  <a href="glossary/index.html">Glossary</a>
+</li>
+<li>
+  <a href="news/index.html">Updates</a>
+</li>
+</ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/maelstrom-research/Rmonize/" class="external-link">
@@ -102,51 +84,31 @@
       </header><div class="row">
   <div class="contents col-md-9">
 
-<div class="section level1">
-<div class="page-header"><h1 id="rmonize">Rmonize<a class="anchor" aria-label="anchor" href="#rmonize"></a>
-</h1></div>
-<!-- badges: start -->
 
+<p><img src="reference/figures/fig_logo.png" style="width: 30%; margin: 0 auto; display: flex; justify-content: left;"></p>
+<p>Harmonizing data (achieving or improving inferential equivalence of data collected by separate studies) can be required in epidemiological research but is methodologically and technically challenging. Data collected by separate studies are typically heterogenous, and decisions on if and how to process data must be made, executed accurately, and documented in a transparent manner. Rmonize is an R package developed by Maelstrom Research <a href="https://www.maelstrom-research.org/" target="_blank" class="external-link">Maelstrom Research</a> to address some of the key challenges in this process and facilitate streamlined, reusable, and well documented harmonization pipelines.</p>
+<div style="display: flex; align-items: center;">
+<div style="flex: 0 0 auto; margin-right: 20px;">
+<p><img src="reference/figures/fig_1.png" style="width: 120px;"></p>
 </div>
-<div class="section level1">
-<h1 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
-</h1>
-<p>Harmonizing data (processing data items from different datasets under a common format) is essential to support research but can be methodologically and technically challenging. Rmonize is an R package developed by <a href="https://www.maelstrom-research.org/" target="_blank" class="external-link">Maelstrom Research</a> to address some of the key challenges faced and promote a streamlined, reusable, and well documented harmonization pipeline. The current documentation provides a starting point to use the package.</p>
+<div style="flex: 1;">
+<p>Get an overview of processing with Rmonize and links to resources available for each step on the <a href="process/index.html">Process</a> page.</p>
 </div>
-<div class="section level1">
-<h1 id="pipeline">Pipeline<a class="anchor" aria-label="anchor" href="#pipeline"></a>
-</h1>
-<p><img src="reference/figures/fig_readme.png" style="width: 100%; margin: 0 auto; display: flex; justify-content: center;"></p>
-<p><br></p>
-<p>Data processing in Rmonize depends on three external user-provided elements: the input datasets (datasets collected by individual studies or data collection centres), DataSchema (list of core variables to generate across input datasets), and Data Processing Elements (elements and algorithms needed to process variables from input datasets into DataSchema formats). The DataSchema and Data Processing Elements are prepared in Excel spreadsheets and imported into R, and they can be easily modified and shared outside of R.</p>
-<hr>
-<p>The package includes integrated functions to support organized data processing and generate well documented outputs. These functions help to prepare and validate inputs, process input datasets into harmonized datasets, identify and troubleshoot errors in processing elements, and produce documentation to help users evaluate harmonized data content and quality. The main outputs provided by Rmonize are the harmonized datasets, their associated data dictionaries, and reports with descriptive statistics, provided in summary tables or figures.</p>
-<p>Rmonize also uses two underlying packages, <a href="https://CRAN.R-project.org/package=madshapR" target="_blank" class="external-link">madshapR</a> and <a href="https://CRAN.R-project.org/package=fabR" target="_blank" class="external-link">fabR</a>, which include many functions to work with data and metadata. The specific functions required by Rmonize are automatically loaded and accessible to the user without separately loading madshapR and fabR.</p>
 </div>
-<div class="section level1">
-<h1 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
-</h1>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># To install Rmonize:</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">'Rmonize'</span><span class="op">)</span></span>
-<span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/maelstrom-research/Rmonize/" class="external-link">Rmonize</a></span><span class="op">)</span></span>
-<span><span class="co"># If you need help with the package, please use:</span></span>
-<span><span class="fu"><a href="reference/Rmonize_website.html">Rmonize_website</a></span><span class="op">(</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Downloadable templates are available here</span></span>
-<span><span class="fu"><a href="reference/Rmonize_templates.html">Rmonize_templates</a></span><span class="op">(</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Example files are available here, along with an online illustrative process </span></span>
-<span><span class="va">Rmonize_examples</span></span></code></pre></div>
-<div class="section level2">
-<h2 id="getting-started">Getting started<a class="anchor" aria-label="anchor" href="#getting-started"></a>
-</h2>
-<p>For more information, you can go to:</p>
-<!-- [Documentation on Rmonize functions and help pages.](https://maelstrom-research.github.io/Rmonize-documentation/reference/index.html) -->
-<!-- [Descriptions of key terms and downloadable templates.](https://maelstrom-research.github.io/Rmonize-documentation/articles/a-Glossary-and-templates.html) -->
-<!-- [Explanation of how to prepare the Data Processing Elements.](https://maelstrom-research.github.io/Rmonize-documentation/articles/b-Data-processing-elements.html) -->
-<!-- [Example scripts with example files.](https://maelstrom-research.github.io/Rmonize-documentation/articles/c-Example-with-Rmonize_examples.html) -->
+<div style="display: flex; align-items: center;">
+<div style="flex: 0 0 auto; margin-right: 20px;">
+<p><img src="reference/figures/fig_2.png" style="width: 120px;"></p>
+</div>
+<div style="flex: 1;">
+<p>For a quick start to using the package, see the vignettes <a href="articles/a-install-your-working-environment.html">Install your working environment</a> and a <a href="articles/b-simple-example-of-data-processing-with-Rmonize.html">Simple example of data processing with Rmonize</a>.</p>
+</div>
+</div>
+<div style="display: flex; align-items: center;">
+<div style="flex: 0 0 auto; margin-right: 20px;">
+<p><img src="reference/figures/fig_3.png" style="width: 120px;"></p>
+</div>
+<div style="flex: 1;">
+<p>The <a href="glossary/index.html">Glossary</a> provides information about package terminology, and the <a href="reference/index.html">Functions</a> page provides technical documentation on package functions and built-in materials</p>
 </div>
 </div>
 
@@ -198,7 +160,7 @@
 
       <footer><div class="copyright">
   <p></p>
-<p>Developed by Guillaume Fabre, Maelstrom Research.</p>
+<p>Developed by Maelstrom Research.</p>
 </div>
 
 <div class="pkgdown">

@@ -33,43 +33,25 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Rmonize</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.0.9699</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">2.0.0</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
+<ul class="nav navbar-nav">
 <li>
-  <a href="../reference/index.html">Reference</a>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-<li>
-      <a href="../articles/a-install-your-working-environment.html">Install your working environment</a>
-    </li>
-    <li>
-      <a href="../articles/b-simple-example-of-data-processing-with-Rmonize.html">Simple example of data processing with Rmonize</a>
-    </li>
-    <li>
-      <a href="../articles/c-explore-and-prepare-input-datasets-and-data-dictionaries.html">Explore and prepare input datasets and data dictionaries</a>
-    </li>
-    <li>
-      <a href="../articles/d-process-inputs-and-generate-harmonized-outputs.html">Process inputs and generate harmonized outputs</a>
-    </li>
-    <li>
-      <a href="../articles/e-summarize-and-secure-harmonized-outputs.html">Summarize and secure harmonized outputs</a>
-    </li>
-  </ul>
+  <a href="../process/index.html">Process</a>
 </li>
 <li>
-  <a href="../news/index.html">Changelog</a>
+  <a href="../reference/index.html">Functions</a>
 </li>
-      </ul>
+<li>
+  <a href="../glossary/index.html">Glossary</a>
+</li>
+<li>
+  <a href="../news/index.html">Updates</a>
+</li>
+</ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/maelstrom-research/Rmonize/" class="external-link">
@@ -161,8 +143,8 @@ files or extracted directly from datasets, if available.</p>
 <span><span class="va">original_dd_study2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/data_dict_extract.html">data_dict_extract</a></span><span class="op">(</span><span class="va">original_dataset_study2</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># If data dictionaries are provided as separate files, assign them separately</span></span>
-<span><span class="va">original_dd_study4</span> <span class="op">&lt;-</span> <span class="va">Rmonize_examples</span><span class="op">$</span><span class="va">original_data_dict_study4</span></span>
-<span><span class="va">original_dd_study5</span> <span class="op">&lt;-</span> <span class="va">Rmonize_examples</span><span class="op">$</span><span class="va">original_data_dict_study5</span></span>
+<span><span class="va">original_dd_study4</span> <span class="op">&lt;-</span> <span class="va">Rmonize_examples</span><span class="op">$</span><span class="va">original_data_dictionary_study4</span></span>
+<span><span class="va">original_dd_study5</span> <span class="op">&lt;-</span> <span class="va">Rmonize_examples</span><span class="op">$</span><span class="va">original_data_dictionary_study5</span></span>
 <span></span>
 <span><span class="co"># A minimal data dictionary can be extracted from any dataset, but it provides very limited information</span></span>
 <span><span class="va">extracted_dd_study3</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/data_dict_extract.html">data_dict_extract</a></span><span class="op">(</span><span class="va">original_dataset_study3</span><span class="op">)</span></span></code></pre></div>
@@ -486,7 +468,7 @@ datasets or harmonization decisions.</p>
 
       <footer><div class="copyright">
   <p></p>
-<p>Developed by Guillaume Fabre, Maelstrom Research.</p>
+<p>Developed by Maelstrom Research.</p>
 </div>
 
 <div class="pkgdown">

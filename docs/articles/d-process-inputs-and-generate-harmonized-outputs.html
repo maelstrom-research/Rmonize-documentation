@@ -33,43 +33,25 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Rmonize</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.0.9699</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">2.0.0</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
+<ul class="nav navbar-nav">
 <li>
-  <a href="../reference/index.html">Reference</a>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-<li>
-      <a href="../articles/a-install-your-working-environment.html">Install your working environment</a>
-    </li>
-    <li>
-      <a href="../articles/b-simple-example-of-data-processing-with-Rmonize.html">Simple example of data processing with Rmonize</a>
-    </li>
-    <li>
-      <a href="../articles/c-explore-and-prepare-input-datasets-and-data-dictionaries.html">Explore and prepare input datasets and data dictionaries</a>
-    </li>
-    <li>
-      <a href="../articles/d-process-inputs-and-generate-harmonized-outputs.html">Process inputs and generate harmonized outputs</a>
-    </li>
-    <li>
-      <a href="../articles/e-summarize-and-secure-harmonized-outputs.html">Summarize and secure harmonized outputs</a>
-    </li>
-  </ul>
+  <a href="../process/index.html">Process</a>
 </li>
 <li>
-  <a href="../news/index.html">Changelog</a>
+  <a href="../reference/index.html">Functions</a>
 </li>
-      </ul>
+<li>
+  <a href="../glossary/index.html">Glossary</a>
+</li>
+<li>
+  <a href="../news/index.html">Updates</a>
+</li>
+</ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/maelstrom-research/Rmonize/" class="external-link">
@@ -129,7 +111,7 @@ processing data with <code><a href="../reference/harmo_process.html">harmo_proce
 DataSchema, and DPEs, which are available from the examples included in
 the package. This example uses cleaned input datasets and a DataSchema
 that has no errors. We will start with a version of the DPE that has the
-correct structure and required columns (see <a href="https://maelstrom-research.github.io/Rmonize-documentation/articles/a-Glossary-and-templates.html" class="external-link">online
+correct structure and required columns (see <a href="https://maelstrom-research.github.io/Rmonize-documentation/glossary/index.html" class="external-link">online
 documentation</a>), but has some issues that will create errors in
 processing.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
@@ -180,7 +162,8 @@ being present.</p>
 <span>  object <span class="op">=</span> <span class="va">input_dossier</span>,</span>
 <span>  dataschema <span class="op">=</span> <span class="va">dataschema</span>,</span>
 <span>  data_proc_elem <span class="op">=</span> <span class="va">dpe_with_errors</span>,</span>
-<span>  harmonized_col_dataset <span class="op">=</span> <span class="st">'adm_study_id'</span><span class="op">)</span> <span class="co"># Identifies the harmonized variable to use as dataset identifiers</span></span></code></pre></div>
+<span>  harmonized_col_dataset <span class="op">=</span> <span class="st">'adm_study_id'</span><span class="op">)</span> <span class="co"># Identifies the harmonized variable </span></span>
+<span>                                           <span class="co"># to use as dataset identifiers</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <img src="images/vig4_fig01.png" alt="Subset of processing information printed in the console, including messages about errors in running individual algorithms." width="80%"><p class="caption">
 Subset of processing information printed in the console, including
@@ -211,7 +194,8 @@ and can also be extracted with <code><a href="../reference/show_harmo_error.html
 <code class="sourceCode R"><span><span class="co"># To identify processing errors to correct in the DPE</span></span>
 <span><span class="fu"><a href="../reference/show_harmo_error.html">show_harmo_error</a></span><span class="op">(</span></span>
 <span>  <span class="va">harmonized_dossier_with_errors</span>,</span>
-<span>  show_warnings <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="co"># Can be informative, but can also be turned off, e.g., if there are known warnings produced by processing algorithms</span></span></code></pre></div>
+<span>  show_warnings <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="co"># Can be informative, but can also be turned off, e.g., </span></span>
+<span>                        <span class="co"># if there are known warnings produced by processing algorithms</span></span></code></pre></div>
 <p>This prints the specific DataSchema variables and input datasets
 affected by the errors and information about the specific error.</p>
 <div class="figure" style="text-align: center">
@@ -250,7 +234,8 @@ processing errors as many times as needed.</p>
 <span>  object <span class="op">=</span> <span class="va">input_dossier</span>,</span>
 <span>  dataschema <span class="op">=</span> <span class="va">dataschema</span>,</span>
 <span>  data_proc_elem <span class="op">=</span> <span class="va">dpe_no_errors</span>,</span>
-<span>  harmonized_col_dataset <span class="op">=</span> <span class="st">'adm_study_id'</span> <span class="co"># Identifies the harmonized variable to use as dataset identifiers</span></span>
+<span>  harmonized_col_dataset <span class="op">=</span> <span class="st">'adm_study_id'</span> <span class="co"># Identifies the harmonized variable </span></span>
+<span>                                          <span class="co"># to use as dataset identifiers</span></span>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Confirm there are no errors</span></span>
@@ -263,7 +248,7 @@ mis-specifications in algorithms. Filling out the DPE can take some time
 and attention to detail, but has benefits in comprehensively documenting
 the processing done, providing a clear way to communicate with others
 about the processing, and making it easier to identify issues and make
-revisions to the processing. <a href="https://maelstrom-research.github.io/Rmonize-documentation/articles/b-Data-processing-elements.html" class="external-link">See
+revisions to the processing. <a href="https://maelstrom-research.github.io/Rmonize-documentation/dpe/index.html" class="external-link">See
 further documentation</a> for more details about the DPE.</p>
 <p>Once there are no processing errors, the harmonized dossier can be
 used to extract harmonization outputs (see the vignette Summarize and
@@ -298,7 +283,7 @@ easily used in other Rmonize functions.</p>
 
       <footer><div class="copyright">
   <p></p>
-<p>Developed by Guillaume Fabre, Maelstrom Research.</p>
+<p>Developed by Maelstrom Research.</p>
 </div>
 
 <div class="pkgdown">

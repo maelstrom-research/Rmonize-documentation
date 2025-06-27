@@ -33,43 +33,25 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Rmonize</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.0.9699</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">2.0.0</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
+<ul class="nav navbar-nav">
 <li>
-  <a href="../reference/index.html">Reference</a>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-<li>
-      <a href="../articles/a-install-your-working-environment.html">Install your working environment</a>
-    </li>
-    <li>
-      <a href="../articles/b-simple-example-of-data-processing-with-Rmonize.html">Simple example of data processing with Rmonize</a>
-    </li>
-    <li>
-      <a href="../articles/c-explore-and-prepare-input-datasets-and-data-dictionaries.html">Explore and prepare input datasets and data dictionaries</a>
-    </li>
-    <li>
-      <a href="../articles/d-process-inputs-and-generate-harmonized-outputs.html">Process inputs and generate harmonized outputs</a>
-    </li>
-    <li>
-      <a href="../articles/e-summarize-and-secure-harmonized-outputs.html">Summarize and secure harmonized outputs</a>
-    </li>
-  </ul>
+  <a href="../process/index.html">Process</a>
 </li>
 <li>
-  <a href="../news/index.html">Changelog</a>
+  <a href="../reference/index.html">Functions</a>
 </li>
-      </ul>
+<li>
+  <a href="../glossary/index.html">Glossary</a>
+</li>
+<li>
+  <a href="../news/index.html">Updates</a>
+</li>
+</ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/maelstrom-research/Rmonize/" class="external-link">
@@ -179,7 +161,8 @@ by dataset. A categorical variable ‘Rmonize::harmonized_col_dataset’ is
 created based on the dataset names and included in the report.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Produce a visual report of the harmonized datasets and variables</span></span>
-<span><span class="co"># You must specify a folder to contain the visual report files, and the folder name must not already exist.</span></span>
+<span><span class="co"># You must specify a folder to contain the visual report files, and the </span></span>
+<span><span class="co"># folder name must not already exist.</span></span>
 <span><span class="co"># WARNING: This script creates a folder 'tmp'.</span></span>
 <span><span class="va">bookdown_path</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">'tmp/'</span>,<span class="fu"><a href="https://rdrr.io/r/base/basename.html" class="external-link">basename</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="kw">if</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/files2.html" class="external-link">dir.exists</a></span><span class="op">(</span><span class="va">bookdown_path</span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/files.html" class="external-link">file.remove</a></span><span class="op">(</span><span class="va">bookdown_path</span><span class="op">)</span></span>
@@ -308,7 +291,7 @@ R.</p>
 
       <footer><div class="copyright">
   <p></p>
-<p>Developed by Guillaume Fabre, Maelstrom Research.</p>
+<p>Developed by Maelstrom Research.</p>
 </div>
 
 <div class="pkgdown">

@@ -23,48 +23,39 @@ is always a unique entity identifier when datasets are pooled."><!-- mathjax -->
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Rmonize</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.0.9699</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">2.0.0</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav"><li>
-  <a href="../reference/index.html">Reference</a>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu"><li>
-      <a href="../articles/a-install-your-working-environment.html">Install your working environment</a>
-    </li>
-    <li>
-      <a href="../articles/b-simple-example-of-data-processing-with-Rmonize.html">Simple example of data processing with Rmonize</a>
-    </li>
-    <li>
-      <a href="../articles/c-explore-and-prepare-input-datasets-and-data-dictionaries.html">Explore and prepare input datasets and data dictionaries</a>
-    </li>
-    <li>
-      <a href="../articles/d-process-inputs-and-generate-harmonized-outputs.html">Process inputs and generate harmonized outputs</a>
-    </li>
-    <li>
-      <a href="../articles/e-summarize-and-secure-harmonized-outputs.html">Summarize and secure harmonized outputs</a>
-    </li>
-  </ul></li>
+<ul class="nav navbar-nav">
 <li>
-  <a href="../news/index.html">Changelog</a>
+  <a href="../process/index.html">Process</a>
 </li>
-      </ul><ul class="nav navbar-nav navbar-right"><li>
+<li>
+  <a href="../reference/index.html">Functions</a>
+</li>
+<li>
+  <a href="../glossary/index.html">Glossary</a>
+</li>
+<li>
+  <a href="../news/index.html">Updates</a>
+</li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
   <a href="https://github.com/maelstrom-research/Rmonize/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
-      </ul></div><!--/.nav-collapse -->
-  </div><!--/.container -->
-</div><!--/.navbar -->
+      </ul>
+</div>
+<!--/.nav-collapse -->
+  </div>
+<!--/.container -->
+</div>
+<!--/.navbar -->
 
       
 
@@ -88,13 +79,12 @@ is always a unique entity identifier when datasets are pooled.</p>
 
     <div id="ref-usage">
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">harmo_process</span><span class="op">(</span></span>
-<span>  object <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  dataschema <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/attributes.html" class="external-link">attributes</a></span><span class="op">(</span><span class="va">dossier</span><span class="op">)</span><span class="op">$</span><span class="va">`Rmonize::DataSchema`</span>,</span>
-<span>  data_proc_elem <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/attributes.html" class="external-link">attributes</a></span><span class="op">(</span><span class="va">dossier</span><span class="op">)</span><span class="op">$</span><span class="va">`Rmonize::Data Processing Elements`</span>,</span>
-<span>  harmonized_col_dataset <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/attributes.html" class="external-link">attributes</a></span><span class="op">(</span><span class="va">dossier</span><span class="op">)</span><span class="op">$</span><span class="va">`Rmonize::harmonized_col_dataset`</span>,</span>
-<span>  harmonized_col_id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/attributes.html" class="external-link">attributes</a></span><span class="op">(</span><span class="va">dossier</span><span class="op">)</span><span class="op">$</span><span class="va">`Rmonize::harmonized_col_id`</span>,</span>
-<span>  .debug <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>  dossier <span class="op">=</span> <span class="va">object</span></span>
+<span>  <span class="va">object</span>,</span>
+<span>  dataschema <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/attributes.html" class="external-link">attributes</a></span><span class="op">(</span><span class="va">object</span><span class="op">)</span><span class="op">$</span><span class="va">`Rmonize::DataSchema`</span>,</span>
+<span>  data_proc_elem <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/attributes.html" class="external-link">attributes</a></span><span class="op">(</span><span class="va">object</span><span class="op">)</span><span class="op">$</span><span class="va">`Rmonize::Data Processing Elements`</span>,</span>
+<span>  harmonized_col_dataset <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/attributes.html" class="external-link">attributes</a></span><span class="op">(</span><span class="va">object</span><span class="op">)</span><span class="op">$</span><span class="va">`Rmonize::harmonized_col_dataset`</span>,</span>
+<span>  harmonized_col_id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/attributes.html" class="external-link">attributes</a></span><span class="op">(</span><span class="va">object</span><span class="op">)</span><span class="op">$</span><span class="va">`Rmonize::harmonized_col_id`</span>,</span>
+<span>  .debug <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -125,10 +115,6 @@ column present in every dataset to use as a participant identifier.</p></dd>
 
 <dt>.debug</dt>
 <dd><p>Allow user to test the inputs before processing harmonization.</p></dd>
-
-
-<dt>dossier</dt>
-<dd><p><a href="https://lifecycle.r-lib.org/articles/stages.html#deprecated" class="external-link"><img src="figures/lifecycle-deprecated.svg" alt="[Deprecated]"></a></p></dd>
 
 </dl></div>
     <div id="value">
