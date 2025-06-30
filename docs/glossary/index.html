@@ -94,28 +94,12 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <script>
-      $(function () {
-        Toc.init({ $nav: $("#toc-input"), $scope: $("#tab-input") });
-        Toc.init({ $nav: $("#toc-harmo"), $scope: $("#tab-harmo") });
-
-        function spy(t) {
-          $("body").removeData("bs.scrollspy").off(".scrollspy").scrollspy({ target: t, offset: 70 }).scrollspy("refresh");
-          $(window).trigger("scroll");
-        }
-
-        spy("#toc-input");
-
-        $('a[data-toggle="tab"]').on("shown.bs.tab", function (e) {
-          var showInput = e.target.hash === "#tab-input";
-          $("#toc-input").toggle(showInput);
-          $("#toc-harmo").toggle(!showInput);
-          spy(showInput ? "#toc-input" : "#toc-harmo");
-        });
-      });
-    </script>
   </head>
-  <body style="padding-top: 70px">
+  <body
+    data-spy="scroll"
+    data-target="#toc"
+    style="padding-top: 70px"
+  >
     <div class="container template-news">
       <header>
         <div
@@ -200,793 +184,744 @@
             indicated in square brackets ([…]). An asterisk (<strong>*</strong>) indicates a required object or component. You can download templates or find additional documentation where available
             using the links provided.
           </p>
-
-          <!-- TABs for Input and Output -->
-          <ul
-            class="nav nav-tabs"
-            role="tablist"
-          >
-            <li class="active">
+          <div class="section level2">
+            <h2 id="dataschema">
+              DataSchema<a
+                class="anchor"
+                aria-label="anchor"
+                href="#dataschema"
+              ></a>
+            </h2>
+            <p>List of core variables to generate across datasets and related metadata.</p>
+            <button>
               <a
-                href="#tab-input"
-                role="tab"
-                data-toggle="tab"
-                >Input Elements</a
+                href="../templates/dataschema%20-%20template.xlsx"
+                download
+                class="external-link"
+                >Download an Excel template</a
               >
-            </li>
-            <li>
-              <a
-                href="#tab-harmo"
-                role="tab"
-                data-toggle="tab"
-                >Harmonized Outputs</a
-              >
-            </li>
-          </ul>
-          <!-- !TABs for Input and Output -->
-
-          <!-- Tabs content -->
-          <div class="tab-content">
-            <!-- -- Tab 1 – INPUT objects  ------------------------------------- -->
-            <div
-              id="tab-input"
-              class="tab-pane fade in active"
-            >
-              <!-- keep only these sections inside -->
-              <div class="section level2">
-                <h2 id="dataschema">
-                  DataSchema<a
-                    class="anchor"
-                    aria-label="anchor"
-                    href="#dataschema"
-                  ></a>
-                </h2>
-                <p>List of core variables to generate across datasets and related metadata.</p>
-                <button>
-                  <a
-                    href="../templates/dataschema%20-%20template.xlsx"
-                    download
-                    class="external-link"
-                    >Download an Excel template</a
-                  >
-                </button>
-                <div class="section level3">
-                  <h3 id="variables">
-                    Variables *<a
-                      class="anchor"
-                      aria-label="anchor"
-                      href="#variables"
-                    ></a>
-                  </h3>
-                  <p>
-                    Metadata table containing the list of core variables to generate across datasets and related metadata about the variables. This table is required and uses the following columns.
-                  </p>
-                  <div style="padding-left: 10px; padding-right: 10px; background-color: #eee">
-                    <table
-                      style="display: table"
-                      class="table"
-                    >
-                      <thead>
-                        <tr class="header">
-                          <th>Name</th>
-                          <th width="75%">Description</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>index</td>
-                          <td>Index to order variables in the table.</td>
-                        </tr>
-                        <tr>
-                          <td>name *</td>
-                          <td>Name of the DataSchema variable. Each entry must be unique. The first entry must be the primary identifier variable (e.g., participant unique ID).</td>
-                        </tr>
-                        <tr>
-                          <td>label</td>
-                          <td>Short description of the DataSchema variable. A language can be specified using a language code, such as ‘label:en’ for english or ‘label:fr’ for french.</td>
-                        </tr>
-                        <tr>
-                          <td>valueType</td>
-                          <td>
-                            Value type of the input dataset variable (e.g., text, integer, decimal, boolean, date, datetime). See
-                            <a
-                              href="https://opaldoc.obiba.org/en/dev/magma-user-guide/value/type.html"
-                              class="external-link"
-                              target="_blank"
-                            >
-                              additional details</a
-                            >.
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-                <div class="section level3">
-                  <h3 id="categories">
-                    Categories<a
-                      class="anchor"
-                      aria-label="anchor"
-                      href="#categories"
-                    ></a>
-                  </h3>
-                  <p>
-                    Metadata table containing the list of categories and related metadata (coding and description of the response options) defined for categorical variables (if any). If there are
-                    categorical variables defined, this table is required and uses the following columns.
-                  </p>
-                  <div style="padding-left: 10px; padding-right: 10px; background-color: #eee">
-                    <table
-                      style="display: table"
-                      class="table"
-                    >
-                      <thead>
-                        <tr class="header">
-                          <th>Name</th>
-                          <th width="75%">Description</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>variable *</td>
-                          <td>
-                            Name of the DataSchema variable to which the category belongs. This column is required if the Categories table is present. The value must also be present in the column
-                            ‘name’ in the Variables table.
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>name *</td>
-                          <td>
-                            Category code value. This column is required if the table Categories is present. The combination of ‘variable’ and ‘name’ within the Categories table (i.e., the combination
-                            of DataSchema variable and category code value) must be unique.
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>label</td>
-                          <td>Short description of the category code value. A language can be specified using a language code, such as ‘label:en’ for english or ‘label:fr’ for french.</td>
-                        </tr>
-                        <tr>
-                          <td>missing</td>
-                          <td>
-                            Boolean value (TRUE/FALSE or 1/0) indicating if the value in ‘name’ is interpreted as a missing value (e.g., question skipped by design in a questionnaire or a response
-                            option
-                            <em>“Prefer not to answer”</em>).
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-              <div class="section level2">
-                <h2 id="input-dataset">
-                  Input Dataset<a
-                    class="anchor"
-                    aria-label="anchor"
-                    href="#input-dataset"
-                  ></a>
-                </h2>
-                <p>Data table containing a collection of variables to process under the DataSchema format.</p>
-                <div style="padding-left: 10px; padding-right: 10px; background-color: #eee">
-                  <table
-                    style="display: table"
-                    class="table"
-                  >
-                    <thead>
-                      <tr class="header">
-                        <th>Name</th>
-                        <th width="75%">Description</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>[col_1] *</td>
-                        <td>First variable in the input dataset, typically the identifier or index. A dataset must have at least one variable.</td>
-                      </tr>
-                      <tr>
-                        <td>[col_2] …</td>
-                        <td>Additional variable(s) in the input dataset.</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-              <div class="section level2">
-                <h2 id="input-data-dictionary">
-                  Input Data Dictionary<a
-                    class="anchor"
-                    aria-label="anchor"
-                    href="#input-data-dictionary"
-                  ></a>
-                </h2>
-                <p>List of variables in an input dataset and related metadata.</p>
-                <button>
-                  <a
-                    href="../templates/data_dictionary%20-%20template.xlsx"
-                    download
-                    class="external-link"
-                    >Download an Excel template</a
-                  >
-                </button>
-                <div class="section level3">
-                  <h3 id="variables-1">
-                    Variables *<a
-                      class="anchor"
-                      aria-label="anchor"
-                      href="#variables-1"
-                    ></a>
-                  </h3>
-                  <p>
-                    Metadata table containing the list of variables in an input dataset and metadata about the input variables. If a data dictionary is defined for an input dataset, this table is
-                    required and uses the following columns.
-                  </p>
-                  <div style="padding-left: 10px; padding-right: 10px; background-color: #eee">
-                    <table
-                      style="display: table"
-                      class="table"
-                    >
-                      <thead>
-                        <tr class="header">
-                          <th>Name</th>
-                          <th width="75%">Description</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>index</td>
-                          <td>Index to order variables in the table.</td>
-                        </tr>
-                        <tr>
-                          <td>name *</td>
-                          <td>Name of the input dataset variable. Each entry must be unique. The first entry is typically the primary identifier variable (e.g., participant unique ID).</td>
-                        </tr>
-                        <tr>
-                          <td>label</td>
-                          <td>Short description of the input dataset variable. A language can be specified using a language code, such as ‘label:en’ for english or ‘label:fr’ for french.</td>
-                        </tr>
-                        <tr>
-                          <td>valueType</td>
-                          <td>
-                            Value type of the input dataset variable (e.g., text, integer, decimal, boolean, date, datetime). See
-                            <a
-                              href="https://opaldoc.obiba.org/en/dev/magma-user-guide/value/type.html"
-                              class="external-link"
-                              target="_blank"
-                            >
-                              additional details</a
-                            >.
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-                <div class="section level3">
-                  <h3 id="categories-1">
-                    Categories<a
-                      class="anchor"
-                      aria-label="anchor"
-                      href="#categories-1"
-                    ></a>
-                  </h3>
-                  <p>
-                    Metadata table containing the list of categories and related metadata (coding and description of the response options) defined for categorical variables (if any). If there are
-                    categorical variables defined, this table is required and uses the following columns.
-                  </p>
-                  <div style="padding-left: 10px; padding-right: 10px; background-color: #eee">
-                    <table
-                      style="display: table"
-                      class="table"
-                    >
-                      <thead>
-                        <tr class="header">
-                          <th>Name</th>
-                          <th width="75%">Description</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>variable *</td>
-                          <td>
-                            Name of the input dataset variable to which the category belongs. This column is required if the Categories table is present. The value must also be present in the column
-                            ‘name’ in the Variables table.
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>name *</td>
-                          <td>
-                            Category code value. This column is required if the table Categories is present. The combination of ‘variable’ and ‘name’ within the Categories table (i.e., the combination
-                            of DataSchema variable and category code value) must be unique.
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>label</td>
-                          <td>Short description of the category code value. A language can be specified using a language code, such as ‘label:en’ for english or ‘label:fr’ for french.</td>
-                        </tr>
-                        <tr>
-                          <td>missing</td>
-                          <td>
-                            Boolean value (TRUE/FALSE or 1/0) indicating if the value in ‘name’ is interpreted as a missing value (e.g., question skipped by design in a questionnaire or a response
-                            option
-                            <em>“Prefer not to answer”</em>).
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-              <div class="section level2">
-                <h2 id="data-processing-elements">
-                  Data Processing Elements<a
-                    class="anchor"
-                    aria-label="anchor"
-                    href="#data-processing-elements"
-                  ></a>
-                </h2>
-                <p>
-                  Metadata table containing the elements defining the possibility for each input dataset to generate each DataSchema variable and, where applicable, the algorithms to generate
-                  harmonized variables in the DataSchema formats.
-                </p>
-                <button>
-                  <a
-                    href="../templates/data_processing_elements%20-%20template.csv"
-                    download
-                    class="external-link"
-                    >Download an csv template</a
-                  >
-                </button>
-                <p>
-                  See
-                  <a
-                    href="../dpe/index.html"
-                    class="external-link"
-                    >additional documentation for Data Processing Elements</a
-                  >.
-                </p>
-                <div style="padding-left: 10px; padding-right: 10px; background-color: #eee">
-                  <table
-                    style="display: table"
-                    class="table"
-                  >
-                    <thead>
-                      <tr class="header">
-                        <th>Name</th>
-                        <th width="75%">Description</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>index</td>
-                        <td>Index to order algorithms in the table.</td>
-                      </tr>
-                      <tr>
-                        <td>dataschema_variable *</td>
-                        <td>
-                          Name of the DataSchema variable being generated (must match a variable in the DataSchema).The first entry must be the primary identifier variable (e.g., participant unique
-                          ID).
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>label</td>
-                        <td>Short description of the DataSchema variable (as in the DataSchema).</td>
-                      </tr>
-                      <tr>
-                        <td>valueType</td>
-                        <td>Value type of the DataSchema variable (as in the DataSchema).</td>
-                      </tr>
-                      <tr>
-                        <td>input_dataset *</td>
-                        <td>Name of the Input Dataset used to generate the DataSchema variable (as named in the Dossier).</td>
-                      </tr>
-                      <tr>
-                        <td>input_variables *</td>
-                        <td>Name of the variable(s) in the ‘input_dataset’ used to generate the DataSchema variable.</td>
-                      </tr>
-                      <tr>
-                        <td>Mlstr_harmo:rule_category *</td>
-                        <td>
-                          Type of algorithm used to generate the DataSchema variable from the input variables. The first entry must be the creation of a harmonized primary identifier variable (e.g.,
-                          participant unique ID).
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Mlstr_harmo:algorithm *</td>
-                        <td>Algorithm used to generate the DataSchema variable from the input variables.</td>
-                      </tr>
-                      <tr>
-                        <td>Mlstr_harmo:status</td>
-                        <td>
-                          Possibility to generate the DataSchema variable from the input dataset. This is considered “complete” if the DataSchema variable can be generated from the input dataset or
-                          “impossible” if not.
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Mlstr_harmo:status_detail</td>
-                        <td>
-                          Additional information about the possibility to generate the DataSchema variable from the input dataset. If ‘Mlstr_harmo:status’ is “complete”, the information could be
-                          considered “identical” or “compatible” with the DataSchema variable. If ‘Mlstr_harmo:status’ is “impossible”, the information could be considered “incompatible” or
-                          “unavailable” for harmonization.
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Mlstr_harmo:comment</td>
-                        <td>Additional information about the inputs or algorithms to document with the harmonized variable.</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-              <div class="section level2">
-                <h2 id="dossier">
-                  Dossier<a
-                    class="anchor"
-                    aria-label="anchor"
-                    href="#dossier"
-                  ></a>
-                </h2>
-                <p>Set of one or more input dataset(s) and their associated input data dictionary(ies).</p>
-                <div style="padding-left: 10px; padding-right: 10px; background-color: #eee">
-                  <table
-                    style="display: table"
-                    class="table"
-                  >
-                    <thead>
-                      <tr class="header">
-                        <th>Name</th>
-                        <th width="75%">Description</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>[input_dataset_1] *</td>
-                        <td>
-                          Data table containing a collection of variables to process under the DataSchema formats and its associated input data dictionary. At least one input dataset is required. The
-                          input dataset name is defined by the user and is indicated in the Data Processing Elements column ‘input_dataset’. This name identifies the source of input variables for data
-                          processing.
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>[input_dataset_2] …</td>
-                        <td>Additional input dataset and associated data dictionary.</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
+            </button>
+            <div class="section level3">
+              <h3 id="variables">
+                Variables *<a
+                  class="anchor"
+                  aria-label="anchor"
+                  href="#variables"
+                ></a>
+              </h3>
+              <p>Metadata table containing the list of core variables to generate across datasets and related metadata about the variables. This table is required and uses the following columns.</p>
+              <div style="padding-left: 10px; padding-right: 10px; background-color: #eee">
+                <table
+                  style="display: table"
+                  class="table"
+                >
+                  <thead>
+                    <tr class="header">
+                      <th>Name</th>
+                      <th width="75%">Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>index</td>
+                      <td>Index to order variables in the table.</td>
+                    </tr>
+                    <tr>
+                      <td>name *</td>
+                      <td>Name of the DataSchema variable. Each entry must be unique. The first entry must be the primary identifier variable (e.g., participant unique ID).</td>
+                    </tr>
+                    <tr>
+                      <td>label</td>
+                      <td>Short description of the DataSchema variable. A language can be specified using a language code, such as ‘label:en’ for english or ‘label:fr’ for french.</td>
+                    </tr>
+                    <tr>
+                      <td>valueType</td>
+                      <td>
+                        Value type of the input dataset variable (e.g., text, integer, decimal, boolean, date, datetime). See
+                        <a
+                          href="https://opaldoc.obiba.org/en/dev/magma-user-guide/value/type.html"
+                          class="external-link"
+                          target="_blank"
+                        >
+                          additional details</a
+                        >.
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </div>
-
-            <!-- -- Tab 2 – HARMONIZED objects --------------------------------- -->
-            <div
-              id="tab-harmo"
-              class="tab-pane fade"
-            >
-              <div class="section level2">
-                <h2 id="harmonized-dataset">
-                  Harmonized Dataset<a
-                    class="anchor"
-                    aria-label="anchor"
-                    href="#harmonized-dataset"
-                  ></a>
-                </h2>
-                <p>Data table containing a collection of harmonized variables processed under the DataSchema formats.</p>
-                <div style="padding-left: 10px; padding-right: 10px; background-color: #eee">
-                  <table
-                    style="display: table"
-                    class="table"
-                  >
-                    <thead>
-                      <tr class="header">
-                        <th>Name</th>
-                        <th width="75%">Description</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>[harmonized_variable_1] *</td>
-                        <td>
-                          First harmonized variable. This is the primary identifier variable (e.g., participant unique ID). Variables in the harmonized dataset are generated in the order defined in
-                          the DataSchema.
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>[harmonized_variable_2] …</td>
-                        <td>Additional harmonized variable.</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-
-              <div class="section level2">
-                <h2 id="harmonized-data-dictionary">
-                  Harmonized Data Dictionary<a
-                    class="anchor"
-                    aria-label="anchor"
-                    href="#harmonized-data-dictionary"
-                  ></a>
-                </h2>
-                <p>List of variables in a harmonized dataset and related metadata.</p>
-                <div class="section level3">
-                  <h3 id="variables-2">
-                    Variables *<a
-                      class="anchor"
-                      aria-label="anchor"
-                      href="#variables-2"
-                    ></a>
-                  </h3>
-                  <p>Metadata table containing the list of variables in a harmonized dataset and metadata about the harmonized variables (taken from the DataSchema and Data Processing Elements).</p>
-                  <div style="padding-left: 10px; padding-right: 10px; background-color: #eee">
-                    <table
-                      style="display: table"
-                      class="table"
-                    >
-                      <thead>
-                        <tr class="header">
-                          <th>Name</th>
-                          <th width="75%">Description</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>index</td>
-                          <td>Index to order variables in the table (taken from the DataSchema).</td>
-                        </tr>
-                        <tr>
-                          <td>name *</td>
-                          <td>Name of the harmonized variable (taken from the DataSchema).</td>
-                        </tr>
-                        <tr>
-                          <td>label</td>
-                          <td>Short description of the harmonized variable (taken from the DataSchema).</td>
-                        </tr>
-                        <tr>
-                          <td>valueType</td>
-                          <td>Value type of the harmonized variable (taken from the DataSchema).</td>
-                        </tr>
-                        <tr>
-                          <td>Mlstr_harmo:rule_category</td>
-                          <td>Type of algorithm used to generate the DataSchema variable from the input variables (taken from the Data Processing Elements).</td>
-                        </tr>
-                        <tr>
-                          <td>Mlstr_harmo:algorithm</td>
-                          <td>Algorithm used to generate the harmonized variable from the input variables (taken from the Data Processing Elements).</td>
-                        </tr>
-                        <tr>
-                          <td>Mlstr_harmo:status</td>
-                          <td>Possibility to generate the DataSchema variable from the input dataset (taken from the Data Processing Elements).</td>
-                        </tr>
-                        <tr>
-                          <td>Mlstr_harmo:status_detail</td>
-                          <td>Additional information about the possibility to generate the DataSchema variable from the input dataset (taken from the Data Processing Elements).</td>
-                        </tr>
-                        <tr>
-                          <td>Mlstr_harmo:comment</td>
-                          <td>Additional information about the inputs or algorithms to document with the harmonized variable (taken from the Data Processing Elements).</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-                <div class="section level3">
-                  <h3 id="categories-2">
-                    Categories<a
-                      class="anchor"
-                      aria-label="anchor"
-                      href="#categories-2"
-                    ></a>
-                  </h3>
-                  <p>Metadata table containing the list of categories and related metadata (taken from the DataSchema).</p>
-                  <div style="padding-left: 10px; padding-right: 10px; background-color: #eee">
-                    <table
-                      style="display: table"
-                      class="table"
-                    >
-                      <thead>
-                        <tr class="header">
-                          <th>Name</th>
-                          <th width="75%">Description</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>variable *</td>
-                          <td>Name of the harmonized variable to which the category belong (taken from the DataSchema).</td>
-                        </tr>
-                        <tr>
-                          <td>name *</td>
-                          <td>Category code value (taken from the DataSchema).</td>
-                        </tr>
-                        <tr>
-                          <td>label</td>
-                          <td>Short description of the category code value (taken from the DataSchema).</td>
-                        </tr>
-                        <tr>
-                          <td>missing</td>
-                          <td>Boolean value (TRUE/FALSE or 1/0) indicating if the value in ‘name’ is interpreted as a missing value (taken from the DataSchema).</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-              <div class="section level2">
-                <h2 id="harmonized-dossier">
-                  Harmonized Dossier<a
-                    class="anchor"
-                    aria-label="anchor"
-                    href="#harmonized-dossier"
-                  ></a>
-                </h2>
-                <p>Set of one or more harmonized dataset(s) and their associated data dictionary(ies).</p>
-                <div style="padding-left: 10px; padding-right: 10px; background-color: #eee">
-                  <table
-                    style="display: table"
-                    class="table"
-                  >
-                    <thead>
-                      <tr class="header">
-                        <th>Name</th>
-                        <th width="75%">Description</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>[harmonized_dataset_1] *</td>
-                        <td>
-                          Data table containing a collection of harmonized variables processed under the DataSchema format and its associated data dictionary. There is one harmonized dataset per input
-                          dataset.
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>[harmonized_dataset_2] …</td>
-                        <td>Additional harmonized dataset and its associated data dictionary.</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-              <div class="section level2">
-                <h2 id="pooled-harmonized-dataset">
-                  Pooled Harmonized Dataset<a
-                    class="anchor"
-                    aria-label="anchor"
-                    href="#pooled-harmonized-dataset"
-                  ></a>
-                </h2>
-                <p>Combined data table containing multiple harmonized datasets processed under the same DataSchema formats.</p>
-                <div style="padding-left: 10px; padding-right: 10px; background-color: #eee">
-                  <table
-                    style="display: table"
-                    class="table"
-                  >
-                    <thead>
-                      <tr class="header">
-                        <th>Name</th>
-                        <th width="75%">Description</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>[harmonized_dataset_1] *</td>
-                        <td>First harmonized variable. This is the primary unique identifier variable. Variables in the harmonized dataset are generated in the order defined in the DataSchema.</td>
-                      </tr>
-                      <tr>
-                        <td>[harmonized_dataset_2] …</td>
-                        <td>Additional harmonized variable.</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-              <div class="section level2">
-                <h2 id="pooled-harmonized-data-dictionary">
-                  Pooled Harmonized Data Dictionary<a
-                    class="anchor"
-                    aria-label="anchor"
-                    href="#pooled-harmonized-data-dictionary"
-                  ></a>
-                </h2>
-                <p>List of variables in a pooled harmonized dataset and related metadata.</p>
-                <div class="section level3">
-                  <h3 id="variables-3">
-                    Variables *<a
-                      class="anchor"
-                      aria-label="anchor"
-                      href="#variables-3"
-                    ></a>
-                  </h3>
-                  <p>Metadata table containing the list of variables in a pooled harmonized dataset and metadata about the harmonized variables (taken from the DataSchema).</p>
-                  <div style="padding-left: 10px; padding-right: 10px; background-color: #eee">
-                    <table
-                      style="display: table"
-                      class="table"
-                    >
-                      <thead>
-                        <tr class="header">
-                          <th>Name</th>
-                          <th width="75%">Description</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>index</td>
-                          <td>Index to order variables in the table (taken from the DataSchema).</td>
-                        </tr>
-                        <tr>
-                          <td>name *</td>
-                          <td>Name of the harmonized variable (taken from the DataSchema).</td>
-                        </tr>
-                        <tr>
-                          <td>label</td>
-                          <td>Short description of the harmonized variable (taken from the DataSchema).</td>
-                        </tr>
-                        <tr>
-                          <td>valueType</td>
-                          <td>Value type of the harmonized variable (taken from the DataSchema).</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-                <div class="section level3">
-                  <h3 id="categories-3">
-                    Categories<a
-                      class="anchor"
-                      aria-label="anchor"
-                      href="#categories-3"
-                    ></a>
-                  </h3>
-                  <p>Metadata table containing the list of categories and related metadata (taken from the DataSchema).</p>
-                  <div style="padding-left: 10px; padding-right: 10px; background-color: #eee">
-                    <table
-                      style="display: table"
-                      class="table"
-                    >
-                      <thead>
-                        <tr class="header">
-                          <th>Name</th>
-                          <th width="75%">Description</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>variable *</td>
-                          <td>Name of the harmonized variable to which the category belong (taken from the DataSchema).</td>
-                        </tr>
-                        <tr>
-                          <td>name *</td>
-                          <td>Category code value (taken from the DataSchema).</td>
-                        </tr>
-                        <tr>
-                          <td>label</td>
-                          <td>Short description of the category code value (taken from the DataSchema).</td>
-                        </tr>
-                        <tr>
-                          <td>missing</td>
-                          <td>Boolean value (TRUE/FALSE or 1/0) indicating if the value in ‘name’ is interpreted as a missing value (taken from the DataSchema).</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
+            <div class="section level3">
+              <h3 id="categories">
+                Categories<a
+                  class="anchor"
+                  aria-label="anchor"
+                  href="#categories"
+                ></a>
+              </h3>
+              <p>
+                Metadata table containing the list of categories and related metadata (coding and description of the response options) defined for categorical variables (if any). If there are
+                categorical variables defined, this table is required and uses the following columns.
+              </p>
+              <div style="padding-left: 10px; padding-right: 10px; background-color: #eee">
+                <table
+                  style="display: table"
+                  class="table"
+                >
+                  <thead>
+                    <tr class="header">
+                      <th>Name</th>
+                      <th width="75%">Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>variable *</td>
+                      <td>
+                        Name of the DataSchema variable to which the category belongs. This column is required if the Categories table is present. The value must also be present in the column ‘name’
+                        in the Variables table.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>name *</td>
+                      <td>
+                        Category code value. This column is required if the table Categories is present. The combination of ‘variable’ and ‘name’ within the Categories table (i.e., the combination of
+                        DataSchema variable and category code value) must be unique.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>label</td>
+                      <td>Short description of the category code value. A language can be specified using a language code, such as ‘label:en’ for english or ‘label:fr’ for french.</td>
+                    </tr>
+                    <tr>
+                      <td>missing</td>
+                      <td>
+                        Boolean value (TRUE/FALSE or 1/0) indicating if the value in ‘name’ is interpreted as a missing value (e.g., question skipped by design in a questionnaire or a response option
+                        <em>“Prefer not to answer”</em>).
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
-          <!-- !Tab content -->
+          <div class="section level2">
+            <h2 id="input-dataset">
+              Input Dataset<a
+                class="anchor"
+                aria-label="anchor"
+                href="#input-dataset"
+              ></a>
+            </h2>
+            <p>Data table containing a collection of variables to process under the DataSchema format.</p>
+            <div style="padding-left: 10px; padding-right: 10px; background-color: #eee">
+              <table
+                style="display: table"
+                class="table"
+              >
+                <thead>
+                  <tr class="header">
+                    <th>Name</th>
+                    <th width="75%">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>[col_1] *</td>
+                    <td>First variable in the input dataset, typically the identifier or index. A dataset must have at least one variable.</td>
+                  </tr>
+                  <tr>
+                    <td>[col_2] …</td>
+                    <td>Additional variable(s) in the input dataset.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="section level2">
+            <h2 id="input-data-dictionary">
+              Input Data Dictionary<a
+                class="anchor"
+                aria-label="anchor"
+                href="#input-data-dictionary"
+              ></a>
+            </h2>
+            <p>List of variables in an input dataset and related metadata.</p>
+            <button>
+              <a
+                href="../templates/data_dictionary%20-%20template.xlsx"
+                download
+                class="external-link"
+                >Download an Excel template</a
+              >
+            </button>
+            <div class="section level3">
+              <h3 id="variables-1">
+                Variables *<a
+                  class="anchor"
+                  aria-label="anchor"
+                  href="#variables-1"
+                ></a>
+              </h3>
+              <p>
+                Metadata table containing the list of variables in an input dataset and metadata about the input variables. If a data dictionary is defined for an input dataset, this table is required
+                and uses the following columns.
+              </p>
+              <div style="padding-left: 10px; padding-right: 10px; background-color: #eee">
+                <table
+                  style="display: table"
+                  class="table"
+                >
+                  <thead>
+                    <tr class="header">
+                      <th>Name</th>
+                      <th width="75%">Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>index</td>
+                      <td>Index to order variables in the table.</td>
+                    </tr>
+                    <tr>
+                      <td>name *</td>
+                      <td>Name of the input dataset variable. Each entry must be unique. The first entry is typically the primary identifier variable (e.g., participant unique ID).</td>
+                    </tr>
+                    <tr>
+                      <td>label</td>
+                      <td>Short description of the input dataset variable. A language can be specified using a language code, such as ‘label:en’ for english or ‘label:fr’ for french.</td>
+                    </tr>
+                    <tr>
+                      <td>valueType</td>
+                      <td>
+                        Value type of the input dataset variable (e.g., text, integer, decimal, boolean, date, datetime). See
+                        <a
+                          href="https://opaldoc.obiba.org/en/dev/magma-user-guide/value/type.html"
+                          class="external-link"
+                          target="_blank"
+                        >
+                          additional details</a
+                        >.
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="section level3">
+              <h3 id="categories-1">
+                Categories<a
+                  class="anchor"
+                  aria-label="anchor"
+                  href="#categories-1"
+                ></a>
+              </h3>
+              <p>
+                Metadata table containing the list of categories and related metadata (coding and description of the response options) defined for categorical variables (if any). If there are
+                categorical variables defined, this table is required and uses the following columns.
+              </p>
+              <div style="padding-left: 10px; padding-right: 10px; background-color: #eee">
+                <table
+                  style="display: table"
+                  class="table"
+                >
+                  <thead>
+                    <tr class="header">
+                      <th>Name</th>
+                      <th width="75%">Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>variable *</td>
+                      <td>
+                        Name of the input dataset variable to which the category belongs. This column is required if the Categories table is present. The value must also be present in the column
+                        ‘name’ in the Variables table.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>name *</td>
+                      <td>
+                        Category code value. This column is required if the table Categories is present. The combination of ‘variable’ and ‘name’ within the Categories table (i.e., the combination of
+                        DataSchema variable and category code value) must be unique.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>label</td>
+                      <td>Short description of the category code value. A language can be specified using a language code, such as ‘label:en’ for english or ‘label:fr’ for french.</td>
+                    </tr>
+                    <tr>
+                      <td>missing</td>
+                      <td>
+                        Boolean value (TRUE/FALSE or 1/0) indicating if the value in ‘name’ is interpreted as a missing value (e.g., question skipped by design in a questionnaire or a response option
+                        <em>“Prefer not to answer”</em>).
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="section level2">
+            <h2 id="data-processing-elements">
+              Data Processing Elements<a
+                class="anchor"
+                aria-label="anchor"
+                href="#data-processing-elements"
+              ></a>
+            </h2>
+            <p>
+              Metadata table containing the elements defining the possibility for each input dataset to generate each DataSchema variable and, where applicable, the algorithms to generate harmonized
+              variables in the DataSchema formats.
+            </p>
+            <button>
+              <a
+                href="../templates/data_processing_elements%20-%20template.csv"
+                download
+                class="external-link"
+                >Download an csv template</a
+              >
+            </button>
+            <p>
+              See
+              <a
+                href="../dpe/index.html"
+                class="external-link"
+                >additional documentation for Data Processing Elements</a
+              >.
+            </p>
+            <div style="padding-left: 10px; padding-right: 10px; background-color: #eee">
+              <table
+                style="display: table"
+                class="table"
+              >
+                <thead>
+                  <tr class="header">
+                    <th>Name</th>
+                    <th width="75%">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>index</td>
+                    <td>Index to order algorithms in the table.</td>
+                  </tr>
+                  <tr>
+                    <td>dataschema_variable *</td>
+                    <td>
+                      Name of the DataSchema variable being generated (must match a variable in the DataSchema).The first entry must be the primary identifier variable (e.g., participant unique ID).
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>label</td>
+                    <td>Short description of the DataSchema variable (as in the DataSchema).</td>
+                  </tr>
+                  <tr>
+                    <td>valueType</td>
+                    <td>Value type of the DataSchema variable (as in the DataSchema).</td>
+                  </tr>
+                  <tr>
+                    <td>input_dataset *</td>
+                    <td>Name of the Input Dataset used to generate the DataSchema variable (as named in the Dossier).</td>
+                  </tr>
+                  <tr>
+                    <td>input_variables *</td>
+                    <td>Name of the variable(s) in the ‘input_dataset’ used to generate the DataSchema variable.</td>
+                  </tr>
+                  <tr>
+                    <td>Mlstr_harmo:rule_category *</td>
+                    <td>
+                      Type of algorithm used to generate the DataSchema variable from the input variables. The first entry must be the creation of a harmonized primary identifier variable (e.g.,
+                      participant unique ID).
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Mlstr_harmo:algorithm *</td>
+                    <td>Algorithm used to generate the DataSchema variable from the input variables.</td>
+                  </tr>
+                  <tr>
+                    <td>Mlstr_harmo:status</td>
+                    <td>
+                      Possibility to generate the DataSchema variable from the input dataset. This is considered “complete” if the DataSchema variable can be generated from the input dataset or
+                      “impossible” if not.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Mlstr_harmo:status_detail</td>
+                    <td>
+                      Additional information about the possibility to generate the DataSchema variable from the input dataset. If ‘Mlstr_harmo:status’ is “complete”, the information could be
+                      considered “identical” or “compatible” with the DataSchema variable. If ‘Mlstr_harmo:status’ is “impossible”, the information could be considered “incompatible” or “unavailable”
+                      for harmonization.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Mlstr_harmo:comment</td>
+                    <td>Additional information about the inputs or algorithms to document with the harmonized variable.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="section level2">
+            <h2 id="dossier">
+              Dossier<a
+                class="anchor"
+                aria-label="anchor"
+                href="#dossier"
+              ></a>
+            </h2>
+            <p>Set of one or more input dataset(s) and their associated input data dictionary(ies).</p>
+            <div style="padding-left: 10px; padding-right: 10px; background-color: #eee">
+              <table
+                style="display: table"
+                class="table"
+              >
+                <thead>
+                  <tr class="header">
+                    <th>Name</th>
+                    <th width="75%">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>[input_dataset_1] *</td>
+                    <td>
+                      Data table containing a collection of variables to process under the DataSchema formats and its associated input data dictionary. At least one input dataset is required. The
+                      input dataset name is defined by the user and is indicated in the Data Processing Elements column ‘input_dataset’. This name identifies the source of input variables for data
+                      processing.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>[input_dataset_2] …</td>
+                    <td>Additional input dataset and associated data dictionary.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="section level2">
+            <h2 id="harmonized-dataset">
+              Harmonized Dataset<a
+                class="anchor"
+                aria-label="anchor"
+                href="#harmonized-dataset"
+              ></a>
+            </h2>
+            <p>Data table containing a collection of harmonized variables processed under the DataSchema formats.</p>
+            <div style="padding-left: 10px; padding-right: 10px; background-color: #eee">
+              <table
+                style="display: table"
+                class="table"
+              >
+                <thead>
+                  <tr class="header">
+                    <th>Name</th>
+                    <th width="75%">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>[harmonized_variable_1] *</td>
+                    <td>
+                      First harmonized variable. This is the primary identifier variable (e.g., participant unique ID). Variables in the harmonized dataset are generated in the order defined in the
+                      DataSchema.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>[harmonized_variable_2] …</td>
+                    <td>Additional harmonized variable.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="section level2">
+            <h2 id="harmonized-data-dictionary">
+              Harmonized Data Dictionary<a
+                class="anchor"
+                aria-label="anchor"
+                href="#harmonized-data-dictionary"
+              ></a>
+            </h2>
+            <p>List of variables in a harmonized dataset and related metadata.</p>
+            <div class="section level3">
+              <h3 id="variables-2">
+                Variables *<a
+                  class="anchor"
+                  aria-label="anchor"
+                  href="#variables-2"
+                ></a>
+              </h3>
+              <p>Metadata table containing the list of variables in a harmonized dataset and metadata about the harmonized variables (taken from the DataSchema and Data Processing Elements).</p>
+              <div style="padding-left: 10px; padding-right: 10px; background-color: #eee">
+                <table
+                  style="display: table"
+                  class="table"
+                >
+                  <thead>
+                    <tr class="header">
+                      <th>Name</th>
+                      <th width="75%">Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>index</td>
+                      <td>Index to order variables in the table (taken from the DataSchema).</td>
+                    </tr>
+                    <tr>
+                      <td>name *</td>
+                      <td>Name of the harmonized variable (taken from the DataSchema).</td>
+                    </tr>
+                    <tr>
+                      <td>label</td>
+                      <td>Short description of the harmonized variable (taken from the DataSchema).</td>
+                    </tr>
+                    <tr>
+                      <td>valueType</td>
+                      <td>Value type of the harmonized variable (taken from the DataSchema).</td>
+                    </tr>
+                    <tr>
+                      <td>Mlstr_harmo:rule_category</td>
+                      <td>Type of algorithm used to generate the DataSchema variable from the input variables (taken from the Data Processing Elements).</td>
+                    </tr>
+                    <tr>
+                      <td>Mlstr_harmo:algorithm</td>
+                      <td>Algorithm used to generate the harmonized variable from the input variables (taken from the Data Processing Elements).</td>
+                    </tr>
+                    <tr>
+                      <td>Mlstr_harmo:status</td>
+                      <td>Possibility to generate the DataSchema variable from the input dataset (taken from the Data Processing Elements).</td>
+                    </tr>
+                    <tr>
+                      <td>Mlstr_harmo:status_detail</td>
+                      <td>Additional information about the possibility to generate the DataSchema variable from the input dataset (taken from the Data Processing Elements).</td>
+                    </tr>
+                    <tr>
+                      <td>Mlstr_harmo:comment</td>
+                      <td>Additional information about the inputs or algorithms to document with the harmonized variable (taken from the Data Processing Elements).</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="section level3">
+              <h3 id="categories-2">
+                Categories<a
+                  class="anchor"
+                  aria-label="anchor"
+                  href="#categories-2"
+                ></a>
+              </h3>
+              <p>Metadata table containing the list of categories and related metadata (taken from the DataSchema).</p>
+              <div style="padding-left: 10px; padding-right: 10px; background-color: #eee">
+                <table
+                  style="display: table"
+                  class="table"
+                >
+                  <thead>
+                    <tr class="header">
+                      <th>Name</th>
+                      <th width="75%">Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>variable *</td>
+                      <td>Name of the harmonized variable to which the category belong (taken from the DataSchema).</td>
+                    </tr>
+                    <tr>
+                      <td>name *</td>
+                      <td>Category code value (taken from the DataSchema).</td>
+                    </tr>
+                    <tr>
+                      <td>label</td>
+                      <td>Short description of the category code value (taken from the DataSchema).</td>
+                    </tr>
+                    <tr>
+                      <td>missing</td>
+                      <td>Boolean value (TRUE/FALSE or 1/0) indicating if the value in ‘name’ is interpreted as a missing value (taken from the DataSchema).</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="section level2">
+            <h2 id="harmonized-dossier">
+              Harmonized Dossier<a
+                class="anchor"
+                aria-label="anchor"
+                href="#harmonized-dossier"
+              ></a>
+            </h2>
+            <p>Set of one or more harmonized dataset(s) and their associated data dictionary(ies).</p>
+            <div style="padding-left: 10px; padding-right: 10px; background-color: #eee">
+              <table
+                style="display: table"
+                class="table"
+              >
+                <thead>
+                  <tr class="header">
+                    <th>Name</th>
+                    <th width="75%">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>[harmonized_dataset_1] *</td>
+                    <td>
+                      Data table containing a collection of harmonized variables processed under the DataSchema format and its associated data dictionary. There is one harmonized dataset per input
+                      dataset.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>[harmonized_dataset_2] …</td>
+                    <td>Additional harmonized dataset and its associated data dictionary.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="section level2">
+            <h2 id="pooled-harmonized-dataset">
+              Pooled Harmonized Dataset<a
+                class="anchor"
+                aria-label="anchor"
+                href="#pooled-harmonized-dataset"
+              ></a>
+            </h2>
+            <p>Combined data table containing multiple harmonized datasets processed under the same DataSchema formats.</p>
+            <div style="padding-left: 10px; padding-right: 10px; background-color: #eee">
+              <table
+                style="display: table"
+                class="table"
+              >
+                <thead>
+                  <tr class="header">
+                    <th>Name</th>
+                    <th width="75%">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>[harmonized_dataset_1] *</td>
+                    <td>First harmonized variable. This is the primary unique identifier variable. Variables in the harmonized dataset are generated in the order defined in the DataSchema.</td>
+                  </tr>
+                  <tr>
+                    <td>[harmonized_dataset_2] …</td>
+                    <td>Additional harmonized variable.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="section level2">
+            <h2 id="pooled-harmonized-data-dictionary">
+              Pooled Harmonized Data Dictionary<a
+                class="anchor"
+                aria-label="anchor"
+                href="#pooled-harmonized-data-dictionary"
+              ></a>
+            </h2>
+            <p>List of variables in a pooled harmonized dataset and related metadata.</p>
+            <div class="section level3">
+              <h3 id="variables-3">
+                Variables *<a
+                  class="anchor"
+                  aria-label="anchor"
+                  href="#variables-3"
+                ></a>
+              </h3>
+              <p>Metadata table containing the list of variables in a pooled harmonized dataset and metadata about the harmonized variables (taken from the DataSchema).</p>
+              <div style="padding-left: 10px; padding-right: 10px; background-color: #eee">
+                <table
+                  style="display: table"
+                  class="table"
+                >
+                  <thead>
+                    <tr class="header">
+                      <th>Name</th>
+                      <th width="75%">Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>index</td>
+                      <td>Index to order variables in the table (taken from the DataSchema).</td>
+                    </tr>
+                    <tr>
+                      <td>name *</td>
+                      <td>Name of the harmonized variable (taken from the DataSchema).</td>
+                    </tr>
+                    <tr>
+                      <td>label</td>
+                      <td>Short description of the harmonized variable (taken from the DataSchema).</td>
+                    </tr>
+                    <tr>
+                      <td>valueType</td>
+                      <td>Value type of the harmonized variable (taken from the DataSchema).</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="section level3">
+              <h3 id="categories-3">
+                Categories<a
+                  class="anchor"
+                  aria-label="anchor"
+                  href="#categories-3"
+                ></a>
+              </h3>
+              <p>Metadata table containing the list of categories and related metadata (taken from the DataSchema).</p>
+              <div style="padding-left: 10px; padding-right: 10px; background-color: #eee">
+                <table
+                  style="display: table"
+                  class="table"
+                >
+                  <thead>
+                    <tr class="header">
+                      <th>Name</th>
+                      <th width="75%">Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>variable *</td>
+                      <td>Name of the harmonized variable to which the category belong (taken from the DataSchema).</td>
+                    </tr>
+                    <tr>
+                      <td>name *</td>
+                      <td>Category code value (taken from the DataSchema).</td>
+                    </tr>
+                    <tr>
+                      <td>label</td>
+                      <td>Short description of the category code value (taken from the DataSchema).</td>
+                    </tr>
+                    <tr>
+                      <td>missing</td>
+                      <td>Boolean value (TRUE/FALSE or 1/0) indicating if the value in ‘name’ is interpreted as a missing value (taken from the DataSchema).</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <!-- sidebar (unchanged column) -->
-        <div class="col-md-3 hidden-xs hidden-sm">
+        <div
+          class="col-md-3 hidden-xs hidden-sm"
+          id="pkgdown-sidebar"
+        >
           <nav
-            id="toc-input"
+            id="toc"
+            data-toggle="toc"
             class="sticky-top"
-          ></nav>
-
-          <nav
-            id="toc-harmo"
-            class="sticky-top"
-            style="display: none"
-          ></nav>
+          >
+            <h2 data-toc-skip>Contents</h2>
+          </nav>
         </div>
       </div>
 
