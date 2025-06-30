@@ -96,20 +96,21 @@
     <![endif]-->
     <script>
       $(function () {
-        /* 1 ▸ enable scroll-spy on the first nav */
-        $("body").scrollspy({ target: "#toc-input", offset: 70 });
+        Toc.init({ $nav: $("#toc-input"), $scope: $("#tab-input") });
+        Toc.init({ $nav: $("#toc-harmo"), $scope: $("#tab-harmo") });
 
-        /* 2 ▸ when user switches tabs, swap TOCs & refresh scroll-spy */
+        function spy(t) {
+          $("body").removeData("bs.scrollspy").off(".scrollspy").scrollspy({ target: t, offset: 70 }).scrollspy("refresh");
+          $(window).trigger("scroll");
+        }
+
+        spy("#toc-input");
+
         $('a[data-toggle="tab"]').on("shown.bs.tab", function (e) {
-          var useInput = e.target.hash === "#tab-input";
-
-          $("#toc-input").toggle(useInput);
-          $("#toc-harmo").toggle(!useInput);
-
-          $("body")
-            .scrollspy("dispose")
-            .scrollspy({ target: useInput ? "#toc-input" : "#toc-harmo", offset: 70 })
-            .trigger("scroll");
+          var showInput = e.target.hash === "#tab-input";
+          $("#toc-input").toggle(showInput);
+          $("#toc-harmo").toggle(!showInput);
+          spy(showInput ? "#toc-input" : "#toc-harmo");
         });
       });
     </script>
@@ -976,20 +977,14 @@
 
         <!-- sidebar (unchanged column) -->
         <div class="col-md-3 hidden-xs hidden-sm">
-          <!-- TOC for the first tab -->
           <nav
             id="toc-input"
             class="sticky-top"
-            data-toggle="toc"
-            data-container="#tab-input"
           ></nav>
 
-          <!-- TOC for the second tab (hidden at first) -->
           <nav
             id="toc-harmo"
             class="sticky-top"
-            data-toggle="toc"
-            data-container="#tab-harmo"
             style="display: none"
           ></nav>
         </div>
