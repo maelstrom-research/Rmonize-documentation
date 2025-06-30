@@ -95,24 +95,27 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <script>
-$(function () {
+      $(function () {
+        /* 1 ▸ build each TOC once, scoped to its pane */
+        $("#toc-input").toc({ container: "#tab-input", selectors: "h2,h3" });
+        $("#toc-harmo").toc({ container: "#tab-harmo", selectors: "h2,h3" });
 
-  /* first TOC is visible on load */
-  $('body').scrollspy({ target: '#toc-input', offset: 70 });
+        /* 2 ▸ activate scroll-spy on the first TOC */
+        $("body").scrollspy({ target: "#toc-input", offset: 70 });
 
-  $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-    var showInput = e.target.hash === '#tab-input';
+        /* 3 ▸ when the tab changes, swap TOCs and refresh scroll-spy */
+        $('a[data-toggle="tab"]').on("shown.bs.tab", function (e) {
+          var showInput = e.target.hash === "#tab-input";
 
-    $('#toc-input').toggle(showInput);
-    $('#toc-harmo').toggle(!showInput);
+          $("#toc-input").toggle(showInput);
+          $("#toc-harmo").toggle(!showInput);
 
-    $('body').scrollspy('dispose')
-             .scrollspy({ target: showInput ? '#toc-input' : '#toc-harmo',
-                          offset: 70 })
-             .trigger('scroll');      // refresh highlight immediately
-  });
-
-});
+          $("body")
+            .scrollspy("dispose")
+            .scrollspy({ target: showInput ? "#toc-input" : "#toc-harmo", offset: 70 })
+            .trigger("scroll"); // update highlight immediately
+        });
+      });
     </script>
   </head>
   <body style="padding-top: 70px">
@@ -977,20 +980,13 @@ $(function () {
 
         <!-- sidebar (unchanged column) -->
         <div class="col-md-3 hidden-xs hidden-sm">
-          <!-- TOC for Tab 1 -->
           <nav
             id="toc-input"
             class="sticky-top"
-            data-toggle="toc"
-            data-container="#tab-input"
           ></nav>
-
-          <!-- TOC for Tab 2 -->
           <nav
             id="toc-harmo"
             class="sticky-top"
-            data-toggle="toc"
-            data-container="#tab-harmo"
             style="display: none"
           ></nav>
         </div>
