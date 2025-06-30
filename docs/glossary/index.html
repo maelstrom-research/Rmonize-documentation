@@ -95,34 +95,24 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <script>
-      $(function () {
-        /* 1. Build both TOCs once -------------------------------------- */
+$(function () {
 
-        // Tab 1: bootstrap-toc sees data-toggle="toc" and fills #toc-input itself.
+  /* first TOC is visible on load */
+  $('body').scrollspy({ target: '#toc-input', offset: 70 });
 
-        // Tab 2: we call it manually and tell it to scan only #tab-harmo
-        $("#toc-harmo").toc({
-          // <–– this function is in bootstrap-toc.js
-          container: "#tab-harmo", // scan headings only inside this pane
-          selectors: "h2,h3", // pick whatever levels you like
-        });
+  $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+    var showInput = e.target.hash === '#tab-input';
 
-        /* 2. Activate scroll-spy for Tab 1 ----------------------------- */
-        $("body").scrollspy({ target: "#toc-input", offset: 70 });
+    $('#toc-input').toggle(showInput);
+    $('#toc-harmo').toggle(!showInput);
 
-        /* 3. When the user switches tabs ------------------------------ */
-        $('a[data-toggle="tab"]').on("shown.bs.tab", function (e) {
-          var inputActive = e.target.hash === "#tab-input"; // true / false
-          $("#toc-input").toggle(inputActive);
-          $("#toc-harmo").toggle(!inputActive);
+    $('body').scrollspy('dispose')
+             .scrollspy({ target: showInput ? '#toc-input' : '#toc-harmo',
+                          offset: 70 })
+             .trigger('scroll');      // refresh highlight immediately
+  });
 
-          $("body")
-            .scrollspy("dispose") // reset
-            .scrollspy({ target: inputActive ? "#toc-input" : "#toc-harmo", offset: 70 });
-
-          $(window).trigger("scroll"); // immediately update highlight
-        });
-      });
+});
     </script>
   </head>
   <body style="padding-top: 70px">
@@ -987,17 +977,20 @@
 
         <!-- sidebar (unchanged column) -->
         <div class="col-md-3 hidden-xs hidden-sm">
-          <!-- TOC for Tab 1 — let bootstrap-toc build this automatically -->
+          <!-- TOC for Tab 1 -->
           <nav
             id="toc-input"
-            data-toggle="toc"
             class="sticky-top"
+            data-toggle="toc"
+            data-container="#tab-input"
           ></nav>
 
-          <!-- TOC for Tab 2 — we will build this with one JS call -->
+          <!-- TOC for Tab 2 -->
           <nav
             id="toc-harmo"
             class="sticky-top"
+            data-toggle="toc"
+            data-container="#tab-harmo"
             style="display: none"
           ></nav>
         </div>
