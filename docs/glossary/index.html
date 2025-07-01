@@ -94,6 +94,32 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <script>
+      $(function () {
+        $('#toc a[href^="#"]').each(function () {
+          var $a = $(this),
+            id = this.hash.slice(1),
+            cat = $("#" + id).data("io"); // expect "in" | "out"
+
+          if (cat) {
+            $a.addClass("toc-" + cat).prepend('<i class="far ' + (cat === "in" ? "fa-arrow-alt-circle-right" : "fa-arrow-alt-circle-left") + '"></i>');
+          }
+        });
+      });
+    </script>
+    <style>
+      #toc a {
+        position: relative;
+        display: block;
+        padding-left: 1.6em;
+      }
+
+      #toc a i {
+        position: absolute;
+        left: 0.4em;
+        top: 0.5em;
+      }
+    </style>
   </head>
   <body
     data-spy="scroll"
@@ -191,7 +217,7 @@
                 data-toc-skip=""
                 style="font-size: 32px; font-weight: 700"
               >
-                Input Elements
+                <i class="far fa-arrow-alt-circle-right"></i> Input Elements
                 <a
                   class="anchor"
                   aria-label="anchor"
@@ -202,7 +228,10 @@
 
             <div class="panel-body">
               <div class="section level2">
-                <h3 id="dataschema">
+                <h3
+                  id="dataschema"
+                  data-io="in"
+                >
                   DataSchema<a
                     class="anchor"
                     aria-label="anchor"
@@ -326,7 +355,10 @@
                 </div>
               </div>
               <div class="section level2">
-                <h3 id="input-dataset">
+                <h3
+                  id="input-dataset"
+                  data-io="in"
+                >
                   Input Dataset<a
                     class="anchor"
                     aria-label="anchor"
@@ -359,7 +391,10 @@
                 </div>
               </div>
               <div class="section level2">
-                <h3 id="input-data-dictionary">
+                <h3
+                  id="input-data-dictionary"
+                  data-io="in"
+                >
                   Input Data Dictionary<a
                     class="anchor"
                     aria-label="anchor"
@@ -484,7 +519,10 @@
                 </div>
               </div>
               <div class="section level2">
-                <h3 id="data-processing-elements">
+                <h3
+                  id="data-processing-elements"
+                  data-io="in"
+                >
                   Data Processing Elements<a
                     class="anchor"
                     aria-label="anchor"
@@ -585,7 +623,10 @@
                 </div>
               </div>
               <div class="section level2">
-                <h3 id="dossier">
+                <h3
+                  id="dossier"
+                  data-io="in"
+                >
                   Dossier<a
                     class="anchor"
                     aria-label="anchor"
@@ -631,7 +672,7 @@
                 data-toc-skip=""
                 style="font-size: 32px; font-weight: 700"
               >
-                Harmonized Outputs
+                <i class="far fa-arrow-alt-circle-left"></i> Harmonized Outputs
                 <a
                   class="anchor"
                   aria-label="anchor"
@@ -642,7 +683,10 @@
 
             <div class="panel-body">
               <div class="section level2">
-                <h3 id="harmonized-dataset">
+                <h3
+                  id="harmonized-dataset"
+                  data-io="out"
+                >
                   Harmonized Dataset<a
                     class="anchor"
                     aria-label="anchor"
@@ -678,7 +722,10 @@
                 </div>
               </div>
               <div class="section level2">
-                <h3 id="harmonized-data-dictionary">
+                <h3
+                  id="harmonized-data-dictionary"
+                  data-io="out"
+                >
                   Harmonized Data Dictionary<a
                     class="anchor"
                     aria-label="anchor"
@@ -790,7 +837,10 @@
                 </div>
               </div>
               <div class="section level2">
-                <h3 id="harmonized-dossier">
+                <h3
+                  id="harmonized-dossier"
+                  data-io="out"
+                >
                   Harmonized Dossier<a
                     class="anchor"
                     aria-label="anchor"
@@ -826,7 +876,10 @@
                 </div>
               </div>
               <div class="section level2">
-                <h3 id="pooled-harmonized-dataset">
+                <h3
+                  id="pooled-harmonized-dataset"
+                  data-io="out"
+                >
                   Pooled Harmonized Dataset<a
                     class="anchor"
                     aria-label="anchor"
@@ -859,7 +912,10 @@
                 </div>
               </div>
               <div class="section level2">
-                <h3 id="pooled-harmonized-data-dictionary">
+                <h3
+                  id="pooled-harmonized-data-dictionary"
+                  data-io="out"
+                >
                   Pooled Harmonized Data Dictionary<a
                     class="anchor"
                     aria-label="anchor"
