@@ -101,10 +101,10 @@
         $root
           .find("a.toc-in")
           .first()
-          .parent() // <li> that owns the link
-          .before('<li class="h4">Inputs Elements</li>');
+          .parent()
+          .before('<li class="h4">Input Elements</li>');
 
-        $root.find("a.toc-out").first().parent().before('<li class="h4" style="margin-top: 1.5em">Outputs</li>');
+        $root.find("a.toc-out").first().parent().before('<li class="h4" style="margin-top: 1.5em">Harmonized Outputs</li>');
       });
     </script>
     <style>
