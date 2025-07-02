@@ -96,15 +96,15 @@
     <![endif]-->
     <script>
       $(function () {
-        $('#toc a[href^="#"]').each(function () {
-          var $a = $(this),
-            id = this.hash.slice(1),
-            cat = $("#" + id).data("io"); // expect "in" | "out"
+        var $root = $("#toc > ul.nav");
 
-          if (cat) {
-            $a.addClass("toc-" + cat).prepend('<i class="far ' + (cat === "in" ? "fa-arrow-alt-circle-right" : "fa-arrow-alt-circle-left") + '"></i>');
-          }
-        });
+        $root
+          .find("a.toc-in")
+          .first()
+          .parent() // <li> that owns the link
+          .before('<li class="h4">Inputs Elements</li>');
+
+        $root.find("a.toc-out").first().parent().before('<li class="h4" style="margin-top: 1.5em">Outputs</li>');
       });
     </script>
     <style>
@@ -217,7 +217,6 @@
                 data-toc-skip=""
                 style="font-size: 32px; font-weight: 700"
               >
-                <i class="far fa-arrow-alt-circle-right"></i> Input Elements
                 <a
                   class="anchor"
                   aria-label="anchor"
@@ -672,7 +671,6 @@
                 data-toc-skip=""
                 style="font-size: 32px; font-weight: 700"
               >
-                <i class="far fa-arrow-alt-circle-left"></i> Harmonized Outputs
                 <a
                   class="anchor"
                   aria-label="anchor"
@@ -1048,7 +1046,8 @@
           style="display: flex; align-items: center; flex: 0 0 auto; margin-left: auto"
         >
           Site&nbsp;built&nbsp;with&nbsp;<a
-            href="https://pkgdown.r-lib.org/" target="_blank"
+            href="https://pkgdown.r-lib.org/"
+            target="_blank"
             class="external-link"
             >pkgdown</a
           >&nbsp;2.0.7.
