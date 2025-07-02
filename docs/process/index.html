@@ -33,13 +33,6 @@
       crossorigin="anonymous"
     ></script>
 
-    <!-- bootstrap-toc -->
-    <link
-      rel="stylesheet"
-      href="../bootstrap-toc.css"
-    />
-    <script src="../bootstrap-toc.js"></script>
-
     <!-- Font Awesome icons -->
     <link
       rel="stylesheet"
@@ -676,11 +669,7 @@
       }
     </style>
   </head>
-  <body
-    data-spy="scroll"
-    data-target="#toc"
-    style="padding-top: 70px"
-  >
+  <body style="padding-top: 70px">
     <div
       id="MathJax_Message"
       style="display: none"
@@ -750,153 +739,135 @@
         <!-- /.navbar -->
       </header>
 
-      <div class="row">
-        <div class="col-md-9 contents">
-          <div class="page-header">
-            <h1 data-toc-skip="">Process <small></small></h1>
+      <div class="page-header">
+        <h1>Process <small></small></h1>
 
-            <!-- Get started block -->
-            <div style="display: flex; align-items: center">
-              <div style="flex: 0 0 auto; margin-right: 20px">
-                <img
-                  src="../reference/figures/fig_proc_1.png"
-                  style="width: 120px"
-                  alt=""
-                />
-              </div>
-              <div style="flex: 1">
-                <strong>Get started</strong>
-                <p>To start using Rmonize, install the package and see a simple example of processing.</p>
+        <!-- Get started block -->
+        <div style="display: flex; align-items: center">
+          <div style="flex: 0 0 auto; margin-right: 30px">
+            <img
+              src="../reference/figures/fig_proc_1.png"
+              style="width: 120px"
+              alt=""
+            />
+          </div>
+          <div style="flex: 1">
+            <strong>Get started</strong>
+            <p>To start using Rmonize, install the package and see a simple example of processing.</p>
 
-                <div style="margin: 15px 0; padding: 10px 15px; border: 1px solid #e5e5e5; border-left: 4px solid #18bc9c">
-                  <p style="margin: 0 0 5px 0"><strong>Learn more</strong></p>
+            <div style="margin: 15px 0; padding: 10px 15px; border: 1px solid #e5e5e5; border-left: 4px solid #18bc9c">
+              <p style="margin: 0 0 5px 0"><strong>Learn more</strong></p>
 
-                  <ul style="margin: 0 0 0 18px; padding: 0">
-                    <li><a href="../articles/a-install-your-working-environment.html"> Install your working environment </a> vignette</li>
-                    <li><a href="../articles/b-simple-example-of-data-processing-with-Rmonize.html"> Simple example of data processing with&nbsp;Rmonize </a> vignette</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <p>
-              <strong
-                >Harmonizing data using Rmonize is generally an iterative process requiring a phase of preparation, followed by the processing of inputs into harmonized outputs and the consolidation
-                of harmonized datasets that are well documented and ready for use in analysis.</strong
-              >
-            </p>
-
-            <!-- Prepare inputs block -->
-            <div style="display: flex; align-items: center">
-              <div style="flex: 0 0 auto; margin-right: 20px">
-                <img
-                  src="../reference/figures/fig_proc_2.png"
-                  style="width: 120px"
-                  alt=""
-                />
-              </div>
-              <div style="flex: 1">
-                <strong>Prepare the input elements</strong>
-                <p>Processing data using Rmonize depends on three user-provided input elements:</p>
-                <ul>
-                  <li>
-                    The DataSchema is the list of variables to be generated, or harmonized, across the input datasets. For use in Rmonize, a document with a specific format is typically prepared in an
-                    Excel template <em>(coming soon)</em> minimally including information about the variable names, labels, data types, and categories.
-                  </li>
-                  <li>
-                    The input datasets are the datasets collected by the participating studies or initiatives. Rmonize provides functions to evaluate, summarize, and format input datasets and
-                    associated data dictionaries for use in the package.
-                  </li>
-                  <li>
-                    The Data Processing Elements (DPE) specifies the input elements and instructions for Rmonize to generate harmonized outputs from each input dataset. The DPE has a specific
-                    technical format and is also typically prepared in an Excel template <em>(coming soon)</em>
-                    and includes columns detailing the possibility (or not) to generate each DataSchema variable in each dataset and the algorithms defined to process data.
-                  </li>
-                </ul>
-
-                <div style="margin: 15px 0; padding: 10px 15px; border: 1px solid #e5e5e5; border-left: 4px solid #18bc9c">
-                  <p style="margin: 0 0 5px 0"><strong>Learn more</strong></p>
-
-                  <ul style="margin: 0 0 0 18px; padding: 0">
-                    <li><a href="../articles/c-explore-and-prepare-input-datasets-and-data-dictionaries.html"> Explore and prepare input datasets and data dictionaries </a> vignette</li>
-                    <li>
-                      <a href="../dpe/index.html"> Prepare the Data Processing Elements document </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <!-- Process inputs block -->
-            <div style="display: flex; align-items: center">
-              <div style="flex: 0 0 auto; margin-right: 20px">
-                <img
-                  src="../reference/figures/fig_proc_3.png"
-                  style="width: 120px"
-                  alt=""
-                />
-              </div>
-              <div style="flex: 1">
-                <strong>Process inputs into harmonized outputs</strong>
-                <p>
-                  Rmonize uses the input datasets, DataSchema, and Data Processing Elements to process input into harmonized datasets. The package also helps generate reports useful to explore
-                  harmonized data content.
-                </p>
-
-                <div style="margin: 15px 0; padding: 10px 15px; border: 1px solid #e5e5e5; border-left: 4px solid #18bc9c">
-                  <p style="margin: 0 0 5px 0"><strong>Learn more</strong></p>
-
-                  <ul style="margin: 0 0 0 18px; padding: 0">
-                    <li><a href="../articles/d-process-inputs-and-generate-harmonized-outputs.html"> Process inputs into harmonized outputs </a> vignette</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <!-- Secure outputs block -->
-            <div style="display: flex; align-items: center">
-              <div style="flex: 0 0 auto; margin-right: 20px">
-                <img
-                  src="../reference/figures/fig_proc_4.png"
-                  style="width: 120px"
-                  alt=""
-                />
-              </div>
-              <div style="flex: 1">
-                <strong>Secure harmonized outputs</strong>
-                <p>
-                  Rmonize helps generate distinct or pooled datasets and associated data dictionaries integrating information from the DataSchema and Data Processing Elements. The package also enables
-                  generating reports including descriptive statistics for harmonized datasets.
-                </p>
-
-                <div style="margin: 15px 0; padding: 10px 15px; border: 1px solid #e5e5e5; border-left: 4px solid #18bc9c">
-                  <p style="margin: 0 0 5px 0"><strong>Learn more</strong></p>
-
-                  <ul style="margin: 0 0 0 18px; padding: 0">
-                    <li><a href="../articles/e-summarize-and-secure-harmonized-outputs.html"> Summarize and secure harmonized outputs </a> vignette</li>
-                  </ul>
-                </div>
-              </div>
+              <ul style="margin: 0 0 0 18px; padding: 0">
+                <li><a href="../articles/a-install-your-working-environment.html"> Install your working environment </a> vignette</li>
+                <li><a href="../articles/b-simple-example-of-data-processing-with-Rmonize.html"> Simple example of data processing with&nbsp;Rmonize </a> vignette</li>
+              </ul>
             </div>
           </div>
-          <!-- /.page-header -->
         </div>
-        <!-- /.col-md-9 -->
 
-        <div
-          class="col-md-3 hidden-xs hidden-sm"
-          id="pkgdown-sidebar"
-        >
-          <nav
-            id="toc"
-            data-toggle="toc"
-            class="sticky-top"
+        <p>
+          <strong
+            >Harmonizing data using Rmonize is generally an iterative process requiring a phase of preparation, followed by the processing of inputs into harmonized outputs and the consolidation of
+            harmonized datasets that are well documented and ready for use in analysis.</strong
           >
-            <h2 data-toc-skip="">Contents</h2>
-            <ul class="nav"></ul>
-          </nav>
+        </p>
+
+        <!-- Prepare inputs block -->
+        <div style="display: flex; align-items: center">
+          <div style="flex: 0 0 auto; margin-right: 30px">
+            <img
+              src="../reference/figures/fig_proc_2.png"
+              style="width: 120px"
+              alt=""
+            />
+          </div>
+          <div style="flex: 1">
+            <strong>Prepare the input elements</strong>
+            <p>Processing data using Rmonize depends on three user-provided input elements:</p>
+            <ul>
+              <li>
+                The DataSchema is the list of variables to be generated, or harmonized, across the input datasets. For use in Rmonize, a document with a specific format is typically prepared in an
+                Excel template <em>(coming soon)</em> minimally including information about the variable names, labels, data types, and categories.
+              </li>
+              <li>
+                The input datasets are the datasets collected by the participating studies or initiatives. Rmonize provides functions to evaluate, summarize, and format input datasets and associated
+                data dictionaries for use in the package.
+              </li>
+              <li>
+                The Data Processing Elements (DPE) specifies the input elements and instructions for Rmonize to generate harmonized outputs from each input dataset. The DPE has a specific technical
+                format and is also typically prepared in an Excel template <em>(coming soon)</em>
+                and includes columns detailing the possibility (or not) to generate each DataSchema variable in each dataset and the algorithms defined to process data.
+              </li>
+            </ul>
+
+            <div style="margin: 15px 0; padding: 10px 15px; border: 1px solid #e5e5e5; border-left: 4px solid #18bc9c">
+              <p style="margin: 0 0 5px 0"><strong>Learn more</strong></p>
+
+              <ul style="margin: 0 0 0 18px; padding: 0">
+                <li><a href="../articles/c-explore-and-prepare-input-datasets-and-data-dictionaries.html"> Explore and prepare input datasets and data dictionaries </a> vignette</li>
+                <li>
+                  <a href="../dpe/index.html"> Prepare the Data Processing Elements document </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Process inputs block -->
+        <div style="display: flex; align-items: center">
+          <div style="flex: 0 0 auto; margin-right: 30px">
+            <img
+              src="../reference/figures/fig_proc_3.png"
+              style="width: 120px"
+              alt=""
+            />
+          </div>
+          <div style="flex: 1">
+            <strong>Process inputs into harmonized outputs</strong>
+            <p>
+              Rmonize uses the input datasets, DataSchema, and Data Processing Elements to process input into harmonized datasets. The package also helps generate reports useful to explore harmonized
+              data content.
+            </p>
+
+            <div style="margin: 15px 0; padding: 10px 15px; border: 1px solid #e5e5e5; border-left: 4px solid #18bc9c">
+              <p style="margin: 0 0 5px 0"><strong>Learn more</strong></p>
+
+              <ul style="margin: 0 0 0 18px; padding: 0">
+                <li><a href="../articles/d-process-inputs-and-generate-harmonized-outputs.html"> Process inputs into harmonized outputs </a> vignette</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Secure outputs block -->
+        <div style="display: flex; align-items: center">
+          <div style="flex: 0 0 auto; margin-right: 30px">
+            <img
+              src="../reference/figures/fig_proc_4.png"
+              style="width: 120px"
+              alt=""
+            />
+          </div>
+          <div style="flex: 1">
+            <strong>Secure harmonized outputs</strong>
+            <p>
+              Rmonize helps generate distinct or pooled datasets and associated data dictionaries integrating information from the DataSchema and Data Processing Elements. The package also enables
+              generating reports including descriptive statistics for harmonized datasets.
+            </p>
+
+            <div style="margin: 15px 0; padding: 10px 15px; border: 1px solid #e5e5e5; border-left: 4px solid #18bc9c">
+              <p style="margin: 0 0 5px 0"><strong>Learn more</strong></p>
+
+              <ul style="margin: 0 0 0 18px; padding: 0">
+                <li><a href="../articles/e-summarize-and-secure-harmonized-outputs.html"> Summarize and secure harmonized outputs </a> vignette</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
+      <!-- /.page-header -->
+
       <!-- /.row -->
 
       <!-- footer -->
