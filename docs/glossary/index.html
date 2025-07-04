@@ -110,7 +110,6 @@
         add("out", "Harmonized Outputs", "margin-top: 2em;");
       });
     </script>
-    </head>
   </head>
   <body
     data-spy="scroll"
@@ -196,11 +195,6 @@
             <div class="hidden name"><code>a-Glossary-and-templates.Rmd</code></div>
           </div>
 
-          <p>
-            The glossary describes the main objects used in Rmonize functions. The main components of each object are listed and must have the names as presented to be used in functions, except where
-            indicated in square brackets ([…]). An asterisk (<strong>*</strong>) indicates a required object or component. You can download templates or find additional documentation where available
-            using the links provided.
-          </p>
           <div class="panel panel-success">
             <div class="panel-heading">
               <div
@@ -218,6 +212,13 @@
             </div>
 
             <div class="panel-body">
+              <p>
+                The objects used by Rmonize to process inputs into harmonized outputs are described below. The components of each object that are used by the package are listed and must have the names
+                as presented, except where indicated in square brackets ([…]). An asterisk (*) indicates an object or column that must be provided by the user. If not provided, information in columns
+                without asterisks will generally be filled with default values as needed in functions. Additional columns with different names can be present but are not used in data processing.
+              </p>
+              <p>You can download templates or find additional documentation where available using the links provided.</p>
+
               <div class="section level2">
                 <h3
                   id="dataschema"
@@ -229,7 +230,10 @@
                     href="#dataschema"
                   ></a>
                 </h3>
-                <p>List of core variables to generate across datasets and related metadata.</p>
+                <p>
+                  List of core variables to generate across datasets, and related metadata.To be compatible with Rmonize, the DataSchema is typically prepared from an Excel template including two
+                  separate sheets. The first one is used to document variables and the second to provide information related to categorical variables.
+                </p>
                 <button>
                   <a
                     href="../templates/dataschema%20-%20template.xlsx"
@@ -246,9 +250,7 @@
                       href="#variables"
                     ></a>
                   </h4>
-                  <p>
-                    Metadata table containing the list of core variables to generate across datasets and related metadata about the variables. This table is required and uses the following columns.
-                  </p>
+                  <p>Columns to be included in the Excel document.</p>
                   <div style="padding-left: 10px; padding-right: 10px; background-color: #eee">
                     <table
                       style="display: table"
@@ -271,12 +273,12 @@
                         </tr>
                         <tr>
                           <td>label</td>
-                          <td>Short description of the DataSchema variable. A language can be specified using a language code, such as ‘label:en’ for english or ‘label:fr’ for french.</td>
+                          <td>Short description of the DataSchema variable. A language can be specified using a language code, such as ‘label:en’ for English or ‘label:fr’ for French.</td>
                         </tr>
                         <tr>
                           <td>valueType</td>
                           <td>
-                            Value type of the input dataset variable (e.g., text, integer, decimal, boolean, date, datetime). See
+                            Value type of the variable (e.g., text, integer, decimal, boolean, date, datetime). See
                             <a
                               href="https://opaldoc.obiba.org/en/dev/magma-user-guide/value/type.html"
                               class="external-link"
@@ -298,10 +300,7 @@
                       href="#categories"
                     ></a>
                   </h4>
-                  <p>
-                    Metadata table containing the list of categories and related metadata (coding and description of the response options) defined for categorical variables (if any). If there are
-                    categorical variables defined, this table is required and uses the following columns.
-                  </p>
+                  <p>Columns to be included in the Excel document. If there are no categories to define, this table can be blank or the Categories sheet can be excluded.</p>
                   <div style="padding-left: 10px; padding-right: 10px; background-color: #eee">
                     <table
                       style="display: table"
@@ -330,7 +329,7 @@
                         </tr>
                         <tr>
                           <td>label</td>
-                          <td>Short description of the category code value. A language can be specified using a language code, such as ‘label:en’ for english or ‘label:fr’ for french.</td>
+                          <td>Short description of the category code value. A language can be specified using a language code, such as ‘label:en’ for English or ‘label:fr’ for French.</td>
                         </tr>
                         <tr>
                           <td>missing</td>
@@ -392,7 +391,10 @@
                     href="#input-data-dictionary"
                   ></a>
                 </h3>
-                <p>List of variables in an input dataset and related metadata.</p>
+                <p>
+                  List of variables in an input dataset. To be compatible with Rmonize, the input data dictionary can be prepared as an Excel template including two separate sheets. The first one is
+                  used to document variables and the second to provide information related to categorical variables.
+                </p>
                 <button>
                   <a
                     href="../templates/data_dictionary%20-%20template.xlsx"
@@ -409,10 +411,7 @@
                       href="#variables-1"
                     ></a>
                   </h4>
-                  <p>
-                    Metadata table containing the list of variables in an input dataset and metadata about the input variables. If a data dictionary is defined for an input dataset, this table is
-                    required and uses the following columns.
-                  </p>
+                  <p>Columns to be included in the Excel document.</p>
                   <div style="padding-left: 10px; padding-right: 10px; background-color: #eee">
                     <table
                       style="display: table"
@@ -435,12 +434,12 @@
                         </tr>
                         <tr>
                           <td>label</td>
-                          <td>Short description of the input dataset variable. A language can be specified using a language code, such as ‘label:en’ for english or ‘label:fr’ for french.</td>
+                          <td>Short description of the input dataset variable. A language can be specified using a language code, such as ‘label:en’ for English or ‘label:fr’ for French.</td>
                         </tr>
                         <tr>
                           <td>valueType</td>
                           <td>
-                            Value type of the input dataset variable (e.g., text, integer, decimal, boolean, date, datetime). See
+                            Value type of the variable (e.g., text, integer, decimal, boolean, date, datetime). See
                             <a
                               href="https://opaldoc.obiba.org/en/dev/magma-user-guide/value/type.html"
                               class="external-link"
@@ -494,7 +493,7 @@
                         </tr>
                         <tr>
                           <td>label</td>
-                          <td>Short description of the category code value. A language can be specified using a language code, such as ‘label:en’ for english or ‘label:fr’ for french.</td>
+                          <td>Short description of the category code value. A language can be specified using a language code, such as ‘label:en’ for English or ‘label:fr’ for French.</td>
                         </tr>
                         <tr>
                           <td>missing</td>
@@ -521,8 +520,8 @@
                   ></a>
                 </h3>
                 <p>
-                  Metadata table containing the elements defining the possibility for each input dataset to generate each DataSchema variable and, where applicable, the algorithms to generate
-                  harmonized variables in the DataSchema formats.
+                  Metadata table specifying the input elements and instructions to process input data into DataSchema variables, with columns indicating whether or not each DataSchema variable can be
+                  generated in each dataset and, where applicable, the algorithms used for data processing.
                 </p>
                 <button>
                   <a
@@ -562,10 +561,6 @@
                           Name of the DataSchema variable being generated (must match a variable in the DataSchema).The first entry must be the primary identifier variable (e.g., participant unique
                           ID).
                         </td>
-                      </tr>
-                      <tr>
-                        <td>label</td>
-                        <td>Short description of the DataSchema variable (as in the DataSchema).</td>
                       </tr>
                       <tr>
                         <td>valueType</td>
@@ -673,6 +668,7 @@
             </div>
 
             <div class="panel-body">
+              <p>The main objects generated by Rmonize and their primary components are described below.</p>
               <div class="section level2">
                 <h3
                   id="harmonized-dataset"
@@ -698,7 +694,7 @@
                     </thead>
                     <tbody>
                       <tr>
-                        <td>[harmonized_variable_1] *</td>
+                        <td>[harmonized_variable_1]</td>
                         <td>
                           First harmonized variable. This is the primary identifier variable (e.g., participant unique ID). Variables in the harmonized dataset are generated in the order defined in
                           the DataSchema.
@@ -726,7 +722,7 @@
                 <p>List of variables in a harmonized dataset and related metadata.</p>
                 <div class="section level3">
                   <h4 id="variables-2">
-                    Variables *<a
+                    Variables<a
                       class="anchor"
                       aria-label="anchor"
                       href="#variables-2"
@@ -750,7 +746,7 @@
                           <td>Index to order variables in the table (taken from the DataSchema).</td>
                         </tr>
                         <tr>
-                          <td>name *</td>
+                          <td>name</td>
                           <td>Name of the harmonized variable (taken from the DataSchema).</td>
                         </tr>
                         <tr>
@@ -807,11 +803,11 @@
                       </thead>
                       <tbody>
                         <tr>
-                          <td>variable *</td>
+                          <td>variable</td>
                           <td>Name of the harmonized variable to which the category belong (taken from the DataSchema).</td>
                         </tr>
                         <tr>
-                          <td>name *</td>
+                          <td>name</td>
                           <td>Category code value (taken from the DataSchema).</td>
                         </tr>
                         <tr>
@@ -852,7 +848,7 @@
                     </thead>
                     <tbody>
                       <tr>
-                        <td>[harmonized_dataset_1] *</td>
+                        <td>[harmonized_dataset_1]</td>
                         <td>
                           Data table containing a collection of harmonized variables processed under the DataSchema format and its associated data dictionary. There is one harmonized dataset per input
                           dataset.
@@ -891,7 +887,7 @@
                     </thead>
                     <tbody>
                       <tr>
-                        <td>[harmonized_dataset_1] *</td>
+                        <td>[harmonized_dataset_1]</td>
                         <td>First harmonized variable. This is the primary unique identifier variable. Variables in the harmonized dataset are generated in the order defined in the DataSchema.</td>
                       </tr>
                       <tr>
@@ -916,7 +912,7 @@
                 <p>List of variables in a pooled harmonized dataset and related metadata.</p>
                 <div class="section level3">
                   <h4 id="variables-3">
-                    Variables *<a
+                    Variables<a
                       class="anchor"
                       aria-label="anchor"
                       href="#variables-3"
@@ -940,7 +936,7 @@
                           <td>Index to order variables in the table (taken from the DataSchema).</td>
                         </tr>
                         <tr>
-                          <td>name *</td>
+                          <td>name</td>
                           <td>Name of the harmonized variable (taken from the DataSchema).</td>
                         </tr>
                         <tr>
@@ -977,11 +973,11 @@
                       </thead>
                       <tbody>
                         <tr>
-                          <td>variable *</td>
+                          <td>variable</td>
                           <td>Name of the harmonized variable to which the category belong (taken from the DataSchema).</td>
                         </tr>
                         <tr>
-                          <td>name *</td>
+                          <td>name</td>
                           <td>Category code value (taken from the DataSchema).</td>
                         </tr>
                         <tr>
