@@ -266,7 +266,7 @@
                             "Algorithm used to generate the DataSchema variable <br>\n (see details below)"
                           ]
                         ],
-                        "container": "<table class=\"cell-border stripe\">\n  <thead>\n    <tr>\n      <th>Column name<\/th>\n      <th>Definition<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>",
+                        "container": "<table class=\"cell-border stripe\">\n  <thead>\n    <tr>\n      <th>Column name<\/th>\n      <th>Description<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>",
                         "options": { "pageLength": 5, "ordering": false, "columnDefs": [], "order": [], "autoWidth": false, "orderClasses": false, "lengthMenu": [5, 10, 25, 50, 100] }
                       },
                       "evals": [],
@@ -590,7 +590,7 @@ c(-7, -99)   = NA    )
                                     "<code> input_dataset <\/code>",
                                     "<code> input_var_x ; input_var_y ; input_var_z <\/code>",
                                     "<code> <b>case_when<\/b> <\/code>",
-                                    "<code> <b>case_when(<\/b>\n  var_x == 1 ~ var_y ;\n vari_x == 2 ~ var_z ;\n  ELSE       ~ NA<b>)<\/b> <\/code>"
+                                    "<code> <b>case_when(<\/b>\n  var_x == 1 ~ var_y ;\n vari_x == 2 ~ var_z ;\n  ELSE ~ NA<b>)<\/b> <\/code>"
                                   ]
                                 ],
                                 "container": "<table class=\"cell-border stripe\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th><\/th>\n    <\/tr>\n  <\/thead>\n<\/table>",
@@ -951,7 +951,7 @@ ELSE                       ~ NA_character_)
                               "<code> input_id <\/code>",
                               "<code> input_var <\/code>",
                               "<code> input_var <\/code>",
-                              "<code> input_var_x ; input_var_y <\/code>",
+                              "<code> input_var_x ; input_var_y ; input_var_z <\/code>",
                               "<code> input_var <\/code>",
                               "<code> <b>__BLANK__<\/b> <\/code>",
                               "<code> <b>__BLANK__<\/b> <\/code>",
@@ -970,10 +970,10 @@ ELSE                       ~ NA_character_)
                               "<code> <b>undetermined<\/b> <\/code>"
                             ],
                             [
-                              "<code> <b>id_creation<\/b> <\/code>",
+                              "<code> input_id<\/code>",
                               "<code> <b>direct_mapping<\/b> <\/code>",
                               "<code> <b>recode(<\/b>\n  \"YES\" = 1 ;\n  \"NO\"  = 0 ;\n  ELSE  = NA<b>) <\/b> <\/code>",
-                              "<code> <b>case_when(<\/b>\n  var_x == 1 ~ var_z ;\n  ELSE       ~ NA<b>)<\/b> <\/code>",
+                              "<code> <b>case_when(<\/b>\n  var_x == 1 ~ var_y ;\n vari_x == 2 ~ var_z ;\n  ELSE ~ NA<b>)<\/b> <\/code>",
                               "<code> <em># Simple R code<\/em><\/b>\n  <b>mean<\/b>(input_var<b>)<\/b> <\/code>",
                               "<code> \"Hello, world.\" <\/code>",
                               "<code> # More complex R code <\/code>",
