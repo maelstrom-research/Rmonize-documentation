@@ -202,34 +202,37 @@
       <div class="row">
         <div class="col-md-9 contents">
           <div class="page-header toc-ignore">
-            <h1 data-toc-skip>Process <small></small></h1>
+            <h1 data-toc-skip>Data Processing Elements <small></small></h1>
 
             <div>
               <div class="section level2">
-                <h2 id="what-is-the-data-processing-elements">
-                  What is the Data Processing Elements ?<a
+                <h2 id="data-processing-elements">
+                  <a
                     class="anchor"
                     aria-label="anchor"
-                    href="#what-is-the-data-processing-elements"
+                    href="#data-processing-elements"
                   ></a>
                 </h2>
                 <p>
-                  The Data Processing Elements (<strong>DPE</strong>) is a table that defines and documents information about the processing used to generate harmonized datasets and is typically
-                  prepared in an Excel spreadsheet. Each row indicates if an input dataset can generate a DataSchema variable, and if so, how input variables are processed to generate a harmonized
-                  variable as defined in the DataSchema. This page explains the basic methods to fill out the DPEs in order to be used correctly by Rmonize functions.
+                  The <a href="https://maelstrom-research.github.io/Rmonize-documentation/glossary/index.html#data-processing-elements">Data Processing Elements</a> (DPE) is a table that defines and
+                  documents information about the processing used to generate harmonized datasets. It is typically prepared from an
+                  <a href="https://maelstrom-research.github.io/Rmonize-documentation/templates/data_processing_elements%20-%20template.xlsx">Excel template</a>, where each row specifies if the input
+                  dataset can generate the <a href="https://maelstrom-research.github.io/Rmonize-documentation/glossary/index.html#dataschema">DataSchema</a> variable, and if so, the input variables
+                  and processing algorithms to generate the harmonized variable as defined in the DataSchema. This page explains the basic methods to fill out the DPEs to be used correctly by Rmonize
+                  functions.
                 </p>
               </div>
               <div class="section level2">
                 <h2 id="general-structure-of-the-dpe">
-                  General structure of the DPE<a
+                  General Structure of the DPE<a
                     class="anchor"
                     aria-label="anchor"
                     href="#general-structure-of-the-dpe"
                   ></a>
                 </h2>
                 <p>
-                  The DPE is an typically an Excel file that you open locally in your computer and that you can fill one row after the other to generate the rules of harmonization. It contains at
-                  least 5 mandatory columns, plus one additional for your documentation. The process cannot work if one of these columns are not present.
+                  The DPE has five mandatory columns that are required for data processing with Rmonize functions to work properly. Additional columns for documentation can be present but must use
+                  different names and are not used by Rmonize functions.
                 </p>
                 <div>
                   <p></p>
@@ -256,14 +259,14 @@
                             "<code><b>Mlstr_harmo::algorithm<\/b><\/code>"
                           ],
                           [
-                            "Variable defined in the DataSchema",
-                            "Input dataset where the <br>\n                                                 input variable(s) is/are taken from",
-                            "Input variable(s) (name(s) of the column in the dataset)",
-                            "Rule category",
-                            "Algorithm associated to the rule category"
+                            "Name of the DataSchema variable being generated",
+                            "Name of the input dataset containing the input variable(s)",
+                            "Name(s) of the input variable(s) used in data processing, <br>\n separated by semicolons (;)",
+                            "Type of algorithm used to generate the DataSchema variable <br>\n (see details below)",
+                            "Algorithm used to generate the DataSchema variable <br>\n (see details below)"
                           ]
                         ],
-                        "container": "<table class=\"cell-border stripe\">\n  <thead>\n    <tr>\n      <th>column name<\/th>\n      <th>definition<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>",
+                        "container": "<table class=\"cell-border stripe\">\n  <thead>\n    <tr>\n      <th>Column name<\/th>\n      <th>Definition<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>",
                         "options": { "pageLength": 5, "ordering": false, "columnDefs": [], "order": [], "autoWidth": false, "orderClasses": false, "lengthMenu": [5, 10, 25, 50, 100] }
                       },
                       "evals": [],
@@ -271,17 +274,16 @@
                     }
                   </script>
                 </div>
-                <p><a href="#summary">return to summary</a></p>
               </div>
               <div class="section level2">
-                <h2 id="harmonization-rules">
-                  Harmonization rules<a
+                <h2 id="rule-categories">
+                  Rule Categories<a
                     class="anchor"
                     aria-label="anchor"
-                    href="#harmonization-rules"
+                    href="#rule-categories"
                   ></a>
                 </h2>
-                <!-- Harmonization Rules Navigation -->
+                <!-- Rule Categories Navigation -->
                 <div class="row">
                   <!-- Nav Buttons -->
                   <div class="col-md-3">
@@ -354,12 +356,12 @@
                       </li>
                       <li>
                         <a
-                          href="#impossible-undertermined"
+                          href="#impossible-undetermined"
                           role="tab"
                           data-toggle="tab"
                         >
                           impossible<br />
-                          undertermined<br />
+                          undetermined<br />
                           __BLANK__
                         </a>
                       </li>
@@ -374,8 +376,8 @@
                         class="tab-pane fade active in"
                       >
                         <p>
-                          <strong>id_creation</strong> is mandatory and the first rule that initiates the harmonization process. This rule allows the user to provide the column used as a reference per
-                          observation (row).
+                          <strong>id_creation</strong> creates a unique id per row of the input dataset and must be the first rule for each input dataset to initiate data processing. The user provides
+                          the input variable to use.
                         </p>
                         <div style="width: 70%; margin: 0 auto; display: flex; justify-content: center">
                           <p></p>
@@ -395,13 +397,7 @@
                                 "autoHideNavigation": true,
                                 "data": [
                                   ["<b>dataschema_variable<\/b>", "<b>input_dataset<\/b>", "<b>input_variables<\/b>", "<b>Mlstr_harmo::rule_category<\/b>", "<b>Mlstr_harmo::algorithm<\/b>"],
-                                  [
-                                    "<code> harmonized_id <\/code>",
-                                    "<code> input_dataset <\/code>",
-                                    "<code> input_id <\/code>",
-                                    "<code><b>id_creation<\/b><\/code>",
-                                    "<code> <b>id_creation<\/b> <\/code>"
-                                  ]
+                                  ["<code> harmonized_id <\/code>", "<code> input_dataset <\/code>", "<code> input_id <\/code>", "<code><b>id_creation<\/b><\/code>", "<code> input_id <\/code>"]
                                 ],
                                 "container": "<table class=\"cell-border stripe\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th><\/th>\n    <\/tr>\n  <\/thead>\n<\/table>",
                                 "options": {
@@ -422,9 +418,9 @@
                         <p><br /></p>
                         <p>Notes:</p>
                         <ul>
-                          <li><p>Usually, the harmonized variable is a standardized identifier generated from the input identifier.</p></li>
+                          <li><p>The values of the harmonized variable are taken directly from the input values.</p></li>
                           <li>
-                            <p>If the dataset does not have any identifier column, the user can create <em>before harmonization</em> an index and provide this index as the variable to use.</p>
+                            <p>The input dataset should have an identifier created before harmonization in the desired format.</p>
                           </li>
                         </ul>
                       </div>
@@ -433,7 +429,7 @@
                         id="direct-mapping"
                         class="tab-pane fade"
                       >
-                        <p>The harmonized variable is generated by replicating one input variable.</p>
+                        <p><strong>direct_mapping</strong> generates the harmonization variable by replicating one input variable.</p>
                         <div style="width: 70%; margin: 0 auto; display: flex; justify-content: center">
                           <p></p>
                           <div
@@ -453,7 +449,7 @@
                                 "data": [
                                   ["<b>dataschema_variable<\/b>", "<b>input_dataset<\/b>", "<b>input_variables<\/b>", "<b>Mlstr_harmo::rule_category<\/b>", "<b>Mlstr_harmo::algorithm<\/b>"],
                                   [
-                                    "<code> output_var <\/code>",
+                                    "<code> harmonized_var <\/code>",
                                     "<code> input_dataset <\/code>",
                                     "<code> input_var <\/code>",
                                     "<code> <b>direct_mapping<\/b> <\/code>",
@@ -479,7 +475,7 @@
                         <p><br /></p>
                         <p>Note:</p>
                         <ul>
-                          <li>One and only one variable can be replicated at a time.</li>
+                          <li>Uses only one input variable.</li>
                         </ul>
                       </div>
                       <!-- Recode -->
@@ -487,7 +483,7 @@
                         id="recode"
                         class="tab-pane fade"
                       >
-                        <p>The harmonized variable is generated by recoding values from one input variable.</p>
+                        <p><strong>recode</strong> generates the harmonized variable by recoding values from one input variable.</p>
                         <div style="width: 70%; margin: 0 auto; display: flex; justify-content: center">
                           <p></p>
                           <div
@@ -507,7 +503,7 @@
                                 "data": [
                                   ["<b>dataschema_variable<\/b>", "<b>input_dataset<\/b>", "<b>input_variables<\/b>", "<b>Mlstr_harmo::rule_category<\/b>", "<b>Mlstr_harmo::algorithm<\/b>"],
                                   [
-                                    "<code> output_var <\/code>",
+                                    "<code> harmonized_var <\/code>",
                                     "<code> input_dataset <\/code>",
                                     "<code> input_var <\/code>",
                                     "<code> <b>recode<\/b> <\/code>",
@@ -533,55 +529,45 @@
                         <p><br /></p>
                         <p>Notes:</p>
                         <ul>
-                          <li><p>One and only one variable can be recoded at a time.</p></li>
+                          <li><p>Uses only one input variable.</p></li>
                           <li>
                             <p>
-                              The variable to be recoded must be (partially at the very least) a categorical variable. To recode a continuous variable (to create brackets for example.), use
+                              • The input variable should generally be a categorical variable. To create a categorical harmonized variable from a continuous input variable, use
                               <strong>case_when</strong> instead.
                             </p>
                           </li>
                           <li>
-                            <p>If all categories are recoded to the same categories (recode(1 = 1 ; 2 = 2)), Prefer <strong>direct_mapping</strong> instead.</p>
+                            <p>• If all values in the input variable are the same as in the DataSchema variable, use <strong>direct_mapping</strong> instead.</p>
                           </li>
                           <li>
-                            <p>Separate each value/code with an equal sign <strong>=</strong></p>
+                            <p>• Specify each input value to output value recoding with an equal sign <strong>=</strong></p>
                           </li>
                           <li>
-                            <p>Separate each elements with a semi-colon <strong>;</strong> .</p>
+                            <p>• Separate each recoding with a semi-colon <strong>;</strong> .</p>
                           </li>
                           <li>
-                            <p>Use <strong>ELSE = NA</strong> to attribute NA to all of the other values.</p>
+                            <p>• Use <strong>ELSE = NA</strong> to attribute NA to all remaining input values.</p>
                           </li>
                         </ul>
                         <p>
-                          If an equal sign already exists in the data, use <strong>_=</strong>
-                          to escape them. Equally, if a semi-colon already exists in the data, use
-                          <strong>_;</strong> to escape them.
+                          If equal signs <strong>=</strong> already exist in the data, use <strong>_=</strong> to escape them. Similarly, if semi-colons <strong>;</strong> already exist in the data,
+                          use <strong>_;</strong> to escape them.
                         </p>
-                        <pre><code>recode(
-"banana ; apple"  = "fruits"    _;
-"salad  ; potatoe" = "veggies"  _;
-"bread  ; pasta"   = "carbs"        )
 
-recode(
-"1000 (='high')  _= 3  ;
-" 500 (='mid')   _= 2  ;
-" 200 (='low')   _= 1     )
-</code></pre>
-                        <p>The values can be gathered using R syntax to recode multiple numerical values.</p>
+                        <p>Numerical input values can be gathered using R syntax to recode multiple values at the same time.</p>
                         <pre><code>recode(
 0            = "low"   ;
 c(1:10)      = "mid"   ;
 c(-7, -99)   = NA    )
 </code></pre>
-                        <p>If the recoding requires more complex codification, use <strong>case_when</strong> or <strong>other</strong> instead.</p>
+                        <p>If more complex coding is required, use <strong>case_when</strong> or <strong>other</strong> instead.</p>
                       </div>
                       <!-- Case When -->
                       <div
                         id="case-when"
                         class="tab-pane fade"
                       >
-                        <p>The harmonized variable is generated from one or more if-else conditions, using one or more input variables.</p>
+                        <p><strong>case_when</strong> generates the harmonized variable from one or more if-else conditions, using one or more input variable.</p>
                         <div style="width: 70%; margin: 0 auto; display: flex; justify-content: center">
                           <p></p>
                           <div
@@ -601,11 +587,11 @@ c(-7, -99)   = NA    )
                                 "data": [
                                   ["<b>dataschema_variable<\/b>", "<b>input_dataset<\/b>", "<b>input_variables<\/b>", "<b>Mlstr_harmo::rule_category<\/b>", "<b>Mlstr_harmo::algorithm<\/b>"],
                                   [
-                                    "<code> output_var <\/code>",
+                                    "<code> harmonized_var <\/code>",
                                     "<code> input_dataset <\/code>",
-                                    "<code> input_var_x ; input_var_y <\/code>",
+                                    "<code> input_var_x ; input_var_y ; input_var_z <\/code>",
                                     "<code> <b>case_when<\/b> <\/code>",
-                                    "<code> <b>case_when(<\/b>\n  var_x == 1 ~ var_z ;\n  ELSE       ~ NA<b>)<\/b> <\/code>"
+                                    "<code> <b>case_when(<\/b>\n  var_x == 1 ~ var_y ;\n vari_x == 2 ~ var_z ;\n  ELSE       ~ NA<b>)<\/b> <\/code>"
                                   ]
                                 ],
                                 "container": "<table class=\"cell-border stripe\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th><\/th>\n    <\/tr>\n  <\/thead>\n<\/table>",
@@ -628,40 +614,40 @@ c(-7, -99)   = NA    )
                         <p>Notes:</p>
                         <ul>
                           <li>
-                            <p>Multiple variables can be used to combine their values using case_when. Separate each of them in <strong>input_variables</strong> by a semi-colon <strong>;</strong></p>
+                            <p>Multiple input variables can be used. Separate the name of each in the <strong>input_variables</strong> column with a semi-colon <strong>;</strong></p>
                           </li>
                           <li>
-                            <p>If only one variable is used, and is (or seems) a categorical variable, use <strong>recode</strong> or <strong>direct_mapping</strong> instead.</p>
+                            <p>If only one input variable is used, consider using <strong>recode</strong> or <strong>direct_mapping</strong> instead.</p>
                           </li>
                           <li>
-                            <p>Each statement (“if … equals, greater, is not, …”) can be use in this function. Separate the statement/code with a tilde <strong>~</strong></p>
+                            <p>Separate the left and right side (input/output) of each statement combination with a tilde <strong>~</strong></p>
                           </li>
                           <li>
-                            <p>Separate each elements with a semi-colon <strong>;</strong> .</p>
+                            <p>Separate each case-when statement with a semi-colon <strong>;</strong> .</p>
                           </li>
                           <li>
-                            <p>Use <strong>ELSE ~ NA</strong> to attribute NA to all of the other values.</p>
+                            <p>Use <strong>ELSE ~ NA</strong> to attribute NA to all remaining input values.</p>
                           </li>
                         </ul>
-                        <p><strong>case_when</strong> is sensitive to the data type. Each code generated with the statement must have the same data type, including the NA.</p>
+                        <p><strong>case_when</strong> is sensitive to data type. Each output value generated by statements must have the same data type, including NA values.</p>
                         <pre><code>case_when(
 var_x == 1                 ~ 1L
-var_x != 0 &amp; !is.na(var_y) ~ 0L
+var_x == 0 &amp; !is.na(var_y) ~ 0L
 ELSE                       ~ NA_integer_  )
 
 case_when(
 var_x == 1                 ~ "1"
-var_x != 0 &amp; !is.na(var_y) ~ "0"
+var_x == 0 &amp; !is.na(var_y) ~ "0"
 ELSE                       ~ NA_character_)
 </code></pre>
-                        <p>If the statement requires more complex codification, use <strong>other</strong> instead.</p>
+                        <p>If the statement requires more complex coding, consider use <strong>other</strong> instead.</p>
                       </div>
                       <!-- Paste -->
                       <div
                         id="paste"
                         class="tab-pane fade"
                       >
-                        <p>The harmonized variable is generated by setting the same value for all observation, not taken from a input variable.</p>
+                        <p><strong>paste</strong> generates the harmonized variable by setting the same value for all observations, not using values from any input variables.</p>
                         <div style="width: 70%; margin: 0 auto; display: flex; justify-content: center">
                           <p></p>
                           <div
@@ -681,11 +667,11 @@ ELSE                       ~ NA_character_)
                                 "data": [
                                   ["<b>dataschema_variable<\/b>", "<b>input_dataset<\/b>", "<b>input_variables<\/b>", "<b>Mlstr_harmo::rule_category<\/b>", "<b>Mlstr_harmo::algorithm<\/b>"],
                                   [
-                                    "<code> output_var <\/code>",
+                                    "<code> harmonized_var <\/code>",
                                     "<code> input_dataset <\/code>",
                                     "<code> <b>__BLANK__<\/b> <\/code>",
                                     "<code> <b>paste<\/b> <\/code>",
-                                    "<code> \"Hello word\" <\/code>"
+                                    "<code> \"Hello, world.\" <\/code>"
                                   ]
                                 ],
                                 "container": "<table class=\"cell-border stripe\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th><\/th>\n    <\/tr>\n  <\/thead>\n<\/table>",
@@ -708,13 +694,10 @@ ELSE                       ~ NA_character_)
                         <p>Notes:</p>
                         <ul>
                           <li>
-                            <p>This function does not require any variable. The user must provide <strong>__BLANK__</strong> as a placeholder.</p>
+                            <p>• This function does not use any input variables. The value <strong>__BLANK__</strong> must be entered in the column input_variables.</p>
                           </li>
                           <li>
-                            <p>
-                              Usually, the harmonized variable is a standardized identifier for the whole dossier when comes the time to aggregate the harmonized datasets into a pooled harmonized
-                              dataset.
-                            </p>
+                            <p>• This rule category is often used when the harmonized variable is an identifier for the whole dataset, e.g., a study or population identifier.</p>
                           </li>
                         </ul>
                       </div>
@@ -723,7 +706,7 @@ ELSE                       ~ NA_character_)
                         id="operation"
                         class="tab-pane fade"
                       >
-                        <p>The harmonized variable is generated by applying an operation to one or more input variables.</p>
+                        <p><strong>operation</strong> generates the harmonized variable by applying an operation to one or more input variables.</p>
                         <div style="width: 70%; margin: 0 auto; display: flex; justify-content: center">
                           <p></p>
                           <div
@@ -743,11 +726,11 @@ ELSE                       ~ NA_character_)
                                 "data": [
                                   ["<b>dataschema_variable<\/b>", "<b>input_dataset<\/b>", "<b>input_variables<\/b>", "<b>Mlstr_harmo::rule_category<\/b>", "<b>Mlstr_harmo::algorithm<\/b>"],
                                   [
-                                    "<code> output_var <\/code>",
+                                    "<code> harmonized_var <\/code>",
                                     "<code> input_dataset <\/code>",
                                     "<code> input_var <\/code>",
                                     "<code> <b>operation<\/b> <\/code>",
-                                    "<code> <em># simple R code here such as :<\/em><\/b>\n  (<b>mean(<\/b>input_var<b>)<\/b> - input_var<b>)<\/b> / <b>stats::sd(<\/b>input_var<b>)<\/b> <\/code>"
+                                    "<code> <em># Simple R code<\/em><\/b>\n  <b>mean<\/b>(input_var<b>)<\/b> <\/code>"
                                   ]
                                 ],
                                 "container": "<table class=\"cell-border stripe\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th><\/th>\n    <\/tr>\n  <\/thead>\n<\/table>",
@@ -770,21 +753,13 @@ ELSE                       ~ NA_character_)
                         <p>Notes:</p>
                         <ul>
                           <li>
-                            <p>Multiple variables can be used to combine their values using case_when. Separate each of them in <strong>input_variables</strong> by a semi-colon <strong>;</strong></p>
+                            <p>Multiple input variables can be used. Separate the name of each in the <strong>input_variables</strong> column with a semi-colon <strong>;</strong></p>
                           </li>
+
                           <li>
-                            <p>If the operation (or seems) is simple, prefer <strong>case_when</strong>, <strong>recode</strong> or <strong>direct_mapping</strong> instead.</p>
+                            • This rule category is intended to document relatively simple transformations. If the operation requires more complex or longer coding, consider using
+                            <strong>other</strong> instead.
                           </li>
-                          <li>
-                            <p>
-                              The user must have the libraries present on their machine (and loaded) to function with the call of them in the <strong>case_when</strong> script. To specify the library
-                              calling, use double two-point <strong>::</strong> in the formula.
-                            </p>
-                          </li>
-                        </ul>
-                        <pre><code><span><span class="fu">lubridate</span><span class="fu">::</span><span class="fu"><a href="https://lubridate.tidyverse.org/reference/year.html" class="external-link">year</a></span><span class="op">(</span><span class="va">var_x</span><span class="op">)</span></span></code></pre>
-                        <ul>
-                          <li>If the operation is requires more complex codification, use <strong>other</strong> instead.</li>
                         </ul>
                       </div>
                       <!-- Other -->
@@ -792,7 +767,7 @@ ELSE                       ~ NA_character_)
                         id="other"
                         class="tab-pane fade"
                       >
-                        <p>The harmonized variable is generated from a non-standard or complex processing rule, not covered by other rule categories.</p>
+                        <p><strong>other</strong> generates the harmonized variable from a non-standard or complex processing rule, not covered by other rule categories.</p>
                         <div style="width: 70%; margin: 0 auto; display: flex; justify-content: center">
                           <p></p>
                           <div
@@ -812,11 +787,11 @@ ELSE                       ~ NA_character_)
                                 "data": [
                                   ["<b>dataschema_variable<\/b>", "<b>input_dataset<\/b>", "<b>input_variables<\/b>", "<b>Mlstr_harmo::rule_category<\/b>", "<b>Mlstr_harmo::algorithm<\/b>"],
                                   [
-                                    "<code> output_var <\/code>",
+                                    "<code> harmonized_var <\/code>",
                                     "<code> input_dataset <\/code>",
                                     "<code> <b>__BLANK__<\/b> <\/code>",
                                     "<code> <b>other<\/b> <\/code>",
-                                    "<code> # place complex R code here... <\/code>"
+                                    "<code> # More complex R code <\/code>"
                                   ]
                                 ],
                                 "container": "<table class=\"cell-border stripe\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th><\/th>\n    <\/tr>\n  <\/thead>\n<\/table>",
@@ -838,25 +813,29 @@ ELSE                       ~ NA_character_)
                         <p><br /></p>
                         <p>Note:</p>
                         <ul>
-                          <li>This feature is equivalent to launch a local code/function in a R script.</li>
+                          <li>This rule category is equivalent to launching an R script.</li>
                         </ul>
                         <p>
-                          If assignment is needed to modify environment of the user, use double assignation <strong>&lt;&lt;-</strong> to place the result in the user environment. Carefully make sure
-                          you control your environment when using the <strong>other</strong> function.
+                          The user environment needs to be controlled carefully when using this rule category to avoid unexpected results. Use double assignment "<<-" to place the result in the user
+                          environment.
                         </p>
                         <pre><code><span><span class="va">my_harmo_var</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">20</span><span class="op">)</span> <span class="op">+</span> <span class="va">...</span> <span class="co"># complex lines of code</span></span>
 <span></span>
-<span><span class="co"># double assignation to modify the environment.</span></span>
+<span><span class="co"># Double assignment to modify the environment.</span></span>
 <span><span class="va">harmonized_dossier</span><span class="op">$</span><span class="va">DATASET</span><span class="op">$</span><span class="va">variable_F</span> <span class="op">&lt;&lt;-</span> <span class="va">my_harmo_var</span></span></code></pre>
-                        <p><strong>other</strong> function can be used to source a code from a different script where complex harmonization processes are written.</p>
+                        <p>This rule category can also be used to source code from a script with more complex data processing.</p>
                         <pre><code><span><span class="kw"><a href="https://rdrr.io/r/base/source.html" class="external-link">source</a></span><span class="op">(</span><span class="st">"my_file.R"</span><span class="op">)</span></span></code></pre>
                       </div>
-                      <!-- Impossible Undertermined __BLANK__ -->
+                      <!-- Impossible Undetermined -->
                       <div
-                        id="impossible-undertermined"
+                        id="impossible-undetermined"
                         class="tab-pane fade"
                       >
-                        <p>These additional features allow the user to handle specific cases. This ensure that the line is completed and there is no missing argument in the function to perform.</p>
+                        <p>
+                          These rule categories handle cases where the DataSchema variable cannot be generated for an input dataset or the status is undetermined. An empty column is generated for the
+                          DataSchema variable in the harmonized dataset. This ensures that a row for each DataSchema variable and each input dataset is completed, that there are no missing arguments,
+                          and that data processing can proceed even if not all algorithms are finalized..
+                        </p>
                         <p></p>
                         <div
                           class="datatables html-widget html-fill-item-overflow-hidden html-fill-item"
@@ -873,11 +852,11 @@ ELSE                       ~ NA_character_)
                               "vertical": false,
                               "autoHideNavigation": true,
                               "data": [
-                                ["<code> output_var <\/code>", "<code> output_var <\/code>", "<code> output_var <\/code>", "<code> output_var <\/code>"],
-                                ["<code> input_dataset <\/code>", "<code> input_dataset <\/code>", "<code> input_dataset <\/code>", "<code> input_dataset <\/code>"],
-                                ["<code> <b>__BLANK__<\/b> <\/code>", "<code> <b>__BLANK__<\/b> <\/code>", "<code> <b>impossible<\/b> <\/code>", "<code> <b>undetermined<\/b> <\/code>"],
-                                ["<code> <b>paste<\/b> <\/code>", "<code> <b>other<\/b> <\/code>", "<code> <b>impossible<\/b> <\/code>", "<code> <b>undetermined<\/b> <\/code>"],
-                                ["<code> \"Hello word\" <\/code>", "<code> # place complex R code here... <\/code>", "<code> <b>impossible<\/b> <\/code>", "<code> <b>undetermined<\/b> <\/code>"]
+                                ["<code> harmonized_var <\/code>", "<code> harmonized_var <\/code>"],
+                                ["<code> input_dataset <\/code>", "<code> input_dataset <\/code>"],
+                                ["<code> <b>__BLANK__<\/b> <\/code>", "<code> <b>__BLANK__<\/b> <\/code>"],
+                                ["<code> <b>impossible<\/b> <\/code>", "<code> <b>undetermined<\/b> <\/code>"],
+                                ["<code> <b>impossible<\/b> <\/code>", "<code> <b>undetermined<\/b> <\/code>"]
                               ],
                               "container": "<table class=\"cell-border stripe\">\n  <thead>\n    <tr>\n      <th><b>dataschema_variable<\/b><\/th>\n      <th><b>input_dataset<\/b><\/th>\n      <th><b>input_variables<\/b><\/th>\n      <th><b>Mlstr_harmo::rule_category<\/b><\/th>\n      <th><b>Mlstr_harmo::algorithm<\/b><\/th>\n    <\/tr>\n  <\/thead>\n<\/table>",
                               "options": {
@@ -901,16 +880,20 @@ ELSE                       ~ NA_character_)
                         <ul>
                           <li>
                             <p>
-                              <em>__BLANK__</em> : If no variable is needed to generate the harmonized variable (for example using the rule category <strong>paste</strong> or <strong>other</strong>)
+                              <em>__BLANK__</em> : A value must be provided in input_variables. If no input variable is needed to generate the harmonized variable, __BLANK__ is used as a placeholder
+                              in input_variables.
                             </p>
                           </li>
                           <li>
-                            <p><em>impossible</em> : If the project of research does not collect DataSchema variable or cannot be used to generate DataSchema variable or is unknown.</p>
+                            <p>
+                              <em>impossible</em> : If the input dataset does not contain relevant or compatible information to generate the DataSchema variable, the rule_category and algorithm are
+                              marked ‘impossible’.
+                            </p>
                           </li>
                           <li>
                             <p>
-                              <em>undetermined</em> : If the user needs further investigation to harmonize, or future information to be completed, they can use this feature without being blocked in
-                              the process.
+                              <em>undetermined</em> : If any of the data processing elements needs further investigation or information to be determined, the rule_category and algorithm can be marked
+                              ‘undetermined’ to allow running harmo_process() without error and documenting the undetermined status.
                             </p>
                           </li>
                         </ul>
@@ -945,14 +928,14 @@ ELSE                       ~ NA_character_)
                           "data": [
                             [
                               "<code> harmonized_id <\/code>",
-                              "<code> output_var <\/code>",
-                              "<code> output_var <\/code>",
-                              "<code> output_var <\/code>",
-                              "<code> output_var <\/code>",
-                              "<code> output_var <\/code>",
-                              "<code> output_var <\/code>",
-                              "<code> output_var <\/code>",
-                              "<code> output_var <\/code>"
+                              "<code> harmonized_var <\/code>",
+                              "<code> harmonized_var <\/code>",
+                              "<code> harmonized_var <\/code>",
+                              "<code> harmonized_var <\/code>",
+                              "<code> harmonized_var <\/code>",
+                              "<code> harmonized_var <\/code>",
+                              "<code> harmonized_var <\/code>",
+                              "<code> harmonized_var <\/code>"
                             ],
                             [
                               "<code> input_dataset <\/code>",
@@ -973,8 +956,8 @@ ELSE                       ~ NA_character_)
                               "<code> input_var <\/code>",
                               "<code> <b>__BLANK__<\/b> <\/code>",
                               "<code> <b>__BLANK__<\/b> <\/code>",
-                              "<code> <b>impossible<\/b> <\/code>",
-                              "<code> <b>undetermined<\/b> <\/code>"
+                              "<code> <b>__BLANK__<\/b> <\/code>",
+                              "<code> <b>__BLANK__<\/b> <\/code>"
                             ],
                             [
                               "<code> <b>id_creation<\/b><em style=\"color:red\"> (mandatory)<\/em> <\/code>",
@@ -992,9 +975,9 @@ ELSE                       ~ NA_character_)
                               "<code> <b>direct_mapping<\/b> <\/code>",
                               "<code> <b>recode(<\/b>\n  \"YES\" = 1 ;\n  \"NO\"  = 0 ;\n  ELSE  = NA<b>) <\/b> <\/code>",
                               "<code> <b>case_when(<\/b>\n  var_x == 1 ~ var_z ;\n  ELSE       ~ NA<b>)<\/b> <\/code>",
-                              "<code> <em># simple R code here such as :<\/em><\/b>\n  (<b>mean(<\/b>input_var<b>)<\/b> - input_var<b>)<\/b> / <b>stats::sd(<\/b>input_var<b>)<\/b> <\/code>",
-                              "<code> \"Hello word\" <\/code>",
-                              "<code> # place complex R code here... <\/code>",
+                              "<code> <em># Simple R code<\/em><\/b>\n  <b>mean<\/b>(input_var<b>)<\/b> <\/code>",
+                              "<code> \"Hello, world.\" <\/code>",
+                              "<code> # More complex R code <\/code>",
                               "<code> <b>impossible<\/b> <\/code>",
                               "<code> <b>undetermined<\/b> <\/code>"
                             ]
