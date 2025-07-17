@@ -207,7 +207,7 @@ the modified data dictionary.</p>
 <span></span>
 <span><span class="co"># Evaluate data dictionary only</span></span>
 <span><span class="fu"><a href="../reference/data_dict_evaluate.html">data_dict_evaluate</a></span><span class="op">(</span><span class="va">modified_dd_study4</span><span class="op">)</span></span></code></pre></div>
-<blockquote>
+<blockquote style="font-size: inherit;">
 <p><strong>TIP:</strong> While we make all adjustments to the data
 dictionary in this vignette with R scripts for illustrative purposes,
 you could alternatively make some changes (e.g., renaming the sheet and
@@ -286,7 +286,7 @@ that this information can be used correctly in the evaluations.</p>
 <span><span class="co"># Note: the informational messages about duplicated rows are a side effect</span></span>
 <span><span class="co"># of a synthesized dataset with few variables. Rows are more likely to have</span></span>
 <span><span class="co"># the same values.</span></span></code></pre></div>
-<blockquote>
+<blockquote style="font-size: inherit;">
 <p><strong>TIP:</strong> You can view the evaluation outputs in the
 console or assign them to an object for more viewing options. For
 example, this is helpful if there are many messages, and you want to
@@ -362,7 +362,7 @@ summaries can easily be exported as Excel files.</p>
 <span><span class="fu"><a href="https://rdrr.io/r/base/files2.html" class="external-link">dir.create</a></span><span class="op">(</span><span class="va">output_path</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/fabR/man/write_excel_allsheets.html" class="external-link">write_excel_allsheets</a></span><span class="op">(</span></span>
 <span>  <span class="va">summary_dataset_with_dd_study4</span>, <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">output_path</span>,<span class="st">"/summary_dataset_with_dd_study4.xlsx"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<blockquote>
+<blockquote style="font-size: inherit;">
 <p><strong>TIP:</strong> While you can run
 <code><a href="../reference/dataset_summarize.html">dataset_summarize()</a></code> on any dataset, summaries are more
 useful after datasets and data dictionaries have been assessed and
@@ -396,7 +396,7 @@ features of the data may be easier to see in visual summaries.</p>
 <span><span class="co"># Open the visual report in a browser.</span></span>
 <span><span class="fu"><a href="../reference/bookdown_open.html">bookdown_open</a></span><span class="op">(</span><span class="va">bookdown_path</span><span class="op">)</span></span>
 <span><span class="co"># Or open 'bookdown_path/docs/index.html'.</span></span></code></pre></div>
-<blockquote>
+<blockquote style="font-size: inherit;">
 <p><strong>TIP:</strong> While you can run
 <code><a href="../reference/dataset_visualize.html">dataset_visualize()</a></code> on any dataset, summaries are more
 useful after datasets and data dictionaries have been assessed and
@@ -404,7 +404,7 @@ adjusted, if needed (e.g., categories correctly defined in the data
 dictionary and valid valueTypes defined in the dataset and data
 dictionary).</p>
 </blockquote>
-<blockquote>
+<blockquote style="font-size: inherit;">
 <p><strong>TIP:</strong> For large datasets with many rows and
 variables, it can take a long time to generate summaries and visual
 reports. You can summarize and generate reports for subsets of variables
@@ -435,14 +435,14 @@ saved in the R file.</p>
 <span></span>
 <span><span class="co"># Prepare a version of the cleaned validated input dataset as an R file</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/readRDS.html" class="external-link">saveRDS</a></span><span class="op">(</span><span class="va">input_dataset_study4</span>, <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">output_path</span>,<span class="st">"/input_dataset_study4.rds"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<blockquote>
+<blockquote style="font-size: inherit;">
 <p><strong>TIP:</strong> In practice, it can be useful to create the
 Data Processing Elements (DPE) in conjunction with evaluation of the
 input datasets. This way the input elements, algorithms, and any
 comments and questions about processing for each row of the DPE can be
 written while the relevant input variables are being evaluated.</p>
 </blockquote>
-<blockquote>
+<blockquote style="font-size: inherit;">
 <p><strong>TIP:</strong> Errors or outliers detected in summaries can be
 corrected in the input dataset before processing data, or corrections
 can be made explicitly in the algorithms written in the Data Processing
