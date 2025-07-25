@@ -6,7 +6,7 @@ object has an appropriate structure."><!-- mathjax --><script src="https://cdnjs
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]--></head><body data-spy="scroll" data-target="#toc">
-    
+
 
     <div class="container template-reference-topic">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -20,44 +20,41 @@ object has an appropriate structure."><!-- mathjax --><script src="https://cdnjs
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Rmonize</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">2.0.0</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav"><li>
-  <a href="../reference/index.html">Reference</a>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu"><li>
-      <a href="../articles/a-Glossary-and-templates.html">Glossary and templates</a>
-    </li>
-    <li>
-      <a href="../articles/b-Data-processing-elements.html">Data Processing Elements</a>
-    </li>
-    <li>
-      <a href="../articles/c-Example-with-Rmonize_DEMO.html">Example with Rmonize_DEMO</a>
-    </li>
-  </ul></li>
+<ul class="nav navbar-nav">
 <li>
-  <a href="../news/index.html">Changelog</a>
+  <a href="../process/index.html">Process</a>
 </li>
-      </ul><ul class="nav navbar-nav navbar-right"><li>
+<li>
+  <a href="../reference/index.html">Functions</a>
+</li>
+<li>
+  <a href="../glossary/index.html">Glossary</a>
+</li>
+<li>
+  <a href="../news/index.html">Updates</a>
+</li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
   <a href="https://github.com/maelstrom-research/Rmonize/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
-     
+
   </a>
 </li>
-      </ul></div><!--/.nav-collapse -->
-  </div><!--/.container -->
-</div><!--/.navbar -->
+      </ul>
+</div>
+<!--/.nav-collapse -->
+  </div>
+<!--/.container -->
+</div>
+<!--/.navbar -->
 
-      
+
 
       </header><div class="row">
   <div class="col-md-9 contents">
@@ -92,7 +89,7 @@ Maelstrom Research software. FALSE by default.</p></dd>
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    
+
 
 <p>A list of data frame(s) named 'Variables' and (if any) 'Categories',
 with <code><a href="https://rdrr.io/r/base/class.html" class="external-link">Rmonize::class</a></code> 'dataschema'.</p>
@@ -116,10 +113,11 @@ in particular <a href="https://www.obiba.org/pages/products/opal/" class="extern
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="op">{</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># Use Rmonize_DEMO to run examples.</span></span></span>
+<span class="r-in"><span><span class="co"># Use Rmonize_examples to run examples.</span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="fu">as_dataschema</span><span class="op">(</span><span class="va">Rmonize_DEMO</span><span class="op">$</span><span class="va">`dataschema - final`</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">dataschema</span> <span class="op">&lt;-</span> <span class="fu">as_dataschema</span><span class="op">(</span><span class="va">Rmonize_examples</span><span class="op">$</span><span class="va">`DataSchema`</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">dataschema</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
@@ -131,18 +129,26 @@ in particular <a href="https://www.obiba.org/pages/products/opal/" class="extern
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     intersect, setdiff, setequal, union</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> List of 2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ Variables : tibble [13 × 5] (S3: tbl_df/tbl/data.frame)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ name     : chr [1:13] "adm_unique_id" "adm_study" "adm_year_dce" "sdc_age" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ typeof   : chr [1:13] "character" "character" "character" "integer" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ index    : chr [1:13] "1" "2" "3" "4" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ label:en : chr [1:13] "Unique identification code of the participant." "Indicator of the survey study." "Indicator of the survey data collection event." "Participant's age at time of data collection event." ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ valueType: chr [1:13] "text" "text" "text" "integer" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ Categories: tibble [16 × 5] (S3: tbl_df/tbl/data.frame)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ variable: chr [1:16] "adm_study" "adm_study" "adm_study" "sdc_sex" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ name    : chr [1:16] "MELBOURNE" "PARIS" "TOKYO" "1" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ labels  : chr [1:16] "MELBOURNE" "PARIS" "TOKYO" "1" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ label:en: chr [1:16] "MELBOURNE" "PARIS" "TOKYO" "Male" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ missing : chr [1:16] "0" "0" "0" "0" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ Variables : tibble [9 × 13] (S3: tbl_df/tbl/data.frame)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ index                     : int [1:9] 1 2 3 4 5 6 7 8 9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ name                      : chr [1:9] "adm_unique_id" "adm_study_id" "sdc_age_m" "sdc_marital_m" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ label                     : chr [1:9] "Participant identifier" "Study ID" "Age of mother at first visit" "Marital status of mother at first visit" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ valueType                 : chr [1:9] "text" "text" "integer" "integer" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ unit                      : chr [1:9] NA NA "years" NA ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ categorical               : chr [1:9] "0" "1" "0" "1" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ target_entity             : chr [1:9] "Mother" "Study" "Mother" "Mother" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ target_time_period        : chr [1:9] NA NA "At beginning of pregnancy" "At beginning of pregnancy" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ acceptable_source         : chr [1:9] "N/A" "N/A" "Questionnaire or medical charts" "Questionnaire" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ acceptable_informant      : chr [1:9] "N/A" "N/A" "Participant or other" "Participant" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ acceptable_wording        : chr [1:9] "N/A" "N/A" "No restrictions" "No restrictions" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ harmonization_instructions: chr [1:9] NA NA "Use information from mother's first visit during pregnancy." "Use information from mother's first visit during pregnancy." ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ typeof                    : chr [1:9] "character" "integer" "character" "integer" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ Categories: tibble [15 × 5] (S3: tbl_df/tbl/data.frame)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ variable: chr [1:15] "adm_study_id" "adm_study_id" "adm_study_id" "adm_study_id" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ name    : chr [1:15] "1" "2" "3" "4" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ labels  : num [1:15] 1 2 3 4 5 0 1 2 3 0 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ label   : chr [1:15] "Study 1" "Study 2" "Study 3" "Study 4" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ missing : logi [1:15] FALSE FALSE FALSE FALSE FALSE FALSE ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  - attr(*, "madshapR::class")= chr "data_dict"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  - attr(*, "Rmonize::class")= chr "dataschema"</span>
 <span class="r-in"><span></span></span>
@@ -155,20 +161,41 @@ in particular <a href="https://www.obiba.org/pages/products/opal/" class="extern
 </div>
 
 
-      <footer><div class="copyright">
-  <p></p><p>Developed by Guillaume Fabre, Maelstrom-research group.</p>
-</div>
+      <footer style="margin-top: 45px; padding: 35px 0 36px; border-top: 1px solid #e5e5e5; color: #666; display: flex; align-items: center; flex-wrap: wrap">
+        <div
+          class="copyright"
+          style="display: flex; align-items: center; flex: 0 0 auto"
+        >
+          Developed&nbsp;by&nbsp;&nbsp;
+          <a
+            href="https://www.maelstrom-research.org"
+            class="external-link"
+            target="_blank"
+          >
+            <img
+              src="../reference/figures/maelstrom-logo.png"
+              style="max-height: 35px; padding-bottom: 2px"
+              title="Maelstrom Research"
+            />
+          </a>
+        </div>
 
-<div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
-</div>
+        <div
+          class="pkgdown"
+          style="display: flex; align-items: center; flex: 0 0 auto; margin-left: auto"
+        >
+          Site&nbsp;built&nbsp;with&nbsp;<a
+            href="https://pkgdown.r-lib.org/" target="_blank"
+            class="external-link"
+            >pkgdown</a
+          >&nbsp;2.0.7.
+        </div>
+      </footer>
 
-      </footer></div>
-
-  
 
 
-  
+
+
 
   </body></html>
 

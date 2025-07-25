@@ -4,13 +4,19 @@
     <loc>/404.html</loc>
   </url>
   <url>
-    <loc>/articles/a-Glossary-and-templates.html</loc>
+    <loc>/articles/a-install-your-working-environment.html</loc>
   </url>
   <url>
-    <loc>/articles/b-Data-processing-elements.html</loc>
+    <loc>/articles/b-simple-example-of-data-processing-with-Rmonize.html</loc>
   </url>
   <url>
-    <loc>/articles/c-Example-with-Rmonize_DEMO.html</loc>
+    <loc>/articles/c-explore-and-prepare-input-datasets-and-data-dictionaries.html</loc>
+  </url>
+  <url>
+    <loc>/articles/d-process-inputs-and-generate-harmonized-outputs.html</loc>
+  </url>
+  <url>
+    <loc>/articles/e-summarize-and-secure-harmonized-outputs.html</loc>
   </url>
   <url>
     <loc>/articles/index.html</loc>
@@ -73,6 +79,9 @@
     <loc>/reference/data_dict_extract.html</loc>
   </url>
   <url>
+    <loc>/reference/data_proc_elem_evaluate.html</loc>
+  </url>
+  <url>
     <loc>/reference/dossier_create.html</loc>
   </url>
   <url>
@@ -115,13 +124,13 @@
     <loc>/reference/Rmonize-package.html</loc>
   </url>
   <url>
-    <loc>/reference/Rmonize_DEMO.html</loc>
-  </url>
-  <url>
-    <loc>/reference/Rmonize_help.html</loc>
+    <loc>/reference/Rmonize_examples.html</loc>
   </url>
   <url>
     <loc>/reference/Rmonize_templates.html</loc>
+  </url>
+  <url>
+    <loc>/reference/Rmonize_website.html</loc>
   </url>
   <url>
     <loc>/reference/show_harmo_error.html</loc>

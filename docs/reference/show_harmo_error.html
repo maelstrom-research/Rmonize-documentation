@@ -6,7 +6,7 @@ data processing."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]--></head><body data-spy="scroll" data-target="#toc">
-    
+
 
     <div class="container template-reference-topic">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -20,44 +20,41 @@ data processing."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Rmonize</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">2.0.0</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav"><li>
-  <a href="../reference/index.html">Reference</a>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu"><li>
-      <a href="../articles/a-Glossary-and-templates.html">Glossary and templates</a>
-    </li>
-    <li>
-      <a href="../articles/b-Data-processing-elements.html">Data Processing Elements</a>
-    </li>
-    <li>
-      <a href="../articles/c-Example-with-Rmonize_DEMO.html">Example with Rmonize_DEMO</a>
-    </li>
-  </ul></li>
+<ul class="nav navbar-nav">
 <li>
-  <a href="../news/index.html">Changelog</a>
+  <a href="../process/index.html">Process</a>
 </li>
-      </ul><ul class="nav navbar-nav navbar-right"><li>
+<li>
+  <a href="../reference/index.html">Functions</a>
+</li>
+<li>
+  <a href="../glossary/index.html">Glossary</a>
+</li>
+<li>
+  <a href="../news/index.html">Updates</a>
+</li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
   <a href="https://github.com/maelstrom-research/Rmonize/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
-     
+
   </a>
 </li>
-      </ul></div><!--/.nav-collapse -->
-  </div><!--/.container -->
-</div><!--/.navbar -->
+      </ul>
+</div>
+<!--/.nav-collapse -->
+  </div>
+<!--/.container -->
+</div>
+<!--/.navbar -->
 
-      
+
 
       </header><div class="row">
   <div class="col-md-9 contents">
@@ -75,7 +72,7 @@ data processing.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">show_harmo_error</span><span class="op">(</span><span class="va">harmonized_dossier</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">show_harmo_error</span><span class="op">(</span><span class="va">harmonized_dossier</span>, show_warnings <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -83,13 +80,18 @@ data processing.</p>
     <dl><dt>harmonized_dossier</dt>
 <dd><p>A list containing the harmonized dataset(s).</p></dd>
 
+
+<dt>show_warnings</dt>
+<dd><p>Whether the function should print warnings or not.
+TRUE by default.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    
+
 
 <p>Nothing to be returned. The function prints messages in the console,
-showing any errors in the processing.</p>
+showing any errors in data processing.</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -104,19 +106,30 @@ Data Processing Elements used in processing as attributes.</p>
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="op">{</span></span></span>
+<span class="r-in"><span><span class="co"># Use Rmonize_examples to run examples.</span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span>  <span class="va">harmonized_dossier</span> <span class="op">&lt;-</span> <span class="va">Rmonize_DEMO</span><span class="op">$</span><span class="va">harmonized_dossier</span></span></span>
-<span class="r-in"><span>  <span class="fu">show_harmo_error</span><span class="op">(</span><span class="va">harmonized_dossier</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># Perform data processing</span></span></span>
+<span class="r-in"><span><span class="va">harmonized_dossier</span> <span class="op">&lt;-</span> <span class="va">Rmonize_examples</span><span class="op">$</span><span class="va">`harmonized_dossier`</span></span></span>
 <span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Show error(s) on the console</span></span></span>
+<span class="r-in"><span><span class="fu">show_harmo_error</span><span class="op">(</span><span class="va">harmonized_dossier</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> - STATUS SUMMARY: ----------------------------------------------------</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 3</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 8 × 3</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>   `Mlstr_harmo::rule_category` `Total number of algorithms` success</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> id_creation                  1                            100 %  </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> case_when                    6                            100 %  </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> direct_mapping               7                            100 %  </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> id_creation                  5                            100 %  </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> impossible                   5                            100 %  </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> operation                    6                            100 %  </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> other                        1                            100 %  </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span> paste                        5                            100 %  </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">8</span> recode                       10                           100 %  </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
@@ -128,20 +141,41 @@ Data Processing Elements used in processing as attributes.</p>
 </div>
 
 
-      <footer><div class="copyright">
-  <p></p><p>Developed by Guillaume Fabre, Maelstrom-research group.</p>
-</div>
+      <footer style="margin-top: 45px; padding: 35px 0 36px; border-top: 1px solid #e5e5e5; color: #666; display: flex; align-items: center; flex-wrap: wrap">
+        <div
+          class="copyright"
+          style="display: flex; align-items: center; flex: 0 0 auto"
+        >
+          Developed&nbsp;by&nbsp;&nbsp;
+          <a
+            href="https://www.maelstrom-research.org"
+            class="external-link"
+            target="_blank"
+          >
+            <img
+              src="../reference/figures/maelstrom-logo.png"
+              style="max-height: 35px; padding-bottom: 2px"
+              title="Maelstrom Research"
+            />
+          </a>
+        </div>
 
-<div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
-</div>
+        <div
+          class="pkgdown"
+          style="display: flex; align-items: center; flex: 0 0 auto; margin-left: auto"
+        >
+          Site&nbsp;built&nbsp;with&nbsp;<a
+            href="https://pkgdown.r-lib.org/" target="_blank"
+            class="external-link"
+            >pkgdown</a
+          >&nbsp;2.0.7.
+        </div>
+      </footer>
 
-      </footer></div>
-
-  
 
 
-  
+
+
 
   </body></html>
 
