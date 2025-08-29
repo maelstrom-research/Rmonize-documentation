@@ -126,7 +126,7 @@ processing.</p>
 <span><span class="va">dataschema</span> <span class="op">&lt;-</span> <span class="va">Rmonize_examples</span><span class="op">$</span><span class="va">DataSchema</span></span>
 <span></span>
 <span><span class="co"># Get the Data Processing Elements</span></span>
-<span><span class="va">dpe_with_errors</span> <span class="op">&lt;-</span> <span class="va">Rmonize_examples</span><span class="op">$</span><span class="va">`Data_Processing_Element_with errors`</span></span>
+<span><span class="va">dpe_with_errors</span> <span class="op">&lt;-</span> <span class="va">Rmonize_examples</span><span class="op">$</span><span class="va">Data_Processing_Elements_with_errors</span></span>
 <span><span class="co"># This version contains some examples of potential processing errors.</span></span></code></pre></div>
 <p>In the examples, the DPE contains processing instructions for all
 five datasets, but you can prepare separate DPE documents for each input
@@ -226,7 +226,7 @@ processing errors as many times as needed.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get corrected DPEs with changes made based on error messages</span></span>
 <span><span class="va">dpe_no_errors</span> <span class="op">&lt;-</span> </span>
-<span>  <span class="va">Rmonize_examples</span><span class="op">$</span><span class="va">`Data_Processing_Element_no errors`</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="va">Rmonize_examples</span><span class="op">$</span><span class="va">Data_Processing_Elements_no_errors</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="../reference/as_data_proc_elem.html">as_data_proc_elem</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Run processing function</span></span>
