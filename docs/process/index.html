@@ -716,7 +716,20 @@
               class="navbar-collapse collapse"
             >
               <ul class="nav navbar-nav">
-                <li class="active"><a href="../process/index.html">Process</a></li>
+                <li class="dropdown active">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    Process <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li class="active"><a href="../process/index.html">Overview</a></li>
+                    <li><a href="../articles/a-install-your-working-environment.html">Install your working environment</a></li>
+                    <li><a href="../articles/b-simple-example-of-data-processing-with-Rmonize.html">Simple example of data processing with Rmonize</a></li>
+                    <li><a href="../articles/c-explore-and-prepare-input-datasets-and-data-dictionaries.html">Explore and prepare input datasets and data dictionaries</a></li>
+                    <li><a href="../dpe/index.html">Prepare the Data Processing Elements</a></li>
+                    <li><a href="../articles/d-process-inputs-and-generate-harmonized-outputs.html">Process inputs into harmonization outputs</a></li>
+                    <li><a href="../articles/e-summarize-and-secure-harmonized-outputs.html">Summarize and secure harmonization outputs</a></li>
+                  </ul>
+                </li>
                 <li><a href="../reference/index.html">Functions</a></li>
                 <li><a href="../glossary/index.html">Glossary</a></li>
                 <li><a href="../news/index.html">Updates</a></li>
@@ -740,7 +753,7 @@
       </header>
 
       <div class="page-header">
-        <h1>Process <small></small></h1>
+        <h1>Overview <small></small></h1>
 
         <!-- Get started block -->
         <div style="display: flex; align-items: center">
@@ -766,7 +779,7 @@
           </div>
         </div>
 
-        <p class="h4" style="margin-top: 20px;">Harmonizing data using Rmonize is generally an iterative process requiring a phase of preparation, followed by processing inputs into harmonized outputs,
+        <p class="h4" style="margin-top: 20px;">Harmonizing data using Rmonize is generally an iterative process requiring a phase of preparation, followed by processing inputs into harmonization outputs,
           validation, and consolidation, to produce well documented harmonized datasets that are ready for use in analysis.</p>
 
         <!-- Prepare inputs block -->
@@ -791,7 +804,7 @@
                 summarize, and format input datasets and associated data dictionaries for use in the package.
               </li>
               <li>
-                The Data Processing Elements (DPE) specifies the input elements and instructions for Rmonize to generate harmonized outputs from each input dataset.The DPE has a specific technical
+                The Data Processing Elements (DPE) specifies the input elements and instructions for Rmonize to generate harmonization outputs from each input dataset.The DPE has a specific technical
                 format and is usually prepared in an <a href="../templates/data_processing_elements%20-%20template.xlsx">Excel template</a>, with columns indicating whether or not each DataSchema
                 variable can be generated in each dataset, along with the algorithms used for data processing.
               </li>
@@ -820,7 +833,7 @@
             />
           </div>
           <div style="flex: 1">
-            <p class="h3">Process inputs into harmonized outputs</p>
+            <p class="h3">Process inputs into harmonization outputs</p>
             <p>
               Rmonize uses the input datasets, DataSchema, and Data Processing Elements to process input into harmonized datasets. The package can also generate reports that are useful for
               understanding and validating harmonized data content.
@@ -830,7 +843,7 @@
               <p style="margin: 0 0 5px 0"><strong>Learn more</strong></p>
 
               <ul style="margin: 0 0 0 18px; padding: 0">
-                <li><a href="../articles/d-process-inputs-and-generate-harmonized-outputs.html"> Process inputs into harmonized outputs </a> vignette</li>
+                <li><a href="../articles/d-process-inputs-and-generate-harmonized-outputs.html"> Process inputs into harmonization outputs </a> vignette</li>
               </ul>
             </div>
           </div>
@@ -846,7 +859,7 @@
             />
           </div>
           <div style="flex: 1">
-            <p class="h3">Secure harmonized outputs</p>
+            <p class="h3">Secure harmonization outputs</p>
             <p>
               Rmonize generates individual or pooled datasets and associated data dictionaries that integrate information from the DataSchema and Data Processing Elements. The package can
               also generate reports with descriptive statistics and visual summaries to describe and document the harmonized datasets.
@@ -856,7 +869,7 @@
               <p style="margin: 0 0 5px 0"><strong>Learn more</strong></p>
 
               <ul style="margin: 0 0 0 18px; padding: 0">
-                <li><a href="../articles/e-summarize-and-secure-harmonized-outputs.html"> Summarize and secure harmonized outputs </a> vignette</li>
+                <li><a href="../articles/e-summarize-and-secure-harmonized-outputs.html"> Summarize and secure harmonization outputs </a> vignette</li>
               </ul>
             </div>
           </div>

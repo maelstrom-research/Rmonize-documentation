@@ -4,3 +4,6 @@
 .Ruserdata
 *.Rproj
 .history
+.serena
+.claude
+.agent-sandbox

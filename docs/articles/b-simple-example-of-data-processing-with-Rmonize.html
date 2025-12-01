@@ -144,8 +144,19 @@
               class="navbar-collapse collapse"
             >
               <ul class="nav navbar-nav">
-                <li>
-                  <a href="../process/index.html">Process</a>
+                <li class="dropdown active">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    Process <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a href="../process/index.html">Overview</a></li>
+                    <li><a href="../articles/a-install-your-working-environment.html">Install your working environment</a></li>
+                    <li class="active"><a href="../articles/b-simple-example-of-data-processing-with-Rmonize.html">Simple example of data processing with Rmonize</a></li>
+                    <li><a href="../articles/c-explore-and-prepare-input-datasets-and-data-dictionaries.html">Explore and prepare input datasets and data dictionaries</a></li>
+                    <li><a href="../dpe/index.html">Prepare the Data Processing Elements</a></li>
+                    <li><a href="../articles/d-process-inputs-and-generate-harmonized-outputs.html">Process inputs into harmonization outputs</a></li>
+                    <li><a href="../articles/e-summarize-and-secure-harmonized-outputs.html">Summarize and secure harmonization outputs</a></li>
+                  </ul>
                 </li>
                 <li>
                   <a href="../reference/index.html">Functions</a>
@@ -192,7 +203,7 @@
 
           <p>
             Once you’ve installed your working environment, you can start processing data with Rmonize. This vignette provides a simple walk-through with error-free example input elements. You will
-            run through the main processing steps, from preparing inputs to generating and securing harmonized outputs.
+            run through the main processing steps, from preparing inputs to generating and securing harmonization outputs.
           </p>
           <div class="section level2">
             <h2 id="load-packages">
@@ -375,7 +386,7 @@
           </div>
           <div class="section level2">
             <h2 id="process-the-inputs-into-harmonized-outputs">
-              Process the inputs into harmonized outputs<a
+              Process the inputs into harmonization outputs<a
                 class="anchor"
                 aria-label="anchor"
                 href="#process-the-inputs-into-harmonized-outputs"
@@ -408,7 +419,7 @@
             <p>
               The processing produces a harmonized dossier, a list of harmonized datasets (one for each input dataset) and associated metadata, along with information automatically extracted from the
               DataSchema and DPE. In this vignette, there are no processing errors, but any errors or warnings would be printed in the console. (For an example of processing with errors, see the
-              vignette Process inputs into harmonized outputs.)
+              vignette Process inputs into harmonization outputs.)
             </p>
             <blockquote style="font-size: inherit">
               <p><strong>TIP:</strong> The dataset name(s) in the input dossier or ‘object’ parameter must match the dataset name(s) declared in the input_dataset column in the DPE.</p>
@@ -416,7 +427,7 @@
           </div>
           <div class="section level2">
             <h2 id="summarize-and-secure-harmonized-outputs">
-              Summarize and secure harmonized outputs<a
+              Summarize and secure harmonization outputs<a
                 class="anchor"
                 aria-label="anchor"
                 href="#summarize-and-secure-harmonized-outputs"
@@ -513,7 +524,7 @@
             </h2>
             <p>
               In this vignette, we used inputs that already have valid structure and content. In reality, you may need to explore your input datasets in more depth, get help preparing the Data
-              Processing Elements, troubleshoot process errors, or better understand the harmonized outputs. For more in-depth exploration of specific steps, other vignettes and documentation are
+              Processing Elements, troubleshoot process errors, or better understand the harmonization outputs. For more in-depth exploration of specific steps, other vignettes and documentation are
               available:
             </p>
             <ul>
@@ -535,14 +546,14 @@
                 <a
                   href="d-process-inputs-and-generate-harmonized-outputs.html"
                   class="external-link"
-                  >Process inputs into harmonized outputs</a
+                  >Process inputs into harmonization outputs</a
                 >
               </li>
               <li>
                 <a
                   href="e-summarize-and-secure-harmonized-outputs.html"
                   class="external-link"
-                  >Summarize and secure harmonized outputs</a
+                  >Summarize and secure harmonization outputs</a
                 >
               </li>
             </ul>

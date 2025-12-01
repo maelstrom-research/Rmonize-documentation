@@ -15,7 +15,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0"
     />
-    <title>Summarize and secure harmonized outputs</title>
+    <title>Summarize and secure harmonization outputs</title>
     <!-- jquery -->
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"
@@ -77,7 +77,7 @@
     <script src="../pkgdown.js"></script>
     <meta
       property="og:title"
-      content="Summarize and secure harmonized outputs"
+      content="Summarize and secure harmonization outputs"
     />
     <meta
       property="og:description"
@@ -144,8 +144,19 @@
               class="navbar-collapse collapse"
             >
               <ul class="nav navbar-nav">
-                <li>
-                  <a href="../process/index.html">Process</a>
+                <li class="dropdown active">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    Process <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a href="../process/index.html">Overview</a></li>
+                    <li><a href="../articles/a-install-your-working-environment.html">Install your working environment</a></li>
+                    <li><a href="../articles/b-simple-example-of-data-processing-with-Rmonize.html">Simple example of data processing with Rmonize</a></li>
+                    <li><a href="../articles/c-explore-and-prepare-input-datasets-and-data-dictionaries.html">Explore and prepare input datasets and data dictionaries</a></li>
+                    <li><a href="../dpe/index.html">Prepare the Data Processing Elements</a></li>
+                    <li><a href="../articles/d-process-inputs-and-generate-harmonized-outputs.html">Process inputs into harmonization outputs</a></li>
+                    <li class="active"><a href="../articles/e-summarize-and-secure-harmonized-outputs.html">Summarize and secure harmonization outputs</a></li>
+                  </ul>
                 </li>
                 <li>
                   <a href="../reference/index.html">Functions</a>
@@ -177,7 +188,7 @@
       <div class="row">
         <div class="col-md-9 contents">
           <div class="page-header toc-ignore">
-            <h1 data-toc-skip>Summarize and secure harmonized outputs</h1>
+            <h1 data-toc-skip>Summarize and secure harmonization outputs</h1>
 
             <small class="dont-index"
               >Source:
@@ -191,8 +202,8 @@
           </div>
 
           <p>
-            Once you have processed inputs and generated harmonized outputs, you can examine the harmonized datasets and extract different outputs. This vignette shows you how to access and use
-            harmonized outputs from the harmonized dossier.
+            Once you have processed inputs and generated harmonization outputs, you can examine the harmonized datasets and extract different outputs. This vignette shows you how to access and use
+            harmonization outputs from the harmonized dossier.
           </p>
           <div class="section level2">
             <h2 id="load-packages">
@@ -224,7 +235,7 @@
             <p>
               The harmonized dossier produced by <code><a href="../reference/harmo_process.html">harmo_process()</a></code> is a list containing the harmonized datasets and associated metadata
               (including the DataSchema, DPEs, and harmonized data dictionaries), which can be further examined and summarized. We will use a harmonized dossier that is provided with the examples in
-              the packages, which includes harmonized outputs from five study datasets (and is the equivalent of the harmonized dossier generated in the vignette Process inputs and generate harmonized
+              the packages, which includes harmonization outputs from five study datasets (and is the equivalent of the harmonized dossier generated in the vignette Process inputs and generate harmonized
               outputs).
             </p>
             <div
@@ -459,7 +470,7 @@
 <span>           <span class="st">"/outputs/harmonized_data_dictionaries/harmonized_data_dictionary_"</span>,<span class="va">i</span>,<span class="st">".xlsx"</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/pkg/fabR/man/write_excel_allsheets.html" class="external-link">write_excel_allsheets</a></span><span class="op">(</span><span class="va">data_dict_harmonized_dossier</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span>,<span class="va">filename</span><span class="op">)</span><span class="op">}</span></span></code></pre>
               </div>
-              <p>Once harmonized outputs are produced, they can be explored with any tools and preserved in any file formats you would typically use in R.</p>
+              <p>Once harmonization outputs are produced, they can be explored with any tools and preserved in any file formats you would typically use in R.</p>
             </div>
           </div>
         </div>

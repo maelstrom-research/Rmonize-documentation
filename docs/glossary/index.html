@@ -157,8 +157,19 @@
               class="navbar-collapse collapse"
             >
               <ul class="nav navbar-nav">
-                <li>
-                  <a href="../process/index.html">Process</a>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    Process <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a href="../process/index.html">Overview</a></li>
+                    <li><a href="../articles/a-install-your-working-environment.html">Install your working environment</a></li>
+                    <li><a href="../articles/b-simple-example-of-data-processing-with-Rmonize.html">Simple example of data processing with Rmonize</a></li>
+                    <li><a href="../articles/c-explore-and-prepare-input-datasets-and-data-dictionaries.html">Explore and prepare input datasets and data dictionaries</a></li>
+                    <li><a href="../dpe/index.html">Prepare the Data Processing Elements</a></li>
+                    <li><a href="../articles/d-process-inputs-and-generate-harmonized-outputs.html">Process inputs into harmonization outputs</a></li>
+                    <li><a href="../articles/e-summarize-and-secure-harmonized-outputs.html">Summarize and secure harmonization outputs</a></li>
+                  </ul>
                 </li>
                 <li>
                   <a href="../reference/index.html">Functions</a>
@@ -213,7 +224,7 @@
 
             <div class="panel-body">
               <p>
-                The objects used by Rmonize to process inputs into harmonized outputs are described below. The components of each object that are used by the package are listed and must have the names
+                The objects used by Rmonize to process inputs into harmonization outputs are described below. The components of each object that are used by the package are listed and must have the names
                 as presented, except where indicated in square brackets ([…]). An asterisk (*) indicates an object or column that must be provided by the user. If not provided, information in columns
                 without asterisks will generally be filled with default values as needed in functions. Additional columns with different names can be present but are not used in data processing.
               </p>

@@ -23,8 +23,19 @@
 
     <div id="navbar" class="navbar-collapse collapse">
 <ul class="nav navbar-nav">
-<li>
-  <a href="../process/index.html">Process</a>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+    Process <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu">
+    <li><a href="../process/index.html">Overview</a></li>
+    <li><a href="../articles/a-install-your-working-environment.html">Install your working environment</a></li>
+    <li><a href="../articles/b-simple-example-of-data-processing-with-Rmonize.html">Simple example of data processing with Rmonize</a></li>
+    <li><a href="../articles/c-explore-and-prepare-input-datasets-and-data-dictionaries.html">Explore and prepare input datasets and data dictionaries</a></li>
+    <li><a href="../dpe/index.html">Prepare the Data Processing Elements</a></li>
+    <li><a href="../articles/d-process-inputs-and-generate-harmonized-outputs.html">Process inputs into harmonization outputs</a></li>
+    <li><a href="../articles/e-summarize-and-secure-harmonized-outputs.html">Summarize and secure harmonization outputs</a></li>
+  </ul>
 </li>
 <li>
   <a href="../reference/index.html">Functions</a>
@@ -208,7 +219,7 @@
 </div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="1.0.0" id="rmonize-100">Rmonize 1.0.0<a class="anchor" aria-label="anchor" href="#rmonize-100"></a></h2>
-<p>Functions to support rigorous retrospective data harmonization processing, evaluation, and documentation across datasets in a dossier based on Maelstrom Research guidelines. The package includes the core functions to evaluate and format the main inputs that define the harmonization process, apply specified processing rules to generate harmonized data, diagnose processing errors, and summarize and evaluate harmonized outputs.</p>
+<p>Functions to support rigorous retrospective data harmonization processing, evaluation, and documentation across datasets in a dossier based on Maelstrom Research guidelines. The package includes the core functions to evaluate and format the main inputs that define the harmonization process, apply specified processing rules to generate harmonized data, diagnose processing errors, and summarize and evaluate harmonization outputs.</p>
 <p>This is still a work in progress, so please let us know if you used a function before and is not working any longer.</p>
 <div class="section level3">
 <h3 id="helper-functions-and-objects-1-0-0">Helper functions and objects<a class="anchor" aria-label="anchor" href="#helper-functions-and-objects-1-0-0"></a></h3>
