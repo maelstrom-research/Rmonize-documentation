@@ -542,21 +542,21 @@
                           <li><p>Uses only one input variable.</p></li>
                           <li>
                             <p>
-                              • The input variable should generally be a categorical variable. To create a categorical harmonized variable from a continuous input variable, use
+                              The input variable should generally be a categorical variable. To create a categorical harmonized variable from a continuous input variable, use
                               <strong>case_when</strong> instead.
                             </p>
                           </li>
                           <li>
-                            <p>• If all values in the input variable are the same as in the DataSchema variable, use <strong>direct_mapping</strong> instead.</p>
+                            <p>If all values in the input variable are the same as in the DataSchema variable, use <strong>direct_mapping</strong> instead.</p>
                           </li>
                           <li>
-                            <p>• Specify each input value to output value recoding with an equal sign <strong>=</strong></p>
+                            <p>Specify each input value to output value recoding with an equal sign <strong>=</strong></p>
                           </li>
                           <li>
-                            <p>• Separate each recoding with a semi-colon <strong>;</strong> .</p>
+                            <p>Separate each recoding with a semi-colon <strong>;</strong> .</p>
                           </li>
                           <li>
-                            <p>• Use <strong>ELSE = NA</strong> to attribute NA to all remaining input values.</p>
+                            <p>Use <strong>ELSE = NA</strong> to attribute NA to all remaining input values.</p>
                           </li>
                         </ul>
                         <p>
@@ -704,10 +704,10 @@ ELSE                       ~ NA_character_)
                         <p>Notes:</p>
                         <ul>
                           <li>
-                            <p>• This function does not use any input variables. The value <strong>__BLANK__</strong> must be entered in the column input_variables.</p>
+                            <p>This function does not use any input variables. The value <strong>__BLANK__</strong> must be entered in the column input_variables.</p>
                           </li>
                           <li>
-                            <p>• This rule category is often used when the harmonized variable is an identifier for the whole dataset, e.g., a study or population identifier.</p>
+                            <p>This rule category is often used when the harmonized variable is an identifier for the whole dataset, e.g., a study or population identifier.</p>
                           </li>
                         </ul>
                       </div>
@@ -767,7 +767,7 @@ ELSE                       ~ NA_character_)
                           </li>
 
                           <li>
-                            • This rule category is intended to document relatively simple transformations. If the operation requires more complex or longer coding, consider using
+                            This rule category is intended to document relatively simple transformations. If the operation requires more complex or longer coding, consider using
                             <strong>other</strong> instead.
                           </li>
                         </ul>
